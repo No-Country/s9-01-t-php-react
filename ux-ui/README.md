@@ -1,1 +1,1 @@
-# s9-01-t-php-react
+# Recorrido de la investigación de usuario (UX) y diseño de interfaz (UI) 
