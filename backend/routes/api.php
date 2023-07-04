@@ -18,9 +18,11 @@ Route::group(['prefix' => 'v1'], function () {
 
     // Rutas protegidas por el middleware jwt.auth
     Route::group(['middleware' => 'jwt.auth'], function () {
+        // Rutas para usuarios
         Route::resource('users', UserController::class)->except(['create', 'edit', 'store']);
+        // Rutas para certificados
         Route::resource('certificates', CertificateController::class)->except(['create', 'edit']);
+        // Rutas para plantillas
+        Route::resource('templates', TemplateController::class)->except(['edit','create','destroy']);
     });
-    // Rutas para template
-    Route::resource('templates', TemplateController::class)->except(['edit','create','destroy']);
 });
