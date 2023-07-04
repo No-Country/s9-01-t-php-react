@@ -29,9 +29,9 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'lastname' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'address' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -40,9 +40,9 @@ class UserController extends Controller
 
         $user = new User;
         $user->name = $request->name;
-        $user->lastname = $request->lastname;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->address = 'default';
         $user->save();
 
         return response()->json(['result' => $user], Response::HTTP_CREATED);
@@ -52,20 +52,21 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'lastname' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'required|min:6',
+            'address' => 'nullable|string', 
         ]);
-
+    
         $user = User::findOrFail($id);
         $user->name = $request->name;
-        $user->lastname = $request->lastname;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->address = $request->address; 
         $user->save();
-
+    
         return response()->json(['result' => $user], Response::HTTP_OK);
     }
+    
 
     public function destroy($id)
     {

@@ -13,16 +13,18 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+    
         if (!Auth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }
-
-        $token = JWTAuth::fromUser(Auth::user());
-
-        return response()->json(['token' => $token], Response::HTTP_OK);
+    
+        $user = Auth::user();
+        $user->makeHidden('password'); // Ocultar la contraseña en la respuesta
+        $token = JWTAuth::fromUser($user);
+    
+        return response()->json(['user' => $user, 'token' => $token], Response::HTTP_OK);
     }
-
+    
     public function logout(Request $request)
     {
         // Revocar el token de acceso del usuario actual
