@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1'], function () {
 
     // Rutas de login y logout
-    Route::post('login', [AuthController::class, 'login'])->name('login');
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('jwt.auth');
+    Route::post('auth/login', [AuthController::class, 'login'])->name('login');
+    Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout')->middleware('jwt.auth');
     
     // Ruta de registro de usuarios sin protección del middleware
     Route::post('users', [UserController::class, 'store'])->name('users.store');
