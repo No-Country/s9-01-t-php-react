@@ -19,9 +19,9 @@ class User extends MongoUser implements JWTSubject, LaravelAuthenticatable
      */
     protected $fillable = [
         'name',
-        'lastname',
         'email',
         'password',
+        'address'
     ];
 
     /**
