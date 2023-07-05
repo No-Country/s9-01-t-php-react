@@ -33,7 +33,6 @@ class TemplateController extends Controller
     {
         $uploadedFile = $request->file('image');
         try {
-            var_dump($uploadedFile->getRealPath());
             $image = Cloudinary::upload($uploadedFile->getRealPath());
             $template = new Template;
             $template->urlImg = $image->getSecurePath();
