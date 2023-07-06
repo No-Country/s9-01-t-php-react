@@ -1,35 +1,48 @@
-# Establecer la imagen base
-FROM php:8.1-apache
+# Usar la imagen base de PHP 8.1
+FROM php:8.1
 
-# Directorio de trabajo en el contenedor
-WORKDIR /var/www/html
+# Establecer el directorio de trabajo en /var/www
+WORKDIR /var/www
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libonig-dev \
     libzip-dev \
-    unzip \
-    && docker-php-ext-install zip
+    zip \
+    unzip
 
-# Instalar y habilitar la extensión mongodb
-RUN pecl install mongodb && docker-php-ext-enable mongodb
+# Instalar extensiones de PHP requeridas por Laravel y Composer
+RUN docker-php-ext-install pdo_mysql mbstring zip
 
-# Copiar los archivos del proyecto al contenedor
-COPY . /var/www/html
+# Instalar extensión de OpenSSL para PHP
+RUN apt-get install -y openssl
 
-# Configurar el entorno
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN a2enmod rewrite
+# Instalar extensión de MongoDB para PHP
+RUN pecl install mongodb && \
+    docker-php-ext-enable mongodb
 
-# Instalar dependencias de Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install 
+# Instalar Composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# Copiar los archivos de la aplicación al contenedor
+COPY . .
+
+# Copiar el archivo .env.example como .env
+RUN cp .env.example .env
+
+# Generar la clave de la aplicación
+RUN php artisan key:generate || true
 
 # Establecer permisos adecuados
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Puerto expuesto por Apache
+# Instalar dependencias de Composer
+RUN composer install --no-interaction --no-scripts --no-plugins --prefer-dist --ignore-platform-reqs --optimize-autoloader
+
+# Exponer el puerto 80 del contenedor
 EXPOSE 80
 
-# Comando de inicio del contenedor
-CMD ["apache2-foreground"]
+# Iniciar el servidor web de PHP
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
