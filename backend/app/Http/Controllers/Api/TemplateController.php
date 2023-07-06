@@ -19,6 +19,7 @@ class TemplateController extends Controller
             "result" => $templates
         ], Response::HTTP_OK);
     }
+
     public function show($id)
     {
         try {
@@ -29,6 +30,7 @@ class TemplateController extends Controller
         $template = Template::findOrFail($id);
         return response()->success($template, 'template found!');
     }
+
     public function store(Request $request)
     {
         $uploadedFile = $request->file('image');
@@ -47,6 +49,7 @@ class TemplateController extends Controller
         }
 
     }
+
     public function update(Request $request,$id)
     {
         $uploadedFile = $request->file('image');
@@ -65,6 +68,7 @@ class TemplateController extends Controller
             return response()->error($th->getMessage());
         } 
     }
+    
 /*     public function destroy(Request $request)
     {
         try {
