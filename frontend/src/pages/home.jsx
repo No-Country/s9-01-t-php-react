@@ -1,10 +1,11 @@
-import { useAuth } from "./hooks/useAuth";
-import { useInputExcel } from "./hooks/useInputExcel";
+// import { useAuth } from "../hooks/useAuth";
+// import { useInputExcel } from "../hooks/useInputExcel";
+import { useAuth } from "../hooks/useAuth";
+import { useInputExcel } from "../hooks/useInputExcel";
 
-function App() {
+const Home = () => {
   const { user, login, logout } = useAuth();
   const { dataExcel, handlerExcel } = useInputExcel();
-
   return (
     <>
       <div className="flex w-full justify-center items-center mt-10">
@@ -16,6 +17,6 @@ function App() {
       <input type="file" name="fileExcel" onChange={handlerExcel} />
     </>
   );
-}
+};
 
-export default App;
+export default Home;
