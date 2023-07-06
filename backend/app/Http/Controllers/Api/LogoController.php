@@ -13,17 +13,31 @@ class LogoController extends Controller
 {
     public function index()
     {
-        $logos = Logo::all();
-        return response()->json([
-            "result" => $logos
-        ], Response::HTTP_OK);
+        $perPage = 50; // Número de logos por página
+        $logos = Logo::paginate($perPage);
+    
+        $response = [
+            'status' => 'success',
+            'message' => 'Logos found!',
+            'data' => [
+                'logos' => $logos->items(),
+                'currentPage' => $logos->currentPage(),
+                'perPage' => $logos->perPage(),
+                'totalPages' => $logos->lastPage(),
+                'totalCount' => $logos->total(),
+            ],
+        ];
+    
+        return response()->json($response, Response::HTTP_OK);
     }
+    
 
     public function show($id)
     {
         try {
             $logo = Logo::findOrFail($id);
-            return response()->json(['result' => $logo], Response::HTTP_OK);
+            return response()->success($logo , 'Logo found!');
+
         } catch (\Throwable $th) {
             return response()->json(['error' => 'Logo not found'], Response::HTTP_NOT_FOUND);
         }
@@ -41,7 +55,8 @@ class LogoController extends Controller
             $logo->status = true;
             $logo->save();
 
-            return response()->json(['result' => $logo], Response::HTTP_CREATED);
+        return response()->success($logo, 'The logo has been added successfully!')->header('Content-Type', 'application/json')->setStatusCode(Response::HTTP_CREATED);
+
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -66,16 +81,16 @@ class LogoController extends Controller
         } 
     }      
     
-    public function destroy($id)
-    {
-        try {
-            $logo = Logo::findOrFail($id);
-            $destroy = Cloudinary::destroy($logo->publicId);
-            $logo->delete();
+    // public function destroy($id)
+    // {
+    //     try {
+    //         $logo = Logo::findOrFail($id);
+    //         $destroy = Cloudinary::destroy($logo->publicId);
+    //         $logo->delete();
 
-            return response()->json(['message' => "Logo deleted"], Response::HTTP_OK);
-        } catch (\Throwable $th) {
-            return response()->json(['error' => 'Logo not found'], Response::HTTP_NOT_FOUND);
-        }
-    }
+    //         return response()->json(['message' => "Logo deleted"], Response::HTTP_OK);
+    //     } catch (\Throwable $th) {
+    //         return response()->json(['error' => 'Logo not found'], Response::HTTP_NOT_FOUND);
+    //     }
+    // }
 }
