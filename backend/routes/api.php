@@ -7,9 +7,15 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TemplateController;
 use App\Http\Controllers\Api\LogoController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1'], function () {
+
+    // Rutas de login con google
+    Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
+    Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
+
 
     // Rutas de login y logout
     Route::post('auth/login', [AuthController::class, 'login'])->name('login');
