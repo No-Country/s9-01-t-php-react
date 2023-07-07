@@ -47,9 +47,8 @@ class CertificateController extends Controller
         $certificate = Certificate::findOrFail($id);
 
         $certificate->certificateType = $request->certificateType;
-        $certificate->id_user = $request->id_user; 
+        $certificate->id_user = $request->id_user;
         $certificate->id_template = $request->id_template;
-        $certificate->publicKey = $request->publicKey;
         $certificate->authority1 = $request->authority1;
         $certificate->authority2 = $request->authority2;
         $certificate->career_type = $request->career_type;
