@@ -2,7 +2,7 @@
 
 <div align="center">
 <h1>
-<a href="" target="_blank" rel="noopener noreferrer">Certifime</a>
+<a href="" target="_blank" rel="noopener noreferrer">CertifyMe</a>
 </h1>
 <img src="https://i.pinimg.com/564x/ca/6d/c7/ca6dc747548ea72085a2187502c32df8.jpg">
 <p>
