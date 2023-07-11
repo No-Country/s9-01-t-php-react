@@ -79,13 +79,15 @@ const Login = () => {
           <button
             disabled={loading}
             type="submit"
-            className=" text-white rounded p-1 bg-slate-400 disabled:opacity-75 hover:opacity-90 ">
+            className=" text-white rounded p-1 bg-slate-400 disabled:opacity-75 hover:opacity-90 "
+          >
             Logearme
           </button>
           <button
             onClick={() => navigate("/register")}
             disabled={loading}
-            className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+            className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+          >
             No tengo una cuenta
           </button>
         </div>
