@@ -55,7 +55,7 @@ Antes de comenzar, asegúrate de tener instalado Docker en tu sistema operativo.
 5. Visita la aplicación en tu navegador:
 
    ```bash
-   http://localhost:8000 ↗
+   http://localhost
    ```
 ### 👉🏻 ¿Qué incluye? ✅
 El proyecto incluye las siguientes funcionalidades:
