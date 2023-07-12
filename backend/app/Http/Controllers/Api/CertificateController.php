@@ -19,7 +19,9 @@ class CertificateController extends Controller
 {
     public function index()
     {
-        $certificates = Certificate::all();
+        $encryptedId = Auth::user()->getAuthIdentifier();
+        $certificates = CertificateData::Where('id_user',$encryptedId)
+        ->get();
         return response()->json([
             "result" => $certificates
         ], Response::HTTP_OK);
@@ -36,7 +38,6 @@ class CertificateController extends Controller
                 ->orWhere('public_key',$isObjectId)
                 ->with('student', 'certificateData','template','logo')
                 ->get();
-                 var_dump($certificate->isNotEmpty());
                 if($certificate->isNotEmpty()){
                     return response()->success($certificate, 'Data finded');
                 } 
@@ -84,14 +85,10 @@ class CertificateController extends Controller
     {
         $certificate = Certificate::findOrFail($id);
 
-        $certificate->certificateType = $request->certificateType;
-        $certificate->id_user = $request->id_user;
         $certificate->id_template = $request->id_template;
-        $certificate->authority1 = $request->authority1;
-        $certificate->authority2 = $request->authority2;
-        $certificate->career_type = $request->career_type;
-        $certificate->certificateContent = $request->certificateContent;
-        $certificate->urlLogo = $request->urlLogo;
+        $certificate->id_logo = $request->id_logo;
+        $certificate->id_student = $request->id_student;
+        $certificate->id_cd = $request->id_cd;
 
         $certificate->save();
 
@@ -103,4 +100,10 @@ class CertificateController extends Controller
         Certificate::destroy($id);
         return response()->json(['message' => "Deleted"], Response::HTTP_OK);
     }
+
+    public function sendlink($id)
+    {
+        echo "SI";
+    }
+
 }
