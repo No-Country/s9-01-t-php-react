@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { postRequest } from "../services/httpRequest";
-import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../features/authSlice";
 
 const inputStyle = " border-[1px] border-black text-sm p-1 rounded";
 
@@ -12,7 +13,7 @@ const Login = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handlesInputs = e => {
@@ -27,10 +28,10 @@ const Login = () => {
     } */
 
     setLoading(true);
-    const response = postRequest(inputs, "/api/v1/auth/login")
+    postRequest(inputs, "/api/v1/auth/login")
       .then(({ data }) => {
         const { user, token } = data;
-        login({ ...user, token });
+        dispatch(login({ user, token }));
       })
       .catch(e => console.error(e))
       .finally(() => setLoading(false));
@@ -79,15 +80,13 @@ const Login = () => {
           <button
             disabled={loading}
             type="submit"
-            className=" text-white rounded p-1 bg-slate-400 disabled:opacity-75 hover:opacity-90 "
-          >
+            className=" text-white rounded p-1 bg-slate-400 disabled:opacity-75 hover:opacity-90 ">
             Logearme
           </button>
           <button
             onClick={() => navigate("/register")}
             disabled={loading}
-            className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
-          >
+            className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
             No tengo una cuenta
           </button>
         </div>

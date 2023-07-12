@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
 export const UserRouteProtected = () => {
-  const [login, setLogin] = useState(false);
+  const { isAuth } = useSelector(state => state.auth);
 
-  if (login === false) {
+  if (isAuth === false) {
     return <Navigate to="/login" />;
   }
 
