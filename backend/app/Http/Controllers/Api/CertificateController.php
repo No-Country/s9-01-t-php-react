@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\CertificateData;
 use App\Models\Student;
+use MongoDB\Driver\Exception\Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use MongoDB\BSON\ObjectID;
 
 class CertificateController extends Controller
 {
@@ -19,20 +22,37 @@ class CertificateController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function show($id)
+    public function show($parameter)
     {
-        $certificate = Certificate::findOrFail($id);
-        return response()->success($certificate, 'certificate found!');
+        
+        try {
+            $isObjectId = new ObjectID($parameter);
+            if($isObjectId instanceof \MongoDB\BSON\ObjectID)
+            {
+                $certificate = Certificate::where('public_key', $parameter)
+                ->orWhere('id_cd', $parameter)
+                ->with('student', 'certificateData')
+                ->get();
+                return response()->success($certificate, 'entro');
+            }
+   
+        } catch (Exception $th) {
+            return response()->error($th->getMessage());
+        }
+       
+        return response()->success("ashdiosa", 'Data updated!');
     }
     #$certificate = new Certificate();
     public function store(Request $request)
     {
+        $encryptedId = Auth::user()->getAuthIdentifier();
         # registrar los datos de un curso
         $certificateData = CertificateData::create([
-            'certificateConten' => $request->certificateConten,
+            'certificateContent' => $request->certificateContent,
             'career_type' => $request->career_type,
             'authority1' => $request->authority1,
-            'authority2' => $request->authority2
+            'authority2' => $request->authority2,
+            'id_user' => $encryptedId
         ]);
 
         $studentsData = $request->input('students');
@@ -44,7 +64,8 @@ class CertificateController extends Controller
                 'id_template' => $request->id_template,
                 'id_logo' => $request->id_logo,
                 'id_student' => $student->_id,
-                'id_cd' => $certificateData->_id
+                'id_cd' => $certificateData->_id,
+                'public_key' => new ObjectID()
             ]);
         }
 
