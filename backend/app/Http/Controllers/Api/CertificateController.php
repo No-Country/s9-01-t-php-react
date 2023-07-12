@@ -25,22 +25,21 @@ class CertificateController extends Controller
     public function show($parameter)
     {
         
-        try {
-            $isObjectId = new ObjectID($parameter);
-            if($isObjectId instanceof \MongoDB\BSON\ObjectID)
-            {
-                $certificate = Certificate::where('public_key', $parameter)
-                ->orWhere('id_cd', $parameter)
+        try { 
+            if(preg_match('/^[0-9a-fA-F]{24}$/', $parameter) === 1)
+            {              
+                $isObjectId = new ObjectID($parameter);
+                $certificate = Certificate::orWhere('id_cd', $isObjectId)
+                ->orWhere('public_key',$isObjectId)
                 ->with('student', 'certificateData')
                 ->get();
+                
                 return response()->success($certificate, 'entro');
-            }
-   
-        } catch (Exception $th) {
+            } 
+         } catch (Exception $th) {
             return response()->error($th->getMessage());
-        }
-       
-        return response()->success("ashdiosa", 'Data updated!');
+        } 
+        return response()->error('Error, the format of the request is not expected.');
     }
     #$certificate = new Certificate();
     public function store(Request $request)
@@ -64,7 +63,7 @@ class CertificateController extends Controller
                 'id_template' => $request->id_template,
                 'id_logo' => $request->id_logo,
                 'id_student' => $student->_id,
-                'id_cd' => $certificateData->_id,
+                'id_cd' => new ObjectID($certificateData->_id),
                 'public_key' => new ObjectID()
             ]);
         }
