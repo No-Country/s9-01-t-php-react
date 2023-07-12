@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
-use App\Models\Logo;
+use App\Models\CertificateData;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,23 +24,31 @@ class CertificateController extends Controller
         $certificate = Certificate::findOrFail($id);
         return response()->success($certificate, 'certificate found!');
     }
-
+    #$certificate = new Certificate();
     public function store(Request $request)
     {
-        $certificate = new Certificate();
+        # registrar los datos de un curso
+        $certificateData = CertificateData::create([
+            'certificateConten' => $request->certificateConten,
+            'career_type' => $request->career_type,
+            'authority1' => $request->authority1,
+            'authority2' => $request->authority2
+        ]);
 
-        $certificate->certificateType = $request->certificateType;
-        $certificate->id_user = $request->id_user;
-        $certificate->id_template = $request->id_template;
-        $certificate->authority1 = $request->authority1;
-        $certificate->authority2 = $request->authority2;
-        $certificate->career_type = $request->career_type;
-        $certificate->certificateContent = $request->certificateContent;
-        $certificate->urlLogo = $request->urlLogo;
+        $studentsData = $request->input('students');
+        foreach ($studentsData as $studentData) {
+            # registrar el array de objetos de estudiantes
+            $student = Student::create($studentData);
+            # registrar los certificados por estudiantes
+            $Certificate = Certificate::create([
+                'id_template' => $request->id_template,
+                'id_logo' => $request->id_logo,
+                'id_student' => $student->_id,
+                'id_cd' => $certificateData->_id
+            ]);
+        }
 
-        $certificate->save();
-
-        return response()->success($certificate, 'Data saved!');
+        return response()->success($Certificate, 'Data saved!');
     }
 
     public function update(Request $request, $id)
@@ -47,9 +56,8 @@ class CertificateController extends Controller
         $certificate = Certificate::findOrFail($id);
 
         $certificate->certificateType = $request->certificateType;
-        $certificate->id_user = $request->id_user; 
+        $certificate->id_user = $request->id_user;
         $certificate->id_template = $request->id_template;
-        $certificate->publicKey = $request->publicKey;
         $certificate->authority1 = $request->authority1;
         $certificate->authority2 = $request->authority2;
         $certificate->career_type = $request->career_type;
