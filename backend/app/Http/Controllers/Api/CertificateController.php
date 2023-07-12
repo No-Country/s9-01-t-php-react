@@ -31,10 +31,13 @@ class CertificateController extends Controller
                 $isObjectId = new ObjectID($parameter);
                 $certificate = Certificate::orWhere('id_cd', $isObjectId)
                 ->orWhere('public_key',$isObjectId)
-                ->with('student', 'certificateData')
+                ->with('student', 'certificateData','logo','template')
                 ->get();
-                
-                return response()->success($certificate, 'entro');
+                 var_dump($certificate->isNotEmpty());
+                if($certificate->isNotEmpty()){
+                    return response()->success($certificate, 'Data finded');
+                } 
+                return response()->error('not found');
             } 
          } catch (Exception $th) {
             return response()->error($th->getMessage());
