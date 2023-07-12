@@ -13,27 +13,17 @@ class Certificate extends Model
     protected $collection = 'certificates';
 
     protected $fillable = [
-        '_id'.
-        'certificateType',
-        'id_user',
-        'id_template',
-        'authority1',
-        'authority2',
-        'career_type',
-        'certificateContent',
-        'urlLogo'
+        'id_template'.
+        'id_logo',
+        'id_student',
+        'id_cd'
     ];
 
     protected $casts = [
-        '_id' => 'string',
-        'certificateType' => 'string',
-        'id_user' => 'string',
-        'id_template' => 'string',
-        'authority1' => 'string',
-        'authority2' => 'string',
-        'career_type' => 'string',
-        'certificateContent' => 'string',
-        'urlLogo' => 'string'
+        'id_template'  => 'string',
+        'id_logo'  => 'string',
+        'id_student'  => 'string',
+        'id_cd'  => 'string'
     ];
 
 }
