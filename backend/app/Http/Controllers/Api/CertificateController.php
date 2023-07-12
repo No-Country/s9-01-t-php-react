@@ -31,7 +31,7 @@ class CertificateController extends Controller
                 $isObjectId = new ObjectID($parameter);
                 $certificate = Certificate::orWhere('id_cd', $isObjectId)
                 ->orWhere('public_key',$isObjectId)
-                ->with('student', 'certificateData','logo','template')
+                ->with('student', 'certificateData','template','logo')
                 ->get();
                  var_dump($certificate->isNotEmpty());
                 if($certificate->isNotEmpty()){
