@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use MongoDB\BSON\ObjectID;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CertificateEmail;
+
 
 class CertificateController extends Controller
 {
@@ -69,6 +72,9 @@ class CertificateController extends Controller
                 'id_cd' => new ObjectID($certificateData->_id),
                 'public_key' => new ObjectID()
             ]);
+            # se envian los correos
+
+            Mail::to($student->email)->send(new CertificateEmail($Certificate->public_key));
         }
 
         return response()->success($Certificate, 'Data saved!');

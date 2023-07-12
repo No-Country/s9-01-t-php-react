@@ -7,16 +7,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeEmail extends Mailable
+class CertificateEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $url;
 
-    public function __construct($user,$publicKey)
+    public function __construct($publicKey)
     {
-        $this->user = $user;
-        $this->publicKey = $publicKey;
+        $this->url = $_ENV['APP_URL_FRONTEND_CERTIFICATE'] . $publicKey;
     }
 
     public function build()
