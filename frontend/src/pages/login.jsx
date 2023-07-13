@@ -93,13 +93,15 @@ const Login = () => {
           <button
             disabled={loading}
             type="submit"
-            className=" text-white rounded p-1 bg-slate-400 disabled:opacity-75 hover:opacity-90 ">
+            className=" text-white rounded p-1 bg-slate-400 disabled:opacity-75 hover:opacity-90 "
+          >
             {confirmButton}
           </button>
           <button
             onClick={() => navigate("/register")}
             disabled={loading}
-            className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+            className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+          >
             {noAccountButton}
           </button>
         </div>
@@ -107,17 +109,20 @@ const Login = () => {
       <div className="flex">
         <button
           onClick={() => dispatch(changeLang("es"))}
-          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+        >
           es
         </button>
         <button
           onClick={() => dispatch(changeLang("en"))}
-          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+        >
           en
         </button>
         <button
           onClick={() => dispatch(changeLang("br"))}
-          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+        >
           br
         </button>
       </div>

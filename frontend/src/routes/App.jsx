@@ -6,16 +6,18 @@ import ErrorPage from "../pages/error-page";
 import { UserRouteProtected } from "./user/userRouteProtected";
 import Dashboard from "../pages/dashboard";
 import Profile from "../pages/profile";
+import Landing from "../pages/landing";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route index element={<Landing />} />
         <Route path="*" element={<ErrorPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<UserRouteProtected />}>
-          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
