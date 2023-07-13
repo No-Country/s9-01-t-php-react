@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { postRequest } from "../services/httpRequest";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/authSlice";
+import { changeLang } from "../features/langSlice";
 
 const inputStyle = " border-[1px] border-black text-sm p-1 rounded";
 
@@ -12,6 +13,17 @@ const Login = () => {
     email: ""
   });
   const [loading, setLoading] = useState(false);
+  const { login: loginLang } = useSelector(state => state.lang);
+  const {
+    title,
+    paragraph,
+    emailTitle,
+    emailPlaceholder,
+    passwordTitle,
+    passwordPlahceholder,
+    confirmButton,
+    noAccountButton
+  } = loginLang;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,11 +52,11 @@ const Login = () => {
   return (
     <section className=" min-w-[340px] h-[80vh] p-1">
       <form onSubmit={handleSubmit} className=" mx-auto h-full flex flex-col max-w-[350px]  ">
-        <h1 className=" font-bold text-xl">Logeate</h1>
-        <p className=" mb-3">¡Nos alegra que hayas vuelto!</p>
+        <h1 className=" font-bold text-xl">{title}</h1>
+        <p className=" mb-3">{paragraph}</p>
 
         <label className="flex flex-col">
-          <span className=" font-bold ">Correo</span>
+          <span className=" font-bold ">{emailTitle}</span>
           <input
             className={inputStyle}
             type="email"
@@ -52,20 +64,21 @@ const Login = () => {
             value={inputs.email}
             required
             onChange={handlesInputs}
-            placeholder="correoelectronico@gmail.com"
+            placeholder={emailPlaceholder}
           />
           <div className=" h-4">
             {/*   {error.email && <p className="text-center text-sm text-[#b96161fc]">{error.email}</p>} */}
           </div>
         </label>
         <label className="flex flex-col my-4">
-          <span className="font-bold">Contraseña</span>
+          <span className="font-bold">{passwordTitle}</span>
           <input
             className={inputStyle}
             type="text"
             value={inputs.password}
             name="password"
             min={5}
+            placeholder={passwordPlahceholder}
             required
             onChange={handlesInputs}
           />
@@ -81,16 +94,33 @@ const Login = () => {
             disabled={loading}
             type="submit"
             className=" text-white rounded p-1 bg-slate-400 disabled:opacity-75 hover:opacity-90 ">
-            Logearme
+            {confirmButton}
           </button>
           <button
             onClick={() => navigate("/register")}
             disabled={loading}
             className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
-            No tengo una cuenta
+            {noAccountButton}
           </button>
         </div>
       </form>
+      <div className="flex">
+        <button
+          onClick={() => dispatch(changeLang("es"))}
+          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+          es
+        </button>
+        <button
+          onClick={() => dispatch(changeLang("en"))}
+          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+          en
+        </button>
+        <button
+          onClick={() => dispatch(changeLang("br"))}
+          className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+          br
+        </button>
+      </div>
     </section>
   );
 };
