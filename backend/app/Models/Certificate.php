@@ -46,27 +46,23 @@ class Certificate extends Model
         return $this->belongsTo(Template::class, 'id_template');
     }
     protected $hidden = [
-        'student',
-        'certificateData',
-        'logo',
-        'template'
+        'id_student',
+        'id_cd',
+        'id_logo',
+        'id_template'
     ];
      public function toArray()
     {
         $array = parent::toArray();
 
         if ($this->relationLoaded('student')) {
-            $array['id_student'] = $this->student;
-        }
-
-        if ($this->relationLoaded('certificateData')) {
-            $array['id_cd'] = $this->certificateData;
+            $array['student'] = $this->student;
         }
         if ($this->relationLoaded('logo')) {
-            $array['id_logo'] = $this->logo;
+            $array['logo'] = $this->logo;
         }
         if ($this->relationLoaded('template')) {
-            $array['id_template'] = $this->template;
+            $array['template'] = $this->template;
         }
         return $array;
     } 

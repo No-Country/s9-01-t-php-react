@@ -51,34 +51,39 @@ class CertificateController extends Controller
     #$certificate = new Certificate();
     public function store(Request $request)
     {
-        $encryptedId = Auth::user()->getAuthIdentifier();
-        # registrar los datos de un curso
-        $certificateData = CertificateData::create([
-            'certificateContent' => $request->certificateContent,
-            'career_type' => $request->career_type,
-            'authority1' => $request->authority1,
-            'authority2' => $request->authority2,
-            'id_user' => $encryptedId
-        ]);
-
-        $studentsData = $request->input('students');
-        foreach ($studentsData as $studentData) {
-            # registrar el array de objetos de estudiantes
-            $student = Student::create($studentData);
-            # registrar los certificados por estudiantes
-            $Certificate = Certificate::create([
-                'id_template' => $request->id_template,
-                'id_logo' => $request->id_logo,
-                'id_student' => $student->_id,
-                'id_cd' => new ObjectID($certificateData->_id),
-                'public_key' => new ObjectID()
+        try {
+            $encryptedId = Auth::user()->getAuthIdentifier();
+            # registrar los datos de un curso
+            $certificateData = CertificateData::create([
+                'certificateContent' => $request->certificateContent,
+                'career_type' => $request->career_type,
+                'authority1' => $request->authority1,
+                'authority2' => $request->authority2,
+                'id_user' => $encryptedId
             ]);
-            # se envian los correos
-
-            Mail::to($student->email)->send(new CertificateEmail($Certificate->public_key));
+    
+            $studentsData = $request->input('students');
+            /* var_dump($studentsData,'separacion'); */
+            foreach ($studentsData as $studentData) {
+                # registrar el array de objetos de estudiantes
+                $student = Student::create($studentData);
+                # registrar los certificados por estudiantes
+                $Certificate = Certificate::create([
+                    'id_template' => $request->id_template,
+                    'id_logo' => $request->id_logo,
+                    'id_student' => $student->_id,
+                    'id_cd' => new ObjectID($certificateData->_id),
+                    'public_key' => new ObjectID()
+                ]);
+                # se envian los correos
+                /* Mail::to($student->email)->send(new CertificateEmail($Certificate->public_key)); */  
+            }
+    
+            return response()->success($certificateData, 'Data saved!');
+        } catch (\Throwable $th) {
+            return response()->error($th->getMessage());
         }
-
-        return response()->success($Certificate, 'Data saved!');
+       
     }
 
     public function update(Request $request, $id)
@@ -101,9 +106,12 @@ class CertificateController extends Controller
         return response()->json(['message' => "Deleted"], Response::HTTP_OK);
     }
 
-    public function sendlink($id)
+    public function sendlink($public_key)
     {
-        echo "SI";
+        $certificate = Certificate::where('public_key',$public_key)->firstOrFail();
+        $student = Student::findOrFail($certificate->id_student)->firstOrFail();
+        Mail::to($student->email)->send(new CertificateEmail($Certificate->public_key));
+        return response()->success('', 'Data updated!');
     }
 
 }
