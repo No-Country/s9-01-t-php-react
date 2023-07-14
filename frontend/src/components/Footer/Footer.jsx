@@ -1,4 +1,7 @@
-// import { Facebook, Instagram, Linkedin, Twitter } from "../Icons/Icons";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { FaFacebookF, FaLinkedin } from "react-icons/fa";
+import { BsTwitter } from "react-icons/bs";
+import { BiCopyright } from "react-icons/bi";
 
 const Footer = () => {
   return (
@@ -24,10 +27,16 @@ const Footer = () => {
           </article>
         </div>
         <div className="w-1/2 h-full pr-[80px] flex justify-end items-end">
-          <div className="flex gap-6"></div>
+          <div className="flex gap-5 justify-between items-center">
+            <AiOutlineInstagram className="w-10 h-10 cursor-pointer" />
+            <FaFacebookF className="w-8 h-8 cursor-pointer" />
+            <BsTwitter className="w-8 h-8 cursor-pointer" />
+            <FaLinkedin className="w-8 h-8 cursor-pointer" />
+          </div>
         </div>
       </div>
-      <div className="w-full h-[72px] pl-[50px] flex justify-start items-center">
+      <div className="w-full h-[72px] pl-[50px] flex justify-start items-center gap-5">
+        <BiCopyright className="w-6 h-6 text-black" />
         <p className="font-normal text-base leading-6">Lorem ipsum dolor sit amet consectetur.</p>
       </div>
     </footer>
