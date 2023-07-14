@@ -18,11 +18,10 @@ export const postRequest = async (dataSend, endpoint) => {
         Authorization: getToken()
       }
     });
-
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
+      return { error: error.response?.data };
     } else {
       console.log(error);
       return "An unexpected error occurred";
