@@ -122,7 +122,8 @@ const Login = () => {
               <button
                 disabled={loading}
                 type="submit"
-                className="h-10 text-white rounded p-1 bg-blue-500 disabled:opacity-75 hover:opacity-90 ">
+                className="h-10 text-white rounded p-1 bg-blue-500 disabled:opacity-75 hover:opacity-90 "
+              >
                 {loading ? (
                   <div className="flex items-center justify-center">
                     <div className="border-2 border-white border-t-ligthblue rounded-full w-5 h-5 animate-spin"></div>
@@ -134,7 +135,8 @@ const Login = () => {
               <button
                 onClick={() => navigate("/register")}
                 disabled={loading}
-                className="h-10 rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+                className="h-10 rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+              >
                 {noAccountButton}
               </button>
             </div>
@@ -142,17 +144,20 @@ const Login = () => {
           <div className="flex">
             <button
               onClick={() => dispatch(changeLang("es"))}
-              className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+              className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+            >
               es
             </button>
             <button
               onClick={() => dispatch(changeLang("en"))}
-              className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+              className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+            >
               en
             </button>
             <button
               onClick={() => dispatch(changeLang("br"))}
-              className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75">
+              className=" rounded border-2 hover:bg-slate-50   p-1 disabled:opacity-75"
+            >
               br
             </button>
           </div>
