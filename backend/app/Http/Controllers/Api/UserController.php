@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeEmail;
 class UserController extends Controller
 {
     public function index()
@@ -28,7 +29,7 @@ class UserController extends Controller
                 'totalCount' => $users->total(),
             ],
         ];
-    
+
         return response()->json($response, Response::HTTP_OK);
     }
       
@@ -62,9 +63,9 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->address = 'default';
         $user->save();
-    
+
         $token = JWTAuth::fromUser($user);
-    
+        Mail::to($user->email)->send(new WelcomeEmail($user));
         return response()->success(['token' => $token,'user' => $user ], 'User successfully registered!');
 
     }
