@@ -1,4 +1,5 @@
 import { BiSolidUser } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Topbar = () => {
   return (
@@ -8,9 +9,11 @@ const Topbar = () => {
         <li className="font-medium text-xl left-6 cursor-pointer">Plantillas</li>
         <li className="font-medium text-xl left-6 cursor-pointer">Certificados</li>
       </ul>
-      <div className="w-10 h-10 flex justify-center items-center cursor-pointer">
-        <BiSolidUser className="w-[30px] h-[34px]" />
-      </div>
+      <Link to="/profile">
+        <div className="w-10 h-10 flex justify-center items-center cursor-pointer">
+          <BiSolidUser className="w-[30px] h-[34px]" />
+        </div>
+      </Link>
     </header>
   );
 };
