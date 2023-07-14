@@ -1,15 +1,19 @@
 import { useEffect, useRef } from "react";
 import { useInputExcel } from "../../hooks/useInputExcel";
+import { useDispatch } from "react-redux";
+import { setStudents } from "../../features/certificateSlice";
 
 const Certificate_01 = () => {
   const { dataExcel, handlerExcel } = useInputExcel();
   const fileInputRef = useRef(null);
 
+  const dispatch = useDispatch();
+
   const dateObj = new Date();
   const formattedDate = `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
 
   useEffect(() => {
-    console.log(dataExcel);
+    dispatch(setStudents(dataExcel));
   }, [dataExcel]);
 
   const handleButtonClick = () => {
@@ -17,13 +21,13 @@ const Certificate_01 = () => {
   };
 
   return (
-    <div className="flex flex-col w-full p-2">
-      <div className="flex w-full justify-center items-center mt-4 p-2">
-        <div className="flex w-full bg-red h-[11.25rem] rounded-lg relative">
+    <div className="flex flex-col w-full md:max-w-[46.1875rem] ">
+      <div className="flex w-full justify-center items-center">
+        <div className="flex w-full bg-red h-[11.25rem] rounded-lg relative md:h-[26.125rem]">
           <img
             src="https://res.cloudinary.com/dtfjbprru/image/upload/v1688607722/jkdpbelegizwxaktiixg.jpg"
             alt=""
-            className="w-full object-cover rounded-lg"
+            className="w-full object-cover rounded-lg md:h-[26.125rem]"
           />
           {dataExcel && (
             <>

@@ -159,7 +159,8 @@ const Register = () => {
                 disabled={isNotValid}
                 className={`w-full h-10 ${
                   isNotValid ? "bg-gray-700" : " bg-blue-500"
-                } text-white p-2  rounded-lg mt-4`}>
+                } text-white p-2  rounded-lg mt-4`}
+              >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
                     <div className="border-2 border-white border-t-ligthblue rounded-full w-5 h-5 animate-spin"></div>
@@ -171,7 +172,8 @@ const Register = () => {
               <button
                 type="button"
                 className={` flex items-center justify-center w-full h-10 border-2 border-black text-black p-2 font-bold rounded-lg mt-1`}
-                onClick={() => navigate("/login")}>
+                onClick={() => navigate("/login")}
+              >
                 Ya tengo una cuenta
               </button>
             </div>
