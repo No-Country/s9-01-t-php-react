@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
+import Footer from "../components/Footer/Footer";
 
 const Landing = () => {
   return (
-    <Layout>
+    <>
       <header className="h-[80px] w-full bg-[#D9D9D9] flex justify-between items-end pb-3 pr-[80px] pl-[42px]">
         <div className="w-[143px] h-10 bg-[#E6E6E6]"></div>
         <ul className="flex gap-10 pb-2">
@@ -60,16 +60,16 @@ const Landing = () => {
           <div className="bg-[#E6E6E6] w-[504px] h-[292px]"></div>
         </div>
       </section>
-      <section>
+      <section className="flex flex-col justify-center items-center">
         <h1 className="font-normal text-4xl leading-6 py-[61px] text-center">Nombre del sitio</h1>
-        <div className="h-[245px] w-full flex gap-4">
+        <div className="h-[245px] w-full flex gap-4 justify-between">
           <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
           <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
           <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
           <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
         </div>
       </section>
-      <section className="mt-[132px]">
+      <section className="mt-[132px] flex justify-center">
         <div className="w-[885px] h-[319px] flex justify-between">
           <div className="h-full w-[439px] flex flex-col justify-between items-center">
             <div className="w-full h-[247px] flex justify-center items-center px-8">
@@ -92,19 +92,19 @@ const Landing = () => {
             <div className="w-[458px] h-[404px] bg-[#E6E6E6] rounded-[10px]"></div>
           </div>
           <div className="h-full w-1/2 flex flex-col justify-between items-end">
-            <div className="h-[108px] w-[468px] bg-[#D9D9D9] rounded-[10px] flex justify-center items-center">
+            <div className="h-[108px] w-[468px] bg-[#D9D9D9] rounded-[10px] flex justify-center items-center px-4">
               <p className="font-light text-base text-center">
                 Lorem ipsum dolor sit amet consectetur. Vulputate arcu aliquet vehicula sed aliquet
                 mattis pellentesque in iaculis. Risus amet natoque elit magna ac sem in.
               </p>
             </div>
-            <div className="h-[108px] w-[468px] bg-[#D9D9D9] rounded-[10px] flex justify-center items-center">
+            <div className="h-[108px] w-[468px] bg-[#D9D9D9] rounded-[10px] flex justify-center items-center px-4">
               <p className="font-light text-base text-center">
                 Lorem ipsum dolor sit amet consectetur. Vulputate arcu aliquet vehicula sed aliquet
                 mattis pellentesque in iaculis. Risus amet natoque elit magna ac sem in.
               </p>
             </div>
-            <div className="h-[108px] w-[468px] bg-[#D9D9D9] rounded-[10px] flex justify-center items-center">
+            <div className="h-[108px] w-[468px] bg-[#D9D9D9] rounded-[10px] flex justify-center items-center px-4">
               <p className="font-light text-base text-center">
                 Lorem ipsum dolor sit amet consectetur. Vulputate arcu aliquet vehicula sed aliquet
                 mattis pellentesque in iaculis. Risus amet natoque elit magna ac sem in.
@@ -121,7 +121,8 @@ const Landing = () => {
           <div className="h-[300px] w-[250px] bg-[#D9D9D9] rounded-[10px] shadow-lg shadow-black/25"></div>
         </div>
       </section>
-    </Layout>
+      <Footer />
+    </>
   );
 };
 
