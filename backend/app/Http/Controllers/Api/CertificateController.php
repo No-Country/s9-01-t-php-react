@@ -108,10 +108,14 @@ class CertificateController extends Controller
 
     public function sendlink($public_key)
     {
-        $certificate = Certificate::where('public_key',$public_key)->firstOrFail();
-        $student = Student::findOrFail($certificate->id_student)->firstOrFail();
-        Mail::to($student->email)->send(new CertificateEmail($Certificate->public_key));
-        return response()->success('', 'Data updated!');
+        try{
+         $certificate = Certificate::where('public_key', new ObjectID($public_key))->firstOrFail();
+         $student = Student::findOrFail($certificate->id_student);
+         Mail::to($student->email)->send(new CertificateEmail($certificate->public_key)); 
+         return response()->success('', 'Certificate sended');
+        }catch (\Throwable $th){
+            return response()->error($th->getMessage());
+        }
     }
 
 }
