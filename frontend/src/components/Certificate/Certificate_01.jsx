@@ -1,24 +1,15 @@
-import { useEffect, useRef } from "react";
-import { useInputExcel } from "../../hooks/useInputExcel";
-import { useDispatch } from "react-redux";
-import { setStudents } from "../../features/certificateSlice";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Certificate_01 = () => {
-  const { dataExcel, handlerExcel } = useInputExcel();
-  const fileInputRef = useRef(null);
-
-  const dispatch = useDispatch();
-
+  const certificate = useSelector(state => state.certificate);
+  const [studentsList, setStudentsList] = useState([]);
   const dateObj = new Date();
   const formattedDate = `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
 
   useEffect(() => {
-    dispatch(setStudents(dataExcel));
-  }, [dataExcel]);
-
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
+    setStudentsList(certificate?.students);
+  }, [certificate]);
 
   return (
     <div className="flex flex-col w-full md:max-w-[46.1875rem] ">
@@ -29,7 +20,7 @@ const Certificate_01 = () => {
             alt=""
             className="w-full object-cover rounded-lg md:h-[26.125rem]"
           />
-          {dataExcel && (
+          {studentsList?.length && (
             <>
               <span className="absolute left-0 right-0 text-left ml-4 mt-4 font-bold text-xs">
                 Institución
@@ -38,7 +29,7 @@ const Certificate_01 = () => {
                 {formattedDate}
               </span>
               <span className="absolute left-0 right-0 text-center font-bold top-14 text-lg">
-                {dataExcel[0]?.name} {dataExcel[0]?.lastname}
+                {certificate?.studentSelected?.name} {certificate?.studentSelected?.lastname}
               </span>
               <span className="flex absolute left-0 right-0 text-center top-[80px] text-xs justify-center">
                 <p className="max-w-[200px]">
@@ -61,23 +52,6 @@ const Certificate_01 = () => {
           )}
         </div>
       </div>
-      <section className="flex flex-col w-full ">
-        <p>Total de estudiantes cargados: {dataExcel?.length}</p>
-        <div className="hidden">
-          <input type="file" name="fileExcel" ref={fileInputRef} onChange={handlerExcel} />
-        </div>
-        <button
-          className="w-full mt-4 p-2 bg-blue-500 text-white rounded-md"
-          onClick={handleButtonClick}
-        >
-          Subir archivo
-        </button>
-        <a href="/data.xlsx" download>
-          <button className="w-full mt-2 p-2 bg-blue-500 text-white rounded-md">
-            Descargar plantilla
-          </button>
-        </a>
-      </section>
     </div>
   );
 };
