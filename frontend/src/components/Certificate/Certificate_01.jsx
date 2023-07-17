@@ -7,6 +7,8 @@ const Certificate_01 = () => {
   const dateObj = new Date();
   const formattedDate = `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
 
+  const { institution, career_type, certificateConten, authority1, authority2 } = certificate;
+
   useEffect(() => {
     setStudentsList(certificate?.students);
   }, [certificate]);
@@ -23,7 +25,7 @@ const Certificate_01 = () => {
           {studentsList?.length && (
             <>
               <span className="absolute left-0 right-0 text-left ml-4 mt-4 font-bold text-xs">
-                Institución
+                {institution}
               </span>
               <span className="absolute left-0 right-0 text-right mr-4 mt-4 font-bold text-xs">
                 {formattedDate}
@@ -33,19 +35,19 @@ const Certificate_01 = () => {
               </span>
               <span className="flex absolute left-0 right-0 text-center top-[80px] text-xs justify-center">
                 <p className="max-w-[200px]">
-                  por terminar la carrera de Administración y Manejo de Equipo
+                  {certificateConten} {career_type}
                 </p>
               </span>
               <span className="absolute text-left bottom-0 ml-8 mb-6 text-xs">
                 <section className="flex flex-col justify-center items-center">
                   <span className="font-bold">Autoridad</span>
-                  <span>Jorge Topera</span>
+                  <span>{authority1}</span>
                 </section>
               </span>
               <span className="absolute text-right bottom-0 right-0 mr-8 mb-6 text-xs">
                 <section className="flex flex-col justify-center items-center">
                   <span className="font-bold">Autoridad</span>
-                  <span>Antonio Solis</span>
+                  <span>{authority2}</span>
                 </section>
               </span>
             </>

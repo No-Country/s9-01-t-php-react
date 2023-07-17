@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { postRequestFile } from "../services/httpRequest";
 
 const initialState = {
+  institution: "",
   id_template: "",
   career_type: "",
   certificateConten: "",
@@ -28,10 +30,30 @@ const certificate = createSlice({
     },
     setStudentSelected: (state, action) => {
       state.studentSelected = action.payload;
+    },
+
+    setData: (state, action) => {
+      const { name, value } = action.payload;
+      state[name] = value;
     }
   }
 });
 
-export const { setStudents, setStudentSelected } = certificate.actions;
+export const { setStudents, setStudentSelected, setData } = certificate.actions;
 
 export default certificate.reducer;
+
+export const postImg = file => async dispatch => {
+  console.log("post");
+
+  try {
+    const image = await postRequestFile(file, "/api/v1/logos");
+    if (image) {
+      console.log(image);
+
+      /*  dispatch(setData({name:"", value:image})) */
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
