@@ -40,7 +40,8 @@ const MenuCertificate = () => {
             onClick={() => handleSelectItem("template")}
             className={`${
               isSelected.template ? "border border-b-0 rounded-t-3xl bg-orange-200" : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
+          >
             <RiImageEditFill size={30} />
             <span>Plantilla</span>
           </li>
@@ -48,7 +49,8 @@ const MenuCertificate = () => {
             onClick={() => handleSelectItem("data")}
             className={`${
               isSelected.data ? "border border-b-0 rounded-t-3xl bg-orange-200" : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
+          >
             <RiArticleLine size={30} />
             <span>Datos</span>
           </li>
@@ -56,7 +58,8 @@ const MenuCertificate = () => {
             onClick={() => handleSelectItem("students")}
             className={`${
               isSelected.students ? "border border-b-0 rounded-t-3xl bg-orange-200" : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
+          >
             <BsDatabaseAdd size={30} />
             <span>Alumnos</span>
           </li>

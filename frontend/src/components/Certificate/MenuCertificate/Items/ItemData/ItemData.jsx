@@ -48,14 +48,8 @@ const ItemData = () => {
           id="certificateConten"
           cols="30"
           rows="3"
-          onChange={handleChange}></textarea>
-        {/* <input
-          className=""
-          type="textarea"
-          name="certificateConten"
-          
           onChange={handleChange}
-        /> */}
+        ></textarea>
       </div>
 
       <div>LOGOS</div>
