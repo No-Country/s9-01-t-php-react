@@ -13,7 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
 use MongoDB\BSON\ObjectID;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CertificateEmail;
-
+use App\Jobs\SendCertificateEmail;
+use App\Mail\QueueEmail;
+use Illuminate\Support\Facades\Bus;
 
 class CertificateController extends Controller
 {
@@ -34,8 +36,7 @@ class CertificateController extends Controller
             if(preg_match('/^[0-9a-fA-F]{24}$/', $parameter) === 1)
             {              
                 $isObjectId = new ObjectID($parameter);
-                $certificate = Certificate::orWhere('id_cd', $isObjectId)
-                ->orWhere('public_key',$isObjectId)
+                $certificate = Certificate::Where('public_key',$isObjectId)
                 ->with('student', 'certificateData','template','logo')
                 ->get();
                 if($certificate->isNotEmpty()){
@@ -105,15 +106,38 @@ class CertificateController extends Controller
         Certificate::destroy($id);
         return response()->json(['message' => "Deleted"], Response::HTTP_OK);
     }
-
+    public function esquema($parameter)
+    {
+        
+        try { 
+            if(preg_match('/^[0-9a-fA-F]{24}$/', $parameter) === 1)
+            {              
+                $isObjectId = new ObjectID($parameter);
+                $certificate = Certificate::Where('id_cd', $isObjectId)
+                ->with('student', 'certificateData','template','logo')
+                ->get();
+                if($certificate->isNotEmpty()){
+                    return response()->success($certificate, 'Data finded');
+                } 
+                return response()->error('not found');
+            } 
+         } catch (Exception $th) {
+            return response()->error($th->getMessage());
+        } 
+        return response()->error('Error, the format of the request is not expected.');
+    }
     public function sendlink($public_key)
     {
         try{
          $certificate = Certificate::where('public_key', new ObjectID($public_key))->firstOrFail();
          $student = Student::findOrFail($certificate->id_student);
-         Mail::to($student->email)->send(new CertificateEmail($certificate->public_key)); 
+        /*  dispatch(Mail::to($student->email)->queue(new CertificateEmail($certificate->public_key),'mongodb'));  */
+         
+            
+         SendCertificateEmail::dispatch();
          return response()->success('', 'Certificate sended');
         }catch (\Throwable $th){
+            var_dump($th);
             return response()->error($th->getMessage());
         }
     }
