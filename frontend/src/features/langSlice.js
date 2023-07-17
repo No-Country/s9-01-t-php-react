@@ -2,7 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { languages } from "../languages/languages";
 
 const initialLang = () => {
-  return languages("es");
+  let lang = "es";
+  const langStorage = localStorage.getItem("language");
+  if (langStorage) {
+    lang = langStorage;
+  }
+  return languages(lang);
 };
 
 const lang = createSlice({
