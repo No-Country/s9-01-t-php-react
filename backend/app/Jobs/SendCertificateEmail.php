@@ -8,10 +8,24 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CertificateEmail;
-use App\Mail\WelcomeEmail;
+
 class SendCertificateEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $publicKey;
+    protected $email;
+    /**
+     * Create a new job instance.
+     *
+     * @param  string  $publicKey
+     * @return void
+     */
+    public function __construct($publicKey,$email)
+    {
+        $this->publicKey = $publicKey;
+        $this->email = $email;
+    }
 
     /**
      * Execute the job.
@@ -20,10 +34,7 @@ class SendCertificateEmail implements ShouldQueue
      */
     public function handle()
     {
-        // Simulación de una tarea de prueba
-        sleep(5);
-
-        // Registro de un mensaje en el log
-        \Log::info('¡El trabajo de prueba se ha ejecutado con éxito!');
+        $mail = new CertificateEmail($this->publicKey);
+        Mail::to($this->email)->send($mail);
     }
 }

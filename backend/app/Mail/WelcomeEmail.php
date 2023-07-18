@@ -11,11 +11,11 @@ class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $name;
 
     public function __construct($user)
     {
-        $this->user = $user;
+        $this->name = $user->name;
 
     }
 

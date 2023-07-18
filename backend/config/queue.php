@@ -3,19 +3,18 @@
 return [
     'default' => 'mongodb',
     'connections' => [
-        'database' => [
+        'mongodb' => [
             'driver' => 'mongodb',
-            // You can also specify your jobs specific database created on config/database.php
-            'connection' => 'certifime',
+            'queue' => env('QUEUE_CONNECTION', 'mongodb'),
+            'connection' => 'mongodb',
             'table' => 'jobs',
             'queue' => 'default',
             'expire' => 60,
+            'retry_after' => 60,
         ],
     ],
     'failed' => [
-        'driver' => 'mongodb',
-        // You can also specify your jobs specific database created on config/database.php
-        'database' => 'certifime',
+        'database' => env('DB_CONNECTION', 'mongodb'),
         'table' => 'failed_jobs',
     ],
 ];

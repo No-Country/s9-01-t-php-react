@@ -65,7 +65,11 @@ class UserController extends Controller
         $user->save();
 
         $token = JWTAuth::fromUser($user);
-        Mail::to($user->email)->send(new WelcomeEmail($user));
+        dispatch(new SendCertificateEmail(
+            $certificate->public_key,
+            $user->email
+        )); 
+
         return response()->success(['token' => $token,'user' => $user ], 'User successfully registered!');
 
     }

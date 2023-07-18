@@ -77,7 +77,7 @@ class CertificateController extends Controller
                     'public_key' => new ObjectID()
                 ]);
                 # se envian los correos
-                /* Mail::to($student->email)->send(new CertificateEmail($Certificate->public_key)); */  
+
             }
     
             return response()->success($certificateData, 'Data saved!');
@@ -126,20 +126,37 @@ class CertificateController extends Controller
         } 
         return response()->error('Error, the format of the request is not expected.');
     }
-    public function sendlink($public_key)
+    public function send($public_key)
     {
         try{
          $certificate = Certificate::where('public_key', new ObjectID($public_key))->firstOrFail();
          $student = Student::findOrFail($certificate->id_student);
-        /*  dispatch(Mail::to($student->email)->queue(new CertificateEmail($certificate->public_key),'mongodb'));  */
-         
-            
-         SendCertificateEmail::dispatch();
+         dispatch(new SendCertificateEmail(
+            $certificate->public_key,
+            $student->email
+        )); 
          return response()->success('', 'Certificate sended');
         }catch (\Throwable $th){
             var_dump($th);
             return response()->error($th->getMessage());
         }
     }
+    public function sendAll($id_cd)
+    {
+        try{
+         $certificates = Certificate::where('id_cd', new ObjectID($id_cd))->get();
 
+         foreach ($certificates as $certificate) {
+            dispatch(new SendCertificateEmail(
+                $certificate->public_key,
+                $certificate->student->email
+            ))->delay(20); 
+         }
+          
+         return response()->success('', 'Certificate sended');
+        }catch (\Throwable $th){
+            var_dump($th);
+            return response()->error($th->getMessage());
+        }
+    }
 }

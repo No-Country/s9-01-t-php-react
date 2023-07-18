@@ -7,23 +7,24 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\CertificateEmail;
+use App\Mail\WelcomeEmail;
 
-class SendCertificateEmail implements ShouldQueue
+class SendWelcomeEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $publicKey;
-
+    protected $name;
+    protected $email;
     /**
      * Create a new job instance.
      *
      * @param  string  $publicKey
      * @return void
      */
-    public function __construct($publicKey)
+    public function __construct($name,$email)
     {
-        $this->publicKey = $publicKey;
+        $this->name = $name;
+        $this->email = $email;
     }
 
     /**
@@ -33,7 +34,7 @@ class SendCertificateEmail implements ShouldQueue
      */
     public function handle()
     {
-        $mail = new CertificateEmail($this->publicKey);
-        Mail::to('recipient@example.com')->send($mail);
+        $mail = new WelcomeEmail($this->name);
+        Mail::to($this->email)->send($mail);
     }
 }
