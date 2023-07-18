@@ -4,8 +4,9 @@ import axios from "axios";
 const URL = import.meta.env.VITE_API_URL;
 
 const getToken = () => {
-  const { token } = localStorage.getItem("auth") || "";
-  const Authorization = token && `Bearer ${token}`;
+  const { token } = JSON.parse(localStorage.getItem("auth") || "");
+  const Authorization = { token } && `Bearer ${token}`;
+
   return Authorization;
 };
 
@@ -18,11 +19,10 @@ export const postRequest = async (dataSend, endpoint) => {
         Authorization: getToken()
       }
     });
-
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
+      return { error: error.response?.data };
     } else {
       console.log(error);
       return "An unexpected error occurred";
@@ -48,6 +48,26 @@ export const getRequest = async endpoint => {
       throw new Error(error.message);
     } else {
       console.log("unexpected error: ", error);
+      return "An unexpected error occurred";
+    }
+  }
+};
+
+export const postRequestFile = async (dataSend, endpoint) => {
+  try {
+    const { data } = await axios.post(URL + endpoint, dataSend, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Accept: "application/json",
+        Authorization: getToken()
+      }
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return { error: error.response?.data };
+    } else {
+      console.log(error);
       return "An unexpected error occurred";
     }
   }

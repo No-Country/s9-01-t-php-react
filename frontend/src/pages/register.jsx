@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { postRequest } from "../services/httpRequest";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import useToast from "../hooks/useToast";
+import { useSelector } from "react-redux";
 
 const Register = () => {
   const [confirmPass, setConfirmPass] = useState("");
@@ -13,7 +16,26 @@ const Register = () => {
     email: "",
     password: ""
   });
+
+  const { register: registerLang } = useSelector(state => state.lang);
+  const {
+    title,
+    paragraph,
+    nameTtitle,
+    namePlaceholder,
+    emailTitle,
+    emailPlaceholder,
+    passwordTitle,
+    passwordPlahceholder,
+    confirmPassword,
+    confirmPassPlaceholder,
+    confirmButton,
+    accountButton
+  } = registerLang;
+
   const navigate = useNavigate();
+
+  const { toastSuccess, toastError } = useToast();
 
   const handleChange = e => {
     setUserRegister({ ...userRegister, [e.target.id]: e.target.value });
@@ -27,35 +49,34 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    setUserRegister({
-      name: "",
-      email: "",
-      password: ""
-    });
     registerUser();
-    setConfirmPass("");
   };
 
   const registerUser = async () => {
     try {
       setIsLoading(true);
-      let response = await postRequest(userRegister, "/api/v1/users");
-
-      const userRegitered = response?.data.user;
-      if (userRegitered?.name) {
-        let name = userRegitered.name;
-        let email = userRegitered.email;
-        setIsLoading(false);
-        alert(`${name} registrado exitosamente con e-mail ${email}`);
-        navigate("/login");
+      let { data, error } = await postRequest(userRegister, "/api/v1/users");
+      if (data?.user?.name) {
+        toastSuccess("Successfully register");
+        setUserRegister({
+          name: "",
+          email: "",
+          password: ""
+        });
+        setConfirmPass("");
+        return navigate("/login");
       }
+      if (error) toastError(error.errors.email[0]);
     } catch (error) {
-      console.log(error);
+      toastError(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const isValid = () => {
     const password = userRegister.password;
+    if (password.length < 6) return true;
     if (password === "") return true;
     if (password === confirmPass) return false;
     return true;
@@ -72,21 +93,19 @@ const Register = () => {
       </div>
       <div className="flex justify-center w-full min-h-screen md:min-h-full p-4">
         <div className="w-full max-w-[25rem] md:border md:rounded-lg md:p-4">
-          <h1 className=" font-bold text-xl">Registrate</h1>
-          <p className=" text-base">
-            ¡Crea una nueva cuenta y empieza a disfrutar todos nuestros beneficios!
-          </p>
+          <h1 className=" font-bold text-xl">{title}</h1>
+          <p className=" text-base">{paragraph}</p>
           <form onSubmit={handleSubmit} className="flex flex-col justify-between w-full">
             <div>
               <div className="flex flex-col mt-4">
                 <label htmlFor="name" className="font-medium mt-2">
-                  Nombre:
+                  {nameTtitle}:
                 </label>
                 <input
                   type="text"
                   id="name"
                   value={userRegister.name}
-                  placeholder="Tu nombre"
+                  placeholder={namePlaceholder}
                   onChange={handleChange}
                   className="w-full h-10 rounded-md border border-black 2 p-3 focus:outline-none focus:border-2"
                   required
@@ -95,13 +114,13 @@ const Register = () => {
 
               <div className="flex flex-col">
                 <label htmlFor="email" className="font-medium mt-2">
-                  Correo:
+                  {emailTitle}:
                 </label>
                 <input
                   type="email"
                   id="email"
                   value={userRegister.email}
-                  placeholder="correolectronico@gmail.com"
+                  placeholder={emailPlaceholder}
                   onChange={handleChange}
                   className="w-full h-10 rounded-md border border-black p-3 focus:outline-none focus:border-2"
                   required
@@ -110,26 +129,26 @@ const Register = () => {
 
               <div className="flex flex-col">
                 <label htmlFor="password" className="font-medium mt-2">
-                  Contraseña:
+                  {passwordTitle}:
                 </label>
                 <div className=" relative">
                   <input
                     type={isVisiblePass}
                     id="password"
                     value={userRegister.password}
-                    placeholder="Contraseña"
+                    placeholder={passwordPlahceholder}
                     onChange={handleChange}
                     className="w-full h-10 rounded-md border border-black p-3 focus:outline-none focus:border-2"
                     required
                   />
                   {isVisiblePass === "password" ? (
-                    <div
-                      className="absolute w-4 h-4 bg-green rounded-full top-3 right-2 text-xl cursor-pointer"
+                    <AiOutlineEye
+                      className="absolute top-3 right-2 text-xl cursor-pointer"
                       onClick={() => setIsVisiblePass("text")}
                     />
                   ) : (
-                    <div
-                      className="absolute w-4 h-4 bg-red rounded-full top-3 right-2 text-xl cursor-pointer"
+                    <AiOutlineEyeInvisible
+                      className="absolute top-3 right-2 text-xl cursor-pointer"
                       onClick={() => setIsVisiblePass("password")}
                     />
                   )}
@@ -138,13 +157,13 @@ const Register = () => {
 
               <div className="flex flex-col">
                 <label htmlFor="confirmPass" className="font-medium mt-2">
-                  Confirmar contraseña:
+                  {confirmPassword}:
                 </label>
                 <input
                   type={isVisiblePass}
                   id="confirmPass"
                   value={confirmPass}
-                  placeholder="Vuelve a escribir tu contraseña"
+                  placeholder={confirmPassPlaceholder}
                   onChange={handleConfirmPassChange}
                   className="w-full h-10 rounded-md border border-black p-3 focus:outline-none focus:border-2"
                 />
@@ -163,14 +182,15 @@ const Register = () => {
                     <div className="border-2 border-white border-t-ligthblue rounded-full w-5 h-5 animate-spin"></div>
                   </div>
                 ) : (
-                  "Registrarse"
+                  confirmButton
                 )}
               </button>
               <button
-                type="submit"
+                type="button"
                 className={` flex items-center justify-center w-full h-10 border-2 border-black text-black p-2 font-bold rounded-lg mt-1`}
+                onClick={() => navigate("/login")}
               >
-                Ya tengo una cuenta
+                {accountButton}
               </button>
             </div>
           </form>
