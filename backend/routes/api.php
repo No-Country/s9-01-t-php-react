@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\CertificateController;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\TemplateController;
-use App\Http\Controllers\Api\LogoController;
-use App\Http\Controllers\Api\StudentController;
-use App\Http\Controllers\Api\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\FirmController;
+use App\Http\Controllers\Api\LogoController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\TemplateController;
+use App\Http\Controllers\Api\GoogleAuthController;
+use App\Http\Controllers\Api\CertificateController;
 
 Route::group(['prefix' => 'v1'], function () {
 
@@ -34,6 +35,8 @@ Route::group(['prefix' => 'v1'], function () {
         Route::resource('templates', TemplateController::class)->except(['edit','create','destroy']);
         // Rutas para logos        
         Route::resource('logos', LogoController::class)->except(['edit','create','destroy']);
+        // Rutas para Firmas        
+        Route::resource('firms', FirmController::class)->except(['edit','create','destroy']);
         // Rutas para estudiantes        
         Route::resource('students', StudentController::class)->except(['create','edit']);
     });
