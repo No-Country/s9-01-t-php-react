@@ -1,30 +1,8 @@
-import { Link } from "react-router-dom";
-import Footer from "../components/Footer/Footer";
+import LayoutLanding from "../components/Layout/LayoutLanding";
 
 const Landing = () => {
   return (
-    <>
-      <header className="h-[80px] w-full bg-[#D9D9D9] flex justify-between items-end pb-3 pr-[80px] pl-[42px]">
-        <div className="w-[143px] h-10 bg-[#E6E6E6]"></div>
-        <ul className="flex gap-10 pb-2">
-          <li className="font-normal text-sm left-6">Sobre nosotros</li>
-          <li className="font-normal text-sm left-6">Planes</li>
-          <li className="font-normal text-sm left-6">Plantillas</li>
-          <li className="font-normal text-sm left-6">Contacto</li>
-        </ul>
-        <div className="flex gap-2 text-white">
-          <Link to="/login">
-            <button className="w-[140px] h-8 border border-[#959595] rounded-[10px] font-normal text-sm leading-6">
-              Login
-            </button>
-          </Link>
-          <Link to="/register">
-            <button className="w-[140px] h-8 bg-[#7F807F] border border-[#959595] rounded-[10px] font-normal text-sm leading-6">
-              Register
-            </button>
-          </Link>
-        </div>
-      </header>
+    <LayoutLanding>
       <section className="w-full h-[430px] bg-[#EFEFEF] flex mt-2">
         <div className="w-1/2 h-full pt-[82px] pr-[52px] flex justify-end items-start">
           <div className="w-[465px] h-[203px] flex flex-col justify-between">
@@ -121,8 +99,7 @@ const Landing = () => {
           <div className="h-[300px] w-[250px] bg-[#D9D9D9] rounded-[10px] shadow-lg shadow-black/25"></div>
         </div>
       </section>
-      <Footer />
-    </>
+    </LayoutLanding>
   );
 };
 
