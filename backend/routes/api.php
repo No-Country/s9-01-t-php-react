@@ -25,7 +25,9 @@ Route::group(['prefix' => 'v1'], function () {
     
     // Rutas protegidas por el middleware jwt.auth
     Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::get('certificates/sendlink/{id}',[CertificateController::class,'sendlink']);
+        Route::get('certificates/send/{id}',[CertificateController::class,'send']);
+        Route::get('certificates/sendall/{id}',[CertificateController::class,'sendAll']);
+        Route::get('certificates/esquema/{id}',[CertificateController::class,'esquema']);
         // Rutas para usuarios
         Route::resource('users', UserController::class)->except(['create', 'edit', 'store']);
         // Rutas para certificados
