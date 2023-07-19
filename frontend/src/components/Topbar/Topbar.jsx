@@ -20,7 +20,7 @@ const Topbar = () => {
           <FiBell className="w-[30px] h-[34px]" />
         </div>
 
-        <Link to="/profile">
+        <Link to="/account">
           <div className="w-10 h-10 flex justify-center items-center cursor-pointer">
             <BiSolidUser className="w-[30px] h-[34px]" />
           </div>
