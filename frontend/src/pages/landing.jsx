@@ -1,3 +1,4 @@
+import Carousel from "../components/Carousel/Carousel";
 import LayoutLanding from "../components/Layout/LayoutLanding";
 
 const Landing = () => {
@@ -38,14 +39,9 @@ const Landing = () => {
           <div className="bg-[#E6E6E6] w-[504px] h-[292px]"></div>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center">
+      <section className="flex flex-col justify-center items-center w-full">
         <h1 className="font-normal text-4xl leading-6 py-[61px] text-center">Nombre del sitio</h1>
-        <div className="h-[245px] w-full flex gap-4 justify-between">
-          <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
-          <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
-          <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
-          <div className="w-[300px] h-full bg-[#E6E6E6]"></div>
-        </div>
+        <Carousel />
       </section>
       <section className="mt-[132px] flex justify-center">
         <div className="w-[885px] h-[319px] flex justify-between">
