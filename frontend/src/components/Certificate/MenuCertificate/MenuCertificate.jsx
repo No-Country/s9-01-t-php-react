@@ -65,7 +65,7 @@ const MenuCertificate = () => {
           </li>
         </ul>
       </header>
-      <div className="py-4 pl-6 h-[100%]">
+      <div className="py-4 px-5 h-[100%]">
         {isSelected.template && <ItemTemplates />}
         {isSelected.data && <ItemData />}
         {isSelected.students && <ItemStudents />}

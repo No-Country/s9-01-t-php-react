@@ -10,7 +10,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendWelcomeEmail;
 use App\Mail\WelcomeEmail;
+
 class UserController extends Controller
 {
     public function index()
@@ -32,7 +34,7 @@ class UserController extends Controller
 
         return response()->json($response, Response::HTTP_OK);
     }
-      
+    
     public function show($id)
     {
         $user = User::find($id);
@@ -65,11 +67,14 @@ class UserController extends Controller
         $user->save();
 
         $token = JWTAuth::fromUser($user);
-        Mail::to($user->email)->send(new WelcomeEmail($user));
-        return response()->success(['token' => $token,'user' => $user ], 'User successfully registered!');
+        dispatch(new SendWelcomeEmail(
+            $user->name,
+            $user->email
+        )); 
 
+        return response()->success(['token' => $token,'user' => $user ], 'User successfully registered!');
     }
- 
+
     public function update(Request $request, $id)
     {
         try {
@@ -101,7 +106,7 @@ class UserController extends Controller
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'], 500);
         }
     }                   
-     
+    
     public function destroy($id)
     {
         User::destroy($id);
