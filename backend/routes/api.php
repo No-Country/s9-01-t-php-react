@@ -36,5 +36,9 @@ Route::group(['prefix' => 'v1'], function () {
         Route::resource('logos', LogoController::class)->except(['edit','create','destroy']);
         // Rutas para estudiantes        
         Route::resource('students', StudentController::class)->except(['create','edit']);
+        // Ruta para enviar token para restaurar la contraseña
+        Route::post('sendPasswordResetLink', 'App\Http\Controllers\Api\PasswordResetRequestController@sendEmail');
+        //Guardar nueva contraseña
+        Route::post('resetPassword', 'App\Http\Controllers\Api\ChangePasswordController@passwordResetProcess');
     });
 });
