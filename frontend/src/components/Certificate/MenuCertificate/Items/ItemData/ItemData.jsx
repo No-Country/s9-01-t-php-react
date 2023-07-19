@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setData } from "../../../../../features/certificateSlice";
 import { InputFile } from "./InputFile";
+import { InputText } from "./InputText";
 
 const ItemData = () => {
   const dispatch = useDispatch();
@@ -13,30 +14,16 @@ const ItemData = () => {
   };
 
   return (
-    <form className="flex flex-col gap-y-6 h-[85%] overflow-auto">
+    <form className="flex flex-col gap-y-6 h-[85%] overflow-auto pr-2">
       <div className="flex flex-col gap-y-5">
-        <label className=" text-xl font-bold" name="institution" htmlFor="institution">
-          Institucion
-        </label>
-        <input
-          className=" p-2 border-[3px] border-[#E4E4E4]  rounded-lg"
-          type="text"
-          name="institution"
-          id="institution"
-          onChange={handleChange}
-        />
+        <InputText handleChange={handleChange} name={"institution"}>
+          Institución
+        </InputText>
       </div>
       <div className="flex flex-col gap-y-5">
-        <label htmlFor="career_type" className=" text-xl font-bold">
+        <InputText handleChange={handleChange} name={"career_type"}>
           Nombre del curso
-        </label>
-        <input
-          className=" p-2 border-[3px] border-[#E4E4E4]  rounded-lg"
-          type="text"
-          name="career_type"
-          id="career_type"
-          onChange={handleChange}
-        />
+        </InputText>
       </div>
       <div className="flex flex-col gap-y-5">
         <label className=" text-xl font-bold" htmlFor="certificateConten">
@@ -54,11 +41,21 @@ const ItemData = () => {
 
       <div>LOGOS</div>
 
-      <div className="flex flex-col">
-        <h3 className=" text-xl font-bold">Firma</h3>
-        <InputFile name="authority1" />
+      <div className="flex flex-col  gap-y-5">
+        <InputText handleChange={handleChange} name={"authority1_firm"}>
+          Autoridad 1
+        </InputText>
+
+        <div>
+          <h3 className=" text-xl font-bold">Firma</h3>
+          <InputFile name="authority1" />
+        </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-y-5">
+        <InputText handleChange={handleChange} name={"authority2_firm"}>
+          Autoridad 2
+        </InputText>
+
         <h3 className=" text-xl font-bold">Firma 2</h3>
         <InputFile name="authority2" />
       </div>
