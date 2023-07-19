@@ -24,9 +24,9 @@ class CertificateController extends Controller
         $encryptedId = Auth::user()->getAuthIdentifier();
         $certificates = CertificateData::Where('id_user',$encryptedId)
         ->get();
-        return response()->json([
-            "result" => $certificates
-        ], Response::HTTP_OK);
+
+        return response()->success($certificates, 'certificates found!');
+
     }
 
     public function show($parameter)
