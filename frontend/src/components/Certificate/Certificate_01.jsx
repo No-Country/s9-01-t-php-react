@@ -7,7 +7,8 @@ const Certificate_01 = () => {
   const dateObj = new Date();
   const formattedDate = `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
 
-  const { institution, career_type, certificateConten, authority1, authority2 } = certificate;
+  const { institution, career_type, certificateConten, authority1_firm, authority2_firm } =
+    certificate;
 
   useEffect(() => {
     setStudentsList(certificate?.students);
@@ -41,13 +42,13 @@ const Certificate_01 = () => {
               <span className="absolute text-left bottom-0 ml-8 mb-6 text-xs">
                 <section className="flex flex-col justify-center items-center">
                   <span className="font-bold">Autoridad</span>
-                  <span>{authority1}</span>
+                  <span>{authority1_firm}</span>
                 </section>
               </span>
               <span className="absolute text-right bottom-0 right-0 mr-8 mb-6 text-xs">
                 <section className="flex flex-col justify-center items-center">
                   <span className="font-bold">Autoridad</span>
-                  <span>{authority2}</span>
+                  <span>{authority2_firm}</span>
                 </section>
               </span>
             </>

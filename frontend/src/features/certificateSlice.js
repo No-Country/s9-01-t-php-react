@@ -8,6 +8,8 @@ const initialState = {
   certificateConten: "",
   authority1: "",
   authority2: "",
+  authority1_firm: "",
+  authority2_firm: "",
   id_logo: 0,
   studentSelected: {},
   students: [
