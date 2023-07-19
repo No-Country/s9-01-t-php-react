@@ -10,6 +10,7 @@ import Landing from "../pages/landing";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Faq from "../pages/faq";
+import { About } from "../pages/about";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route index element={<Landing />} />
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/faq" element={<Faq />} />
