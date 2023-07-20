@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="h-[80px] w-full bg-primary flex justify-between items-center pl-[80px] pr-[72px] text-white">
       <Link to="/">
-        <p className="font-normal text-4xl leading-6">iCertify</p>
+        <p className="font-normal text-4xl leading-6">CertifyMe</p>
       </Link>
       <div className="h-full flex items-end pb-6">
         <ul className="flex gap-10 h-6">
