@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
       <div className="w-full h-[44px] pl-[80px] flex justify-start items-center gap-5 bg-grey text-white">
         <BiCopyright className="w-6 h-6" />
-        <p className="font-normal text-base">iCertify, 2023</p>
+        <p className="font-normal text-base">CertifyMe, 2023</p>
       </div>
     </footer>
   );
