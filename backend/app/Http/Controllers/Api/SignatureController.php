@@ -121,12 +121,10 @@ class SignatureController extends Controller
                 $uploadedFile = $request->file('image');
                 $image = Cloudinary::upload($uploadedFile->getRealPath());
     
-                // Eliminar la imagen anterior de Cloudinary usando el Public ID almacenado previamente.
                 if ($signature->publicId) {
                     Cloudinary::destroy($signature->publicId);
                 }
     
-                // Actualizar los datos con la nueva imagen.
                 $signature->update([
                     'urlImg' => $image->getSecurePath(),
                     'publicId' => $image->getPublicId(),
@@ -134,7 +132,6 @@ class SignatureController extends Controller
                     'position' => $request->position,
                 ]);
             } else {
-                // Actualizar los datos sin cambiar la imagen existente.
                 $signature->update([
                     'autorityName' => $request->autorityName,
                     'position' => $request->position,
