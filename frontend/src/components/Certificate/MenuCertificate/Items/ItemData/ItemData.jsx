@@ -26,13 +26,13 @@ const ItemData = () => {
         </InputText>
       </div>
       <div className="flex flex-col gap-y-5">
-        <label className=" text-xl font-bold" htmlFor="certificateConten">
+        <label className=" text-xl font-bold" htmlFor="certificateContent">
           Leyenda del curso
         </label>
         <textarea
           className="p-2 border-[3px] border-[#E4E4E4]  rounded-lg"
-          name="certificateConten"
-          id="certificateConten"
+          name="certificateContent"
+          id="certificateContent"
           cols="30"
           rows="3"
           onChange={handleChange}
@@ -42,7 +42,7 @@ const ItemData = () => {
       <div>LOGOS</div>
 
       <div className="flex flex-col  gap-y-5">
-        <InputText handleChange={handleChange} name={"authority1_firm"}>
+        <InputText handleChange={handleChange} name={"authority1"}>
           Autoridad 1
         </InputText>
 
@@ -52,7 +52,7 @@ const ItemData = () => {
         </div>
       </div>
       <div className="flex flex-col gap-y-5">
-        <InputText handleChange={handleChange} name={"authority2_firm"}>
+        <InputText handleChange={handleChange} name={"authority2"}>
           Autoridad 2
         </InputText>
 

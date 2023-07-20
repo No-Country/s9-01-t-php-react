@@ -9,10 +9,8 @@ export const InputFile = ({ name }) => {
 
   const handleChange = e => {
     setFile(e.target.files[0]);
-
-    console.log("estoy");
-
-    dispatch(postImg(file));
+    console.log(e.target.files[0]);
+    dispatch(postImg(e.target.files[0]));
   };
 
   return (

@@ -1,54 +1,58 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+/* eslint-disable react/prop-types */
 
-const Certificate_01 = () => {
-  const certificate = useSelector(state => state.certificate);
-  const [studentsList, setStudentsList] = useState([]);
+const Certificate_01 = ({
+  institution,
+  career_type,
+  certificateContent,
+  authority1,
+  authority2,
+  studentSelected,
+  templateSelected
+}) => {
+
   const dateObj = new Date();
   const formattedDate = `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
-
-  const { institution, career_type, certificateConten, authority1_firm, authority2_firm } =
-    certificate;
-
-  useEffect(() => {
-    setStudentsList(certificate?.students);
-  }, [certificate]);
 
   return (
     <div className="flex flex-col w-full md:max-w-[46.1875rem] ">
       <div className="flex w-full justify-center items-center">
-        <div className="flex w-full bg-red h-[11.25rem] rounded-lg relative md:h-[26.125rem]">
+        <div className="flex w-full bg-slate-400 h-[11.25rem] rounded-lg relative md:w-[46.1875rem] md:h-[32.625rem]">
           <img
-            src="https://res.cloudinary.com/dtfjbprru/image/upload/v1688607722/jkdpbelegizwxaktiixg.jpg"
-            alt=""
-            className="w-full object-cover rounded-lg md:h-[26.125rem]"
+            src={templateSelected?.urlImg}
+            alt={templateSelected?.name}
+            className="w-full object-cover rounded-lg md:h-full place-self-center"
           />
-          {studentsList?.length && (
+          {studentSelected && (
             <>
-              <span className="absolute left-0 right-0 text-left ml-4 mt-4 font-bold text-xs">
+              <span className="absolute left-0 md:left-20 md:top-10 right-0 text-left ml-4 mt-4 font-bold text-xs md:text-xl">
                 {institution}
               </span>
-              <span className="absolute left-0 right-0 text-right mr-4 mt-4 font-bold text-xs">
+              <span className="absolute left-0 right-0 md:right-20 md:top-10 text-right mr-4 mt-4 font-bold text-xs md:text-xl">
                 {formattedDate}
               </span>
-              <span className="absolute left-0 right-0 text-center font-bold top-14 text-lg">
-                {certificate?.studentSelected?.name} {certificate?.studentSelected?.lastname}
+              <span className="flex absolute justify-center items-center h-full left-0 right-0 bottom-[8rem] text-center text-xs md:text-lg">
+                <p className="max-w-[400px] font-medium">
+                  CERTIFICADO DE APROBACION
+                </p>
+              </span> 
+              <span className="flex absolute justify-center items-center h-full left-0 right-0 bottom-10 text-center font-bold text-lg md:text-[2.5rem]">
+                {studentSelected?.name} {studentSelected?.lastname}
               </span>
-              <span className="flex absolute left-0 right-0 text-center top-[80px] text-xs justify-center">
-                <p className="max-w-[200px]">
-                  {certificateConten} {career_type}
+              <span className="flex absolute justify-center items-center h-full left-0 right-0 md:top-5 text-center text-xs md:text-lg">
+                <p className="max-w-[400px]">
+                  {certificateContent} <span className=" font-medium">{career_type}</span>
                 </p>
               </span>
-              <span className="absolute text-left bottom-0 ml-8 mb-6 text-xs">
-                <section className="flex flex-col justify-center items-center">
+              <span className="absolute text-left bottom-0 md:bottom-16 md:left-20 ml-8 mb-6">
+                <section className="flex flex-col justify-center items-center text-xs md:text-lg">
                   <span className="font-bold">Autoridad</span>
-                  <span>{authority1_firm}</span>
+                  <span>{authority1}</span>
                 </section>
               </span>
-              <span className="absolute text-right bottom-0 right-0 mr-8 mb-6 text-xs">
-                <section className="flex flex-col justify-center items-center">
+              <span className="absolute text-right bottom-0 md:bottom-16 right-0 md:right-20 mr-8 mb-6">
+                <section className="flex flex-col justify-center items-center text-xs md:text-lg">
                   <span className="font-bold">Autoridad</span>
-                  <span>{authority2_firm}</span>
+                  <span>{authority2}</span>
                 </section>
               </span>
             </>
