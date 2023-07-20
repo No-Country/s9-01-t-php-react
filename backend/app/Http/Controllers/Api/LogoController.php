@@ -63,8 +63,9 @@ class LogoController extends Controller
             $logo->status = true;
             $logo->save();
     
-            return response()->json(['message' => 'The logo has been added successfully!', 'logo' => $logo], Response::HTTP_CREATED);
-    
+         
+            return response()->success([$logo ], 'The logo has been added successfully!');
+
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
