@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { postRequestFile } from "../services/httpRequest";
+import { getRequest, postRequest, postRequestFile } from "../services/httpRequest";
 
 const initialState = {
   institution: "",
   id_template: "",
   career_type: "",
-  certificateConten: "",
+  certificateContent: "",
   authority1: "",
   authority2: "",
   authority1_firm: "",
@@ -14,7 +14,7 @@ const initialState = {
   studentSelected: {},
   students: [
     {
-      dni: 0,
+      DNI: 0,
       name: "",
       lastname: "",
       email: ""
@@ -33,7 +33,6 @@ const certificate = createSlice({
     setStudentSelected: (state, action) => {
       state.studentSelected = action.payload;
     },
-
     setData: (state, action) => {
       const { name, value } = action.payload;
       state[name] = value;
@@ -45,15 +44,37 @@ export const { setStudents, setStudentSelected, setData } = certificate.actions;
 
 export default certificate.reducer;
 
-export const postImg = file => async dispatch => {
-  console.log("post");
+export const getSendAllCertificate = idCertificates => async dispatch => {
+  try {
+    const certificateSended = await getRequest(`/api/v1/certificates/sendall/${idCertificates}`);
+    console.log(certificateSended);
+    if (certificateSended) {
+      console.log("ENVIADOS: ", certificateSended);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+export const postImg = file => async dispatch => {
   try {
     const image = await postRequestFile(file, "/api/v1/logos");
     if (image) {
       console.log(image);
-
       /*  dispatch(setData({name:"", value:image})) */
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const postCertificate = certificate => async dispatch => {
+  console.log("postCertificate");
+  try {
+    const certificateSaved = await postRequest(certificate, "/api/v1/certificates");
+    if (certificateSaved) {
+      console.log("salved", certificateSaved);
+      return certificateSaved;
     }
   } catch (error) {
     console.log(error);

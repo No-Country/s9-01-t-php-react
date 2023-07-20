@@ -1,10 +1,21 @@
 import axios from "axios";
-// import { useLocalStorage } from "../hooks/useLocalStorage";
+
+const getLocalStorage = key => {
+  const item = localStorage.getItem(key);
+
+  if (!item) return;
+  try {
+    return JSON.parse(item);
+  } catch (error) {
+    console.log(error);
+  }
+  return item;
+};
 
 const URL = import.meta.env.VITE_API_URL;
 
 const getToken = () => {
-  const { token } = JSON.parse(localStorage.getItem("auth") || "");
+  const { token } = getLocalStorage("auth") || "";
   const Authorization = { token } && `Bearer ${token}`;
 
   return Authorization;
@@ -54,6 +65,7 @@ export const getRequest = async endpoint => {
 };
 
 export const postRequestFile = async (dataSend, endpoint) => {
+  console.log(getToken());
   try {
     const { data } = await axios.post(URL + endpoint, dataSend, {
       headers: {

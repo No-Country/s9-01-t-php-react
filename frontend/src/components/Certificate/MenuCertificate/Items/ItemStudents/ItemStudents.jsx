@@ -29,16 +29,15 @@ const ItemStudents = () => {
       <section className="flex flex-col w-full overflow-y-auto pr-6 h-[85%]">
         <header>
           <h2 className=" font-bold text-xl">Datos de los alumnos</h2>
-          <p>Total de estudiantes cargados: {dataExcel?.length}</p>
+          <p>Total de estudiantes cargados: {students.length}</p>
         </header>
         <div className="mt-2 border-2 rounded-lg border-slate-700">
           {studentsList?.map((student, index) => {
             return (
               <div
                 key={index}
-                className="mt-1 cursor-pointer hover:bg-orange-300 p-2 rounded-lg"
-                onClick={() => dispatch(setStudentSelected(student))}
-              >
+                className="cursor-pointer hover:bg-orange-300 p-2 rounded-lg"
+                onClick={() => dispatch(setStudentSelected(student))}>
                 <p className="font-semibold">
                   ♦ {student?.name} {student?.lastname}{" "}
                 </p>
@@ -52,8 +51,7 @@ const ItemStudents = () => {
         </div>
         <button
           className="w-full mt-4 p-2 font-bold bg-blue-500 text-white rounded-lg hover:bg-blue-400 hover:text-black"
-          onClick={handleButtonClick}
-        >
+          onClick={handleButtonClick}>
           Cargar archivo
         </button>
         <a href="/data.xlsx" download>
