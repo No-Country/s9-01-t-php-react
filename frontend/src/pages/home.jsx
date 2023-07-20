@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
 import Carousel from "../components/Carousel/Carousel";
 
 const Home = () => {
   return (
-    <Layout>
+    <>
       <div className="h-[127px] w-full flex justify-end items-center pr-[80px]">
         <Link to="/dashboard">
           <button className="w-[264px] h-[47px] bg-[#7F807F] text-white font-bold text-xl leading-6 rounded-[10px]">
@@ -37,7 +36,7 @@ const Home = () => {
           <div className="h-[245px] w-[300px] bg-[#E6E6E6] rounded-[25px]"></div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

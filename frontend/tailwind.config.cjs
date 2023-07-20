@@ -4,13 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#FEE602",
-        secondary: "#FFF159",
-        red: "#E40002",
-        darkblue: "#2D3277",
-        ligthblue: "#3483FA",
-        green: "#00A650",
-        grey: "#EDEDED"
+        primary: "#516091",
+        secondary: "#FA5F49",
+        ligthblue: "#ADD5FA",
+        grey: "#545454"
+      },
+      boxShadow: {
+        buttonshadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)"
       }
     }
   },

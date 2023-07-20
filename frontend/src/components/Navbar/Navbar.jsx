@@ -4,39 +4,43 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { isAuth } = useSelector(state => state.auth);
   return (
-    <nav className="h-[80px] w-full bg-[#D9D9D9] flex justify-between items-end pb-3 pr-[80px] pl-[42px]">
+    <nav className="h-[80px] w-full bg-primary flex justify-between items-center pl-[80px] pr-[72px] text-white">
       <Link to="/">
-        <div className="w-[143px] h-10 bg-[#E6E6E6]"></div>
+        <p className="font-normal text-4xl leading-6">CertifyMe</p>
       </Link>
-      <ul className="flex gap-10 pb-2">
-        <li className="font-normal text-sm left-6">Sobre nosotros</li>
-        <li className="font-normal text-sm left-6">Planes</li>
-        <li className="font-normal text-sm left-6">Plantillas</li>
-        <Link to="/faq">
-          <li className="font-normal text-sm left-6">Preguntas Frecuentes</li>
-        </Link>
-      </ul>
-      <div className="flex gap-2 text-white">
-        {isAuth ? (
+      <div className="h-full flex items-end pb-6">
+        <ul className="flex gap-10 h-6">
+          <Link to="/about">
+            <li className="font-normal text-sm left-6">Sobre nosotros</li>
+          </Link>
+          <li className="font-normal text-sm left-6">Planes</li>
+          <li className="font-normal text-sm left-6">Plantillas</li>
+          <Link to="/faq">
+            <li className="font-normal text-sm left-6">Preguntas Frecuentes</li>
+          </Link>
+        </ul>
+      </div>
+      <div className="flex justify-center w-[288px]">
+        {/* {isAuth ? (
           <Link to="/home">
-            <button className="w-[140px] h-8 border border-[#959595] rounded-[10px] font-normal text-sm leading-6">
+            <button className="w-[140px] h-8 bg-secondary border border-secondary rounded-[10px] font-bold text-sm leading-4 shadow-buttonshadow">
               Ingresar
             </button>
           </Link>
-        ) : (
-          <>
-            <Link to="/login">
-              <button className="w-[140px] h-8 border border-[#959595] rounded-[10px] font-normal text-sm leading-6">
-                Login
-              </button>
-            </Link>
-            <Link to="/register">
-              <button className="w-[140px] h-8 bg-[#7F807F] border border-[#959595] rounded-[10px] font-normal text-sm leading-6">
-                Register
-              </button>
-            </Link>
-          </>
-        )}
+        ) : ( */}
+        <div className="flex gap-2">
+          <Link to="/login">
+            <button className="w-[140px] h-8 border border-white rounded-[10px] font-bold text-sm leading-4">
+              Login
+            </button>
+          </Link>
+          <Link to="/register">
+            <button className="w-[140px] h-8 bg-secondary border border-secondary rounded-[10px] font-bold text-sm leading-4 shadow-buttonshadow">
+              Register
+            </button>
+          </Link>
+        </div>
+        {/* )} */}
       </div>
     </nav>
   );
