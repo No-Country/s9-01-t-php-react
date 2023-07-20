@@ -1,9 +1,8 @@
 import Carousel from "../components/Carousel/Carousel";
-import LayoutLanding from "../components/Layout/LayoutLanding";
 
 const Landing = () => {
   return (
-    <LayoutLanding>
+    <>
       <section className="w-full h-[430px] bg-[#EFEFEF] flex mt-2">
         <div className="w-1/2 h-full pt-[82px] pr-[52px] flex justify-end items-start">
           <div className="w-[465px] h-[203px] flex flex-col justify-between">
@@ -95,7 +94,7 @@ const Landing = () => {
           <div className="h-[300px] w-[250px] bg-[#D9D9D9] rounded-[10px] shadow-lg shadow-black/25"></div>
         </div>
       </section>
-    </LayoutLanding>
+    </>
   );
 };
 

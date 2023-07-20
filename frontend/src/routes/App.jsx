@@ -14,25 +14,31 @@ import Account from "../pages/account";
 import CurrentPlan from "../pages/current-plan";
 import PaymentHistory from "../pages/payment-history";
 import Support from "../pages/support";
+import LayoutLanding from "../components/Layout/LayoutLanding";
+import LayoutHome from "../components/Layout/LayoutHome";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Landing />} />
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/faq" element={<Faq />} />
+          <Route path="/" element={<LayoutLanding />}>
+            <Route index element={<Landing />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="about" element={<About />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="faq" element={<Faq />} />
+          </Route>
           <Route element={<UserRouteProtected />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/current-plan" element={<CurrentPlan />} />
-            <Route path="/payment-history" element={<PaymentHistory />} />
-            <Route path="/support" element={<Support />} />
+            <Route path="/" element={<LayoutHome />}>
+              <Route path="home" element={<Home />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="account" element={<Account />} />
+              <Route path="current-plan" element={<CurrentPlan />} />
+              <Route path="payment-history" element={<PaymentHistory />} />
+              <Route path="support" element={<Support />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
