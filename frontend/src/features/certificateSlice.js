@@ -10,7 +10,7 @@ const initialState = {
   authority2: "",
   authority1_firm: "",
   authority2_firm: "",
-  id_logo: 0,
+  logo: {},
   studentSelected: {},
   students: [
     {
@@ -36,11 +36,15 @@ const certificate = createSlice({
     setData: (state, action) => {
       const { name, value } = action.payload;
       state[name] = value;
+    },
+    setLogo: (state, action) => {
+      const { data } = action.payload;
+      state.logo = data;
     }
   }
 });
 
-export const { setStudents, setStudentSelected, setData } = certificate.actions;
+export const { setStudents, setStudentSelected, setData, setLogo } = certificate.actions;
 
 export default certificate.reducer;
 
@@ -56,12 +60,12 @@ export const getSendAllCertificate = idCertificates => async dispatch => {
   }
 };
 
-export const postImg = file => async dispatch => {
+export const postLogos = image => async dispatch => {
   try {
-    const image = await postRequestFile(file, "/api/v1/logos");
-    if (image) {
-      console.log(image);
-      /*  dispatch(setData({name:"", value:image})) */
+    const imageSaved = await postRequestFile(image, "/api/v1/logos");
+    if (imageSaved) {
+      console.log(imageSaved);
+      dispatch(setLogo(imageSaved));
     }
   } catch (error) {
     console.log(error);
