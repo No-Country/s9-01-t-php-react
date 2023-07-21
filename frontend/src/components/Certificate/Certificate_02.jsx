@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const Certificate_01 = ({
+const Certificate_02 = ({
   institution,
   career_type,
   certificateContent,
@@ -9,9 +9,6 @@ const Certificate_01 = ({
   studentSelected,
   templateSelected
 }) => {
-  const dateObj = new Date();
-  const formattedDate = `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`;
-
   return (
     <div className="flex flex-col w-full md:max-w-[46.1875rem] ">
       <div className="flex w-full justify-center items-center">
@@ -23,11 +20,11 @@ const Certificate_01 = ({
           />
           {studentSelected && (
             <>
-              <span className="absolute left-0 md:left-20 md:top-10 right-0 text-left ml-4 mt-4 font-bold text-xs md:text-xl">
+              <span className="absolute left-0 md:left-10 md:top-10 right-0 text-left ml-4 mt-4 font-bold text-xs md:text-xl">
                 {institution}
               </span>
-              <span className="absolute left-0 right-0 md:right-20 md:top-10 text-right mr-4 mt-4 font-bold text-xs md:text-xl">
-                {formattedDate}
+              <span className="absolute left-0 right-0 md:right-10 md:top-10 text-right mr-4 mt-4 font-bold text-xs md:text-lg">
+                CERTIFICADO DE APROBACION
               </span>
               <span className="flex absolute justify-center items-center h-full left-0 right-0 bottom-[8rem] text-center text-xs md:text-lg">
                 <p className="max-w-[400px] font-medium">CERTIFICADO DE APROBACION</p>
@@ -36,11 +33,14 @@ const Certificate_01 = ({
                 {studentSelected?.name} {studentSelected?.lastname}
               </span>
               <span className="flex absolute justify-center items-center h-full left-0 right-0 md:top-5 text-center text-xs md:text-lg">
+                <div className="w-[70%] h-1 bg-white"></div>
+              </span>
+              <span className="flex absolute justify-center items-center h-full left-0 right-0 md:top-5 text-center text-xs md:text-lg">
                 <p className="max-w-[400px]">
                   {certificateContent} <span className=" font-medium">{career_type}</span>
                 </p>
               </span>
-              <span className="absolute text-left bottom-0 md:bottom-16 md:left-20 ml-8 mb-6">
+              <span className="absolute text-right bottom-0 md:bottom-16 right-0 md:right-60 mr-8 mb-6">
                 <section className="flex flex-col justify-center items-center text-xs md:text-lg">
                   <span className="font-bold">Autoridad</span>
                   <span>{authority1}</span>
@@ -60,4 +60,4 @@ const Certificate_01 = ({
   );
 };
 
-export default Certificate_01;
+export default Certificate_02;
