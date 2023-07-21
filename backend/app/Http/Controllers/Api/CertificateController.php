@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use MongoDB\Driver\Exception\Exception;
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\CertificateData;
 use App\Models\Student;
-use MongoDB\Driver\Exception\Exception;
+use App\Models\Authority;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,66 +27,66 @@ class CertificateController extends Controller
         ->get();
 
         return response()->success($certificates, 'certificates found!');
-
     }
 
     public function show($parameter)
     {
-        
-        try { 
-            if(preg_match('/^[0-9a-fA-F]{24}$/', $parameter) === 1)
-            {              
+        try {
+            if (preg_match('/^[0-9a-fA-F]{24}$/', $parameter) === 1) {
                 $isObjectId = new ObjectID($parameter);
-                $certificate = Certificate::Where('public_key',$isObjectId)
-                ->with('student', 'certificateData','template','logo')
-                ->get();
-                if($certificate->isNotEmpty()){
-                    return response()->success($certificate, 'Data finded');
-                } 
-                return response()->error('not found');
-            } 
-         } catch (Exception $th) {
+    
+                $certificate = Certificate::where('public_key', $isObjectId)
+                    ->with('student', 'template', 'logo', 'certificateData.authorities') // Cargar también la relación 'authorities' en 'certificateData'
+                    ->first();
+    
+                if ($certificate) {
+                    $certificateData = $certificate->certificateData;
+    
+                    return response()->success($certificateData, 'Data found');
+                }
+    
+                return response()->error('Not found', 404);
+            }
+        } catch (\Throwable $th) {
             return response()->error($th->getMessage());
-        } 
+        }
+    
         return response()->error('Error, the format of the request is not expected.');
     }
-    #$certificate = new Certificate();
+    
+
     public function store(Request $request)
     {
         try {
             $encryptedId = Auth::user()->getAuthIdentifier();
-            # registrar los datos de un curso
+            $authorityId = $request->authorities; // Corregir el nombre del atributo a "authorities" en lugar de "authority"
+    
+            // Creamos el certificado sin las relaciones primero
             $certificateData = CertificateData::create([
                 'certificateContent' => $request->certificateContent,
                 'career_type' => $request->career_type,
-                'authority1' => $request->authority1,
-                'authority2' => $request->authority2,
-                'id_user' => $encryptedId
+                'id_user' => $encryptedId,
+                'authorities' => $authorityId,
             ]);
     
             $studentsData = $request->input('students');
-            /* var_dump($studentsData,'separacion'); */
             foreach ($studentsData as $studentData) {
-                # registrar el array de objetos de estudiantes
                 $student = Student::create($studentData);
-                # registrar los certificados por estudiantes
-                $Certificate = Certificate::create([
+                $certificate = Certificate::create([
                     'id_template' => $request->id_template,
                     'id_logo' => $request->id_logo,
                     'id_student' => $student->_id,
                     'id_cd' => new ObjectID($certificateData->_id),
                     'public_key' => new ObjectID()
                 ]);
-                # se envian los correos
-
             }
-    
+            // Devolvemos la respuesta con el objeto completo de CertificateData, incluyendo las autoridades asociadas
             return response()->success($certificateData, 'Data saved!');
         } catch (\Throwable $th) {
             return response()->error($th->getMessage());
         }
-       
     }
+    
 
     public function update(Request $request, $id)
     {
@@ -106,6 +107,8 @@ class CertificateController extends Controller
         Certificate::destroy($id);
         return response()->json(['message' => "Deleted"], Response::HTTP_OK);
     }
+
+    //Controladores para el envío de correos 
     public function esquema($parameter)
     {
         
@@ -126,6 +129,7 @@ class CertificateController extends Controller
         } 
         return response()->error('Error, the format of the request is not expected.');
     }
+
     public function send($public_key)
     {
         try{
@@ -141,6 +145,7 @@ class CertificateController extends Controller
             return response()->error($th->getMessage());
         }
     }
+
     public function sendAll($id_cd)
     {
         try{
