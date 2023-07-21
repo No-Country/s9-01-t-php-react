@@ -37,7 +37,8 @@ const ItemStudents = () => {
               <div
                 key={index}
                 className="cursor-pointer hover:bg-orange-300 p-2 rounded-lg"
-                onClick={() => dispatch(setStudentSelected(student))}>
+                onClick={() => dispatch(setStudentSelected(student))}
+              >
                 <p className="font-semibold">
                   ♦ {student?.name} {student?.lastname}{" "}
                 </p>
@@ -51,7 +52,8 @@ const ItemStudents = () => {
         </div>
         <button
           className="w-full mt-4 p-2 font-bold bg-blue-500 text-white rounded-lg hover:bg-blue-400 hover:text-black"
-          onClick={handleButtonClick}>
+          onClick={handleButtonClick}
+        >
           Cargar archivo
         </button>
         <a href="/data.xlsx" download>

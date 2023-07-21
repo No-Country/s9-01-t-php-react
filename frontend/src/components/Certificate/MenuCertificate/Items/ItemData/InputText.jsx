@@ -1,4 +1,5 @@
-export const InputText = ({ name, handleChange, children }) => {
+/* eslint-disable react/prop-types */
+export const InputText = ({ name, handleChange, children, value }) => {
   return (
     <>
       <label className=" text-xl font-bold" name={name} htmlFor={name}>
@@ -9,6 +10,7 @@ export const InputText = ({ name, handleChange, children }) => {
         type="text"
         name={name}
         id={name}
+        value={value}
         onChange={handleChange}
       />
     </>

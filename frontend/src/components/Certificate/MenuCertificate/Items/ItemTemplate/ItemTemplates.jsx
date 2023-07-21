@@ -6,14 +6,13 @@ const ItemTemplates = () => {
   const templatesList = useSelector(state => state.templates.list);
   const dispatch = useDispatch();
   const [tempSelected, setTempSelected] = useState({});
- 
+
   const selectedTemplate = template => {
     setTempSelected(template);
-    dispatch(setSelectedTemplate(template))
+    dispatch(setSelectedTemplate(template));
   };
   return (
     <div className="w-full h-full">
-      <p>ItemTemplates</p>
       <div className="flex flex-wrap justify-center w-full h-[85%] overflow-y-auto">
         {templatesList?.map(template => {
           return (
@@ -22,8 +21,8 @@ const ItemTemplates = () => {
                 src={template.thumbnail.urlImg}
                 alt={template.name}
                 className={`${
-                  tempSelected.name === template.name ? "rounded-md border-8" : null
-                } w-32 h-30 border-red box-border`}
+                  tempSelected.name === template.name ? "rounded-md border-8 border-red-500" : null
+                } w-62 box-border`}
                 onClick={() => selectedTemplate(template)}
               />
             </div>
