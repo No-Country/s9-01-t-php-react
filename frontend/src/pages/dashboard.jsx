@@ -7,6 +7,7 @@ import Certificate_07 from "../components/Certificate/Certificate_07";
 import Certificate_14 from "../components/Certificate/Certificate_14";
 import MenuCertificate from "../components/Certificate/MenuCertificate/MenuCertificate";
 import { getAllTemplates } from "../features/templateSlice";
+import { getAllLogos } from "../features/logosSlice";
 
 const models = [
   {
@@ -34,6 +35,7 @@ const models = [
 const Dashboard = () => {
   const certificate = useSelector(state => state.certificate);
   const templateSelected = useSelector(state => state.templates.templateSelected);
+  const logoSelected = useSelector(state => state.logos.logoSelected);
 
   const dispatch = useDispatch();
   const [certifySalved, setCertifySalved] = useState(false);
@@ -42,6 +44,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAllTemplates());
+    dispatch(getAllLogos());
   }, []);
 
   const openModal = () => {
@@ -53,7 +56,6 @@ const Dashboard = () => {
   };
 
   const handleSendNow = () => {
-    console.log(certifySalved);
     dispatch(getSendAllCertificate(certifySalved.data._id));
     closeModal();
   };
@@ -63,11 +65,12 @@ const Dashboard = () => {
   };
 
   const componentSelected = () => {
+    const imgLogo = logoSelected.urlImg;
     const component = models.find(model => model.id === templateSelected._id);
     if (component) {
-      return component.component({ ...certificate, templateSelected });
+      return component.component({ ...certificate, templateSelected, imgLogo });
     }
-    return models[0].component({ ...certificate, templateSelected });
+    return models[0].component({ ...certificate, templateSelected, imgLogo });
   };
 
   const sendCertificate = async () => {
@@ -79,7 +82,7 @@ const Dashboard = () => {
       certificateContent: certificate.certificateContent,
       authority1: certificate.authority1,
       authority2: certificate.authority2,
-      id_logo: certificate.id_logo,
+      id_logo: logoSelected._id,
       students: certificate.students
     };
     try {
@@ -123,13 +126,13 @@ const Dashboard = () => {
             <div className="flex justify-end">
               <button
                 onClick={handleSendNow}
-                className="w-[14.375rem] rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2"
+                className="w-[14.375rem] rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mr-2"
               >
                 Enviar ahora
               </button>
               <button
                 onClick={handleSendLater}
-                className="w-[14.375rem] rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+                className="w-[14.375rem] rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4"
               >
                 Enviar más tarde
               </button>

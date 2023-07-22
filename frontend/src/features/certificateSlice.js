@@ -51,7 +51,6 @@ export default certificate.reducer;
 export const getSendAllCertificate = idCertificates => async dispatch => {
   try {
     const certificateSended = await getRequest(`/api/v1/certificates/sendall/${idCertificates}`);
-    console.log(certificateSended);
     if (certificateSended) {
       console.log("ENVIADOS: ", certificateSended);
     }
@@ -64,7 +63,6 @@ export const postLogos = image => async dispatch => {
   try {
     const imageSaved = await postRequestFile(image, "/api/v1/logos");
     if (imageSaved) {
-      console.log(imageSaved);
       dispatch(setLogo(imageSaved));
     }
   } catch (error) {
@@ -73,11 +71,9 @@ export const postLogos = image => async dispatch => {
 };
 
 export const postCertificate = certificate => async dispatch => {
-  console.log("postCertificate");
   try {
     const certificateSaved = await postRequest(certificate, "/api/v1/certificates");
     if (certificateSaved) {
-      console.log("salved", certificateSaved);
       return certificateSaved;
     }
   } catch (error) {
