@@ -26,7 +26,7 @@ const ItemStudents = () => {
   };
   return (
     <div className="h-full">
-      <section className="flex flex-col w-full overflow-y-auto pr-6 h-[85%]">
+      <section className="flex flex-col w-full overflow-y-auto pr-6 h-full">
         <header>
           <h2 className=" font-bold text-xl">Datos de los alumnos</h2>
           <p>Total de estudiantes cargados: {students.length}</p>

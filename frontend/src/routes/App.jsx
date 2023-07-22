@@ -16,7 +16,6 @@ import PaymentHistory from "../pages/payment-history";
 import Support from "../pages/support";
 import LayoutLanding from "../components/Layout/LayoutLanding";
 import LayoutHome from "../components/Layout/LayoutHome";
-import { OldNoCountry } from "../components/Certificates/oldNoCountry";
 
 function App() {
   return (
@@ -30,7 +29,6 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="faq" element={<Faq />} />
-            <Route path="nc" element={<OldNoCountry />} />
           </Route>
           <Route element={<UserRouteProtected />}>
             <Route path="/" element={<LayoutHome />}>
