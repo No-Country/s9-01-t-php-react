@@ -17,7 +17,8 @@ class Authority extends Model
         'publicId',
         'position',
         'autorityName',
-        'id_user'
+        'id_user',
+        'id_cd',
     ];
 
     protected $casts = [
@@ -25,11 +26,14 @@ class Authority extends Model
         'publicId' => 'string',
         'position' => 'string',
         'autorityName' => 'string',
-        'id_user' => 'string'
+        'id_user' => 'string',
+        'id_cd' => 'string',
     ];
 
     public function certificateData()
     {
-        return $this->belongsToMany(CertificateData::class, 'certificate_data_authorities', 'authority_id', 'certificate_data_id');
+        return $this->belongsTo(CertificateData::class, 'id_cd', '_id');
     }
 }
+
+

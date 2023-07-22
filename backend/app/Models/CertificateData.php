@@ -14,20 +14,18 @@ class CertificateData extends Model
 
     protected $fillable = [
         'career_type',
-        'authorities',
         'certificateContent',
-        'id_user'
+        'id_user',
     ];
 
     protected $casts = [
-        'authorities' => 'array',
         'career_type' => 'string',
         'certificateContent' => 'string',
-        'id_user' => 'string'
+        'id_user' => 'string',
     ];
 
     public function authorities()
     {
-        return $this->belongsToMany(Authority::class, 'certificate_data_authorities', 'certificate_data_id', 'authority_id');
+        return $this->belongsToMany(Authority::class, null, 'certificate_id', 'authority_id');
     }
 }
