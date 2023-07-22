@@ -1,64 +1,14 @@
-import Carousel from "../components/Carousel/Carousel";
+import LandingSection1 from "../components/LandingSections/LandingSection1";
+import LandingSection2 from "../components/LandingSections/LandingSection2";
+import LandingSection3 from "../components/LandingSections/LandingSection3";
+import LandingSection5 from "../components/LandingSections/LandingSection5";
 
 const Landing = () => {
   return (
     <>
-      <section className="w-full h-[430px] bg-[#EFEFEF] flex mt-2">
-        <div className="w-1/2 h-full pt-[82px] pr-[52px] flex justify-end items-start">
-          <div className="w-[465px] h-[203px] flex flex-col justify-between">
-            <p className="text-center font-normal text-[32px] left-6">
-              ¡Crea tus certificados en 3 pasos!
-            </p>
-            <div className="w-full flex justify-between">
-              <div className="flex flex-col items-center">
-                <span className="w-[35px] h-[35px] flex justify-center items-center font-normal text-base left-6 rounded-full border-[1px] border-[#646464]">
-                  1
-                </span>
-                <p className="font-normal text-base mt-4">Elegí tu diseño</p>
-                <p className="font-medium text-xl leading-6 mt-8">Fácil</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="w-[35px] h-[35px] flex justify-center items-center font-normal text-base left-6 rounded-full border-[1px] border-[#646464]">
-                  1
-                </span>
-                <p className="font-normal text-base mt-4">Carga tu base datos</p>
-                <p className="font-medium text-xl leading-6 mt-8">Rápido</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="w-[35px] h-[35px] flex justify-center items-center font-normal text-base left-6 rounded-full border-[1px] border-[#646464]">
-                  1
-                </span>
-                <p className="font-normal text-base mt-4">Envía tus cerficados</p>
-                <p className="font-medium text-xl leading-6 mt-8">Seguro</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="w-1/2 h-full pt-[82px]">
-          <div className="bg-[#E6E6E6] w-[504px] h-[292px]"></div>
-        </div>
-      </section>
-      <section className="flex flex-col justify-center items-center w-full">
-        <h1 className="font-normal text-4xl leading-6 py-[61px] text-center">Nombre del sitio</h1>
-        <Carousel />
-      </section>
-      <section className="mt-[132px] flex justify-center">
-        <div className="w-[885px] h-[319px] flex justify-between">
-          <div className="h-full w-[439px] flex flex-col justify-between items-center">
-            <div className="w-full h-[247px] flex justify-center items-center px-8">
-              <p className="text-center font-normal text-xl leading-6">
-                Lorem ipsum dolor sit amet consectetur. Non nec amet pharetra lobortis enim in. Diam
-                blandit sem morbi auctor augue interdum integer sem eget. Nunc tellus sit malesuada
-                in eget semper quis quis pellentesque. Eget massa laoreet diam ultrices integer.{" "}
-              </p>
-            </div>
-            <button className="w-[328px] h-[48px] rounded-[10px] bg-[#7F807F] text-white font-bold text-[17px] leading-6">
-              Inicia tu versión de prueba
-            </button>
-          </div>
-          <div className="h-full w-[386px] bg-[#E6E6E6]"></div>
-        </div>
-      </section>
+      <LandingSection1 />
+      <LandingSection2 />
+      <LandingSection3 />
       <section className="w-full mt-[195px] flex justify-center">
         <div className="w-[1006px] h-[404px] flex">
           <div className="h-full w-1/2 flex justify-start">
@@ -94,6 +44,7 @@ const Landing = () => {
           <div className="h-[300px] w-[250px] bg-[#D9D9D9] rounded-[10px] shadow-lg shadow-black/25"></div>
         </div>
       </section>
+      <LandingSection5 />
     </>
   );
 };
