@@ -16,6 +16,7 @@ import PaymentHistory from "../pages/payment-history";
 import Support from "../pages/support";
 import LayoutLanding from "../components/Layout/LayoutLanding";
 import LayoutHome from "../components/Layout/LayoutHome";
+import { MyCertificate } from "../pages/myCertificate";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="faq" element={<Faq />} />
+            <Route path="my-certificate/:id" element={<MyCertificate />} />
           </Route>
           <Route element={<UserRouteProtected />}>
             <Route path="/" element={<LayoutHome />}>
