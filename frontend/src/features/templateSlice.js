@@ -46,7 +46,6 @@ export const getAllTemplates = () => async dispatch => {
   try {
     const allTemplate = await getRequest(`/api/v1/templates`);
     if (allTemplate.status === "success") {
-      console.log("TEMPLATES: ", allTemplate);
       dispatch(setTemplates(allTemplate?.data.templates));
     }
   } catch (error) {

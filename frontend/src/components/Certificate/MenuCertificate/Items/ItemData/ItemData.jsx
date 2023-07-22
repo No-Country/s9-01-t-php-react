@@ -10,21 +10,22 @@ const ItemData = () => {
   const logos = useSelector(state => state.logos.list);
   const dispatch = useDispatch();
   const [characterControl, setCharacterControl] = useState({
-    certificateContent: 90,
-    career_type: 30
+    certificateContent: { actual: 0, total: 90 },
+    career_type: { actual: 0, total: 30 }
   });
 
   const handleChange = e => {
     const { name, value } = e.target;
-    if (name === "certificateContent") {
-      let totalCharacter = value.length;
-      console.log(totalCharacter);
-      // setCharacterControl({
-      //   ...characterControl,
-      //   [name]: characterControl.certificateContent - totalCharacter
-      // });
-      if (totalCharacter >= 90) return;
-    }
+    let totalCharacter = value.length;
+
+    setCharacterControl(prevCharacterControl => ({
+      ...prevCharacterControl,
+      [name]: { ...prevCharacterControl[name], actual: totalCharacter }
+    }));
+
+    if (name === "certificateContent" && totalCharacter >= 90) return;
+    if (name === "career_type" && totalCharacter >= 30) return;
+
     dispatch(setData({ name, value }));
   };
 
@@ -32,10 +33,8 @@ const ItemData = () => {
     dispatch(setSelectedLogo(logo));
   };
 
-  console.log(logos);
-
   return (
-    <form className="flex flex-col gap-y-6 h-[85%] overflow-auto pr-2">
+    <form className="flex flex-col gap-y-6 h-full overflow-auto pr-2">
       <div className="flex flex-col gap-y-5">
         <InputText handleChange={handleChange} name={"institution"} value={certificate.institution}>
           Institución
@@ -45,6 +44,9 @@ const ItemData = () => {
         <InputText handleChange={handleChange} name={"career_type"} value={certificate.career_type}>
           Nombre del curso
         </InputText>
+        <span className="flex justify-end w-full">
+          {`${characterControl.career_type.actual}/${characterControl.career_type.total}`}
+        </span>
       </div>
       <div className="flex flex-col gap-y-5">
         <label className=" text-xl font-bold" htmlFor="certificateContent">
@@ -59,31 +61,33 @@ const ItemData = () => {
           onChange={handleChange}
           value={certificate.certificateContent}
         ></textarea>
-        {characterControl.certificateContent}
+        <span className="flex justify-end w-full">
+          {`${characterControl.certificateContent.actual}/${characterControl.certificateContent.total}`}
+        </span>
       </div>
 
-      <div>
-        <h3 className=" text-xl font-bold">Logos</h3>
-        <div className="flex gap-3 justify-start items-center">
-          <div className="flex gap-3">
+      <div className="w-full">
+        <h3 className="text-xl font-bold">Logos</h3>
+        <div className="flex w-full justify-start items-center overflow-x-auto gap-3">
+          <InputFile name="logos" />
+          <div className="flex w-full h-full gap-2">
             {logos.length &&
               logos.map(logo => {
                 return (
                   <div
                     key={logo._id}
-                    className="flex w-20 gap-3 cursor-pointer"
+                    className="flex w-40 cursor-pointer"
                     onClick={() => selectLogo(logo)}
                   >
-                    <img src={logo.urlImg} alt="logo" className="w-full object-contain" />
+                    <img src={logo.urlImg} alt="logo" className="h-28 w-40 object-contain" />
                   </div>
                 );
               })}
           </div>
-          <InputFile name="logos" />
         </div>
       </div>
 
-      <div className="flex flex-col  gap-y-5">
+      <div className="flex flex-col gap-y-5">
         <InputText handleChange={handleChange} name={"authority1"}>
           Autoridad 1
         </InputText>

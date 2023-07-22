@@ -4,13 +4,13 @@ import logo from "./logo.svg";
 import firma from "./firma.svg";
 
 const Certificate_14 = ({
-  institution,
   career_type,
   certificateContent,
   authority1,
   authority2,
   studentSelected,
-  templateSelected
+  templateSelected,
+  imgLogo
 }) => {
   return (
     <section
@@ -25,7 +25,9 @@ const Certificate_14 = ({
         <div className="flex flex-col justify-between absolute h-full w-full top-0 left-0 p-[9%] sm:p-[6.5%] md:-p[5%] ">
           <div className=" flex justify-between w-full h-max items-center mb-1">
             <div className="w-2/4 ">
-              <img src={logo} className=" object-contain max-w-[160px] w-[55%]" alt="logo" />
+              {imgLogo && (
+                <img src={imgLogo} className=" object-contain max-w-[160px] w-[55%]" alt="logo" />
+              )}
             </div>
             <div>
               <p className=" rounded font-bold bg-[#0DFCA7] w-max  px-3 text-black">

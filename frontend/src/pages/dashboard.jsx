@@ -35,9 +35,7 @@ const models = [
 const Dashboard = () => {
   const certificate = useSelector(state => state.certificate);
   const templateSelected = useSelector(state => state.templates.templateSelected);
-  const imgLogo = useSelector(state => state.logos.logoSelected.urlImg);
-
-  console.log(imgLogo);
+  const logoSelected = useSelector(state => state.logos.logoSelected);
 
   const dispatch = useDispatch();
   const [certifySalved, setCertifySalved] = useState(false);
@@ -58,7 +56,6 @@ const Dashboard = () => {
   };
 
   const handleSendNow = () => {
-    console.log(certifySalved);
     dispatch(getSendAllCertificate(certifySalved.data._id));
     closeModal();
   };
@@ -68,6 +65,7 @@ const Dashboard = () => {
   };
 
   const componentSelected = () => {
+    const imgLogo = logoSelected.urlImg;
     const component = models.find(model => model.id === templateSelected._id);
     if (component) {
       return component.component({ ...certificate, templateSelected, imgLogo });
@@ -84,7 +82,7 @@ const Dashboard = () => {
       certificateContent: certificate.certificateContent,
       authority1: certificate.authority1,
       authority2: certificate.authority2,
-      id_logo: certificate.id_logo,
+      id_logo: logoSelected._id,
       students: certificate.students
     };
     try {

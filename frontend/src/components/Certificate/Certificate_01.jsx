@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 const Certificate_01 = ({
-  institution,
   career_type,
   certificateContent,
   authority1,
@@ -39,7 +38,7 @@ const Certificate_01 = ({
                 {studentSelected?.name} {studentSelected?.lastname}
               </span>
               <span className="flex absolute justify-center items-center h-full left-0 right-0 md:top-10 text-center text-xs md:text-lg">
-                <p className="max-w-[400px]">
+                <p className="max-w-[400px] break-all">
                   {certificateContent} <span className=" font-medium">{career_type}</span>
                 </p>
               </span>

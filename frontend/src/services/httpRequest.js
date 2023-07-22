@@ -65,7 +65,6 @@ export const getRequest = async endpoint => {
 };
 
 export const postRequestFile = async (dataSend, endpoint) => {
-  console.log(getToken());
   try {
     const { data } = await axios.post(URL + endpoint, dataSend, {
       headers: {
