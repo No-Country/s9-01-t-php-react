@@ -33,7 +33,7 @@ const MenuCertificate = () => {
     }
   };
   return (
-    <div className="w-[22.3125rem] max-w-[22.3125rem] border rounded-3xl bg-orange-200">
+    <div className="w-[22.3125rem] max-h-[100vh] h-full max-w-[22.3125rem] border rounded-3xl bg-orange-200">
       <header className=" bg-orange-400 rounded-t-3xl">
         <ul className="flex w-full justify-between text-xs font-semibold">
           <li
@@ -65,7 +65,7 @@ const MenuCertificate = () => {
           </li>
         </ul>
       </header>
-      <div className="py-4 px-5 h-[100%]">
+      <div className="py-6 px-5 h-[80vh]">
         {isSelected.template && <ItemTemplates />}
         {isSelected.data && <ItemData />}
         {isSelected.students && <ItemStudents />}

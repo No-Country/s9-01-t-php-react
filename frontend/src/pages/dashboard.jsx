@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSendAllCertificate, postCertificate } from "../features/certificateSlice";
 import Certificate_01 from "../components/Certificate/Certificate_01";
 import Certificate_02 from "../components/Certificate/Certificate_02";
+import Certificate_07 from "../components/Certificate/Certificate_07";
+import Certificate_14 from "../components/Certificate/Certificate_14";
 import MenuCertificate from "../components/Certificate/MenuCertificate/MenuCertificate";
 import { getAllTemplates } from "../features/templateSlice";
 import { getAllLogos } from "../features/logosSlice";
@@ -17,6 +19,16 @@ const models = [
     id: "64b858a195cb1dde42069a7f",
     name: "template2",
     component: certificate => <Certificate_02 {...certificate} />
+  },
+  {
+    id: "64b8597e95cb1dde42069a87",
+    name: "template07",
+    component: certificate => <Certificate_07 {...certificate} />
+  },
+  {
+    id: "64b85a5695cb1dde42069a95",
+    name: "template14",
+    component: certificate => <Certificate_14 {...certificate} />
   }
 ];
 
@@ -88,9 +100,9 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="w-full flex my-14 justify-center gap-8 h-[85vh]">
+      <div className="w-full flex-col-reverse lg:flex-row  flex h-full my-14 justify-center gap-8 ">
         <MenuCertificate />
-        <div className="flex flex-col">
+        <div className="flex flex-col ">
           <div className="flex shadow-xl">{componentSelected()}</div>
           <div className="flex justify-end ">
             <button

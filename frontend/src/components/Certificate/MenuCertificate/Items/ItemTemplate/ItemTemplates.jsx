@@ -12,8 +12,8 @@ const ItemTemplates = () => {
     dispatch(setSelectedTemplate(template));
   };
   return (
-    <div className="w-full h-full">
-      <div className="flex flex-wrap justify-center w-full h-[85%] overflow-y-auto">
+    <div className="w-full h-[100%]">
+      <div className="flex flex-wrap justify-center w-full h-full overflow-y-auto">
         {templatesList?.map(template => {
           return (
             <div key={template._id} className="m-2 cursor-pointer">
