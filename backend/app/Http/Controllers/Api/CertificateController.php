@@ -59,14 +59,12 @@ class CertificateController extends Controller
             $encryptedId = Auth::user()->getAuthIdentifier();
             $authorityId = $request->authorities;
         
-            // Creamos el certificado sin las relaciones primero
             $certificateData = CertificateData::create([
                 'id_user' => $encryptedId,
                 'certificateContent' => $request->certificateContent,
                 'career_type' => $request->career_type,
             ]);
     
-            // Asociar las autoridades al CertificateData después de haberlo creado
             $certificateData->authorities()->sync($authorityId);
     
             $studentsData = $request->input('students');
@@ -80,7 +78,6 @@ class CertificateController extends Controller
                     'id_student' => $student->_id
                 ]);
             }
-            // Devolvemos la respuesta con el objeto completo de CertificateData, incluyendo las autoridades asociadas
             return response()->success($certificateData, 'Data saved!');
         } catch (\Throwable $th) {
             return response()->error($th->getMessage());
