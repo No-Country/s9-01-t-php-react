@@ -6,6 +6,6 @@
 
 @layer base {
   body {
-    @apply font-['Lato'];
+    @apply font-['Lato'] bg-[#FFFEFA];
   }
 }
