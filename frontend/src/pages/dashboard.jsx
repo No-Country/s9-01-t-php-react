@@ -5,6 +5,7 @@ import Certificate_01 from "../components/Certificate/Certificate_01";
 import Certificate_02 from "../components/Certificate/Certificate_02";
 import MenuCertificate from "../components/Certificate/MenuCertificate/MenuCertificate";
 import { getAllTemplates } from "../features/templateSlice";
+import { getAllLogos } from "../features/logosSlice";
 
 const models = [
   {
@@ -22,6 +23,9 @@ const models = [
 const Dashboard = () => {
   const certificate = useSelector(state => state.certificate);
   const templateSelected = useSelector(state => state.templates.templateSelected);
+  const imgLogo = useSelector(state => state.logos.logoSelected.urlImg);
+
+  console.log(imgLogo);
 
   const dispatch = useDispatch();
   const [certifySalved, setCertifySalved] = useState(false);
@@ -30,6 +34,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAllTemplates());
+    dispatch(getAllLogos());
   }, []);
 
   const openModal = () => {
@@ -53,9 +58,9 @@ const Dashboard = () => {
   const componentSelected = () => {
     const component = models.find(model => model.id === templateSelected._id);
     if (component) {
-      return component.component({ ...certificate, templateSelected });
+      return component.component({ ...certificate, templateSelected, imgLogo });
     }
-    return models[0].component({ ...certificate, templateSelected });
+    return models[0].component({ ...certificate, templateSelected, imgLogo });
   };
 
   const sendCertificate = async () => {
@@ -111,13 +116,13 @@ const Dashboard = () => {
             <div className="flex justify-end">
               <button
                 onClick={handleSendNow}
-                className="w-[14.375rem] rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2"
+                className="w-[14.375rem] rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mr-2"
               >
                 Enviar ahora
               </button>
               <button
                 onClick={handleSendLater}
-                className="w-[14.375rem] rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+                className="w-[14.375rem] rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4"
               >
                 Enviar más tarde
               </button>

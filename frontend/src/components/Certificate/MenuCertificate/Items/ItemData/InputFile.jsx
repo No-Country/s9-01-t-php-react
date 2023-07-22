@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import moreIcon from "../../../../../assets/icons/plus_circle.svg";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import { postLogos } from "../../../../../features/certificateSlice";
 import { useDispatch } from "react-redux";
+import { getAllLogos } from "../../../../../features/logosSlice";
 
 export const InputFile = ({ name }) => {
   const [file, setFile] = useState();
@@ -11,11 +13,12 @@ export const InputFile = ({ name }) => {
     setFile(e.target.files[0]);
     const image = e.target.files[0];
     dispatch(postLogos({ image }));
+    dispatch(getAllLogos());
   };
 
   return (
-    <label className="w-max">
-      <img src={moreIcon} alt="more" />
+    <label className="w-max cursor-pointer">
+      <AiOutlinePlusCircle size={30} />
       <input className=" hidden " type="file" name={name} onChange={handleChange} />
     </label>
   );
