@@ -19,7 +19,7 @@ const Certificate_14 = ({
           className=" object-contain w-full"
         />
         <div className="flex flex-col justify-between absolute h-full w-full top-0 left-0 p-[7%] sm:p-[6.5%] md:p-[5%]">
-          <div className=" flex justify-between w-full items-center mb-1 h-[15%]">
+          <div className=" flex justify-between w-full items-center mb-1 h-[15%] max-h-[70px]">
             <div className="w-1/4 h-full ">
               {imgLogo && (
                 <img
