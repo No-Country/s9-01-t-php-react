@@ -4,24 +4,23 @@ import { Link } from "react-router-dom";
 
 const Topbar = () => {
   return (
-    <nav className="h-[80px] w-full bg-[#D9D9D9] flex justify-between items-end pr-[80px] pl-[42px]">
+    <nav className="h-[80px] w-full flex justify-between items-center pl-[57px] pr-[72px] text-primary shadow-buttonshadow">
       <Link to="/">
-        <div className="w-[143px] h-10 bg-[#E6E6E6] mb-[22px]"></div>
+        <p className="font-normal text-4xl leading-6">CertifyMe</p>
       </Link>
-      <ul className="flex-1 h-full flex justify-end items-end gap-9 pr-[57px] pb-[13px]">
-        <Link to="/home">
-          <li className="font-medium text-xl left-6 cursor-pointer">Inicio</li>
-        </Link>
-        <li className="font-medium text-xl left-6 cursor-pointer">Plantillas</li>
-        <li className="font-medium text-xl left-6 cursor-pointer">Historial</li>
-      </ul>
-      <div className="flex pb-2">
-        <div className="w-10 h-10 flex justify-center items-center cursor-pointer">
-          <FiBell className="w-[30px] h-[34px]" />
-        </div>
-
+      <div className="h-full flex-1 flex items-center justify-end pr-[80px]">
+        <ul className="flex gap-10 h-6">
+          <Link to="/home">
+            <li className="font-semibold text-sm leading-6">Inicio</li>
+          </Link>
+          <li className="font-semibold text-sm leading-6">Plantillas</li>
+          <li className="font-semibold text-sm leading-6">Historial</li>
+        </ul>
+      </div>
+      <div className="flex items-center justify-center gap-4 text-secondary">
+        <FiBell className="w-[30px] h-[34px]" />
         <Link to="/account">
-          <div className="w-10 h-10 flex justify-center items-center cursor-pointer">
+          <div className="w-[37px] h-[37px] rounded-full shadow-buttonshadow flex justify-center items-center">
             <BiSolidUser className="w-[30px] h-[34px]" />
           </div>
         </Link>
