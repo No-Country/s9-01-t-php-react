@@ -8,4 +8,7 @@
   body {
     @apply font-['Lato'] bg-[#FFFEFA];
   }
+  img {
+    @apply inline-block;
+  }
 }

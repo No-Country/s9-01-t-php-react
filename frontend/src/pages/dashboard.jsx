@@ -1,36 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSendAllCertificate, postCertificate } from "../features/certificateSlice";
-import Certificate_01 from "../components/Certificate/Certificate_01";
-import Certificate_02 from "../components/Certificate/Certificate_02";
-import Certificate_07 from "../components/Certificate/Certificate_07";
-import Certificate_14 from "../components/Certificate/Certificate_14";
-import MenuCertificate from "../components/Certificate/MenuCertificate/MenuCertificate";
 import { getAllTemplates } from "../features/templateSlice";
 import { getAllLogos } from "../features/logosSlice";
-
-const models = [
-  {
-    id: "64b8588095cb1dde42069a7d",
-    name: "template1",
-    component: certificate => <Certificate_01 {...certificate} />
-  },
-  {
-    id: "64b858a195cb1dde42069a7f",
-    name: "template2",
-    component: certificate => <Certificate_02 {...certificate} />
-  },
-  {
-    id: "64b8597e95cb1dde42069a87",
-    name: "template07",
-    component: certificate => <Certificate_07 {...certificate} />
-  },
-  {
-    id: "64b85a5695cb1dde42069a95",
-    name: "template14",
-    component: certificate => <Certificate_14 {...certificate} />
-  }
-];
+import MenuCertificate from "../components/Certificate/MenuCertificate/MenuCertificate";
+import SelectorComponent from "../components/SelectorComponent/SelectorComponent";
 
 const Dashboard = () => {
   const certificate = useSelector(state => state.certificate);
@@ -64,14 +38,7 @@ const Dashboard = () => {
     closeModal();
   };
 
-  const componentSelected = () => {
-    const imgLogo = logoSelected.urlImg;
-    const component = models.find(model => model.id === templateSelected._id);
-    if (component) {
-      return component.component({ ...certificate, templateSelected, imgLogo });
-    }
-    return models[0].component({ ...certificate, templateSelected, imgLogo });
-  };
+  const imgLogo = logoSelected.urlImg;
 
   const sendCertificate = async () => {
     setLoading(true);
@@ -101,7 +68,14 @@ const Dashboard = () => {
       <div className="w-full flex-col-reverse lg:flex-row  flex h-full my-14 justify-center gap-8 ">
         <MenuCertificate />
         <div className="flex flex-col ">
-          <div className="flex shadow-xl">{componentSelected()}</div>
+          <div className="flex shadow-xl">
+            {/* {componentSelected()} */}
+            <SelectorComponent
+              certificate={certificate}
+              templateSelected={templateSelected}
+              imgLogo={imgLogo}
+            />
+          </div>
           <div className="flex justify-end ">
             <button
               className="w-[20.5rem] mt-4 p-2 font-bold bg-blue-500 text-white rounded-lg hover:bg-blue-400 hover:text-black"
