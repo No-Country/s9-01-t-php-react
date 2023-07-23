@@ -8,7 +8,7 @@ const LandingSection3 = () => {
   return (
     <section className="w-full pt-[152px] bg-[#FBD59B]">
       <article className="w-full flex justify-between px-[112px]">
-        <div className="w-[600px] h-[193px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow">
+        <div className="w-[600px] h-[193px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow z-10">
           <p className="font-extrabold text-2xl leading-[29px]">
             ¿Tenes poco tiempo para entregar un reconocimiento?
           </p>

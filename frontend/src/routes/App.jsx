@@ -17,6 +17,7 @@ import Support from "../pages/support";
 import LayoutLanding from "../components/Layout/LayoutLanding";
 import LayoutHome from "../components/Layout/LayoutHome";
 import { MyCertificate } from "../pages/myCertificate";
+import Plans from "../pages/plans";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="about" element={<About />} />
+            <Route path="plans" element={<Plans />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="faq" element={<Faq />} />
