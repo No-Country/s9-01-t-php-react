@@ -10,21 +10,25 @@ const ItemData = () => {
   const logos = useSelector(state => state.logos.list);
   const dispatch = useDispatch();
   const [characterControl, setCharacterControl] = useState({
-    certificateContent: { actual: 0, total: 90 },
-    career_type: { actual: 0, total: 30 }
+    certificateContent: { actual: 0, total: 120 },
+    career_type: { actual: 0, total: 50 }
   });
 
   const handleChange = e => {
     const { name, value } = e.target;
-    let totalCharacter = value.length;
+    let totalCharacter = value?.length;
 
     setCharacterControl(prevCharacterControl => ({
       ...prevCharacterControl,
       [name]: { ...prevCharacterControl[name], actual: totalCharacter }
     }));
 
-    if (name === "certificateContent" && totalCharacter >= 90) return;
-    if (name === "career_type" && totalCharacter >= 30) return;
+    if (
+      name === "certificateContent" &&
+      totalCharacter >= characterControl.certificateContent.total
+    )
+      return;
+    if (name === "career_type" && totalCharacter >= characterControl.career_type.total) return;
 
     dispatch(setData({ name, value }));
   };
@@ -71,8 +75,8 @@ const ItemData = () => {
         <div className="flex w-full justify-start items-center overflow-x-auto gap-3">
           <InputFile name="logos" />
           <div className="flex w-full h-full gap-2">
-            {logos.length &&
-              logos.map(logo => {
+            {logos?.length &&
+              logos?.map(logo => {
                 return (
                   <div
                     key={logo._id}
