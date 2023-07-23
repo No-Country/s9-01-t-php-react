@@ -1,11 +1,14 @@
+import landingImg1 from "../../../public/img/landing/landing-img1.svg";
+
 const LandingSection2 = () => {
   return (
-    <section className="w-full mt-[122px] mb-[175px]">
+    <section className="w-full mt-[122px] mb-[175px] relative">
+      <img className="absolute top-[170px] z-0 left-0" src={landingImg1} alt="landingImg1" />
       <h2 className="font-bold text-[64px] leading-[77px] text-primary text-start pl-[79px]">
         CertifyMe
       </h2>
       <div className="w-full flex justify-center mt-10">
-        <div className="w-[994px] h-[319px] flex">
+        <div className="w-[994px] h-[319px] flex z-10">
           <div className="flex-1">
             <div className="text-grey w-[439px] h-full flex flex-col justify-between items-center">
               <div className="h-[247px] w-full flex flex-col justify-center items-center px-10">

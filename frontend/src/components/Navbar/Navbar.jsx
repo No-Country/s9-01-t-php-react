@@ -23,7 +23,9 @@ const Navbar = () => {
           <Link to="/about">
             <li className="font-semibold text-sm leading-6">Sobre nosotros</li>
           </Link>
-          <li className="font-semibold text-sm leading-6">Planes</li>
+          <Link to="/plans">
+            <li className="font-semibold text-sm leading-6">Planes</li>
+          </Link>
           <li className="font-semibold text-sm leading-6">Plantillas</li>
           <Link to="/faq">
             <li className="font-semibold text-sm leading-6">Preguntas Frecuentes</li>
