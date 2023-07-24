@@ -13,7 +13,9 @@ const Topbar = () => {
           <Link to="/home">
             <li className="font-semibold text-sm leading-6">Inicio</li>
           </Link>
-          <li className="font-semibold text-sm leading-6">Plantillas</li>
+          <Link to="/templates">
+            <li className="font-semibold text-sm leading-6">Plantillas</li>
+          </Link>
           <li className="font-semibold text-sm leading-6">Historial</li>
         </ul>
       </div>
