@@ -2,24 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getRequest, postRequest, postRequestFile } from "../services/httpRequest";
 
 const initialState = {
+  emission_date: "",
+  certificateTitle: "",
   institution: "",
   id_template: "",
   career_type: "",
   certificateContent: "",
-  authority1: "",
-  authority2: "",
-  authority1_firm: "",
-  authority2_firm: "",
-  logo: {},
+  authorities: "",
+  logos: [],
   studentSelected: {},
-  students: [
-    {
-      DNI: 0,
-      name: "",
-      lastname: "",
-      email: ""
-    }
-  ]
+  students: []
 };
 
 const certificate = createSlice({
@@ -31,7 +23,13 @@ const certificate = createSlice({
       state.studentSelected = action.payload ? action.payload[0] : {};
     },
     setStudentSelected: (state, action) => {
+      const student = state.students.find(student => student.DNI === action.payload.DNI);
+      if (!student) return;
       state.studentSelected = action.payload;
+    },
+    setRemoveStudent: (state, action) => {
+      state.students = state.students.filter(student => student.DNI !== action.payload);
+      state.studentSelected = state.students[0];
     },
     setData: (state, action) => {
       const { name, value } = action.payload;
@@ -39,20 +37,22 @@ const certificate = createSlice({
     },
     setLogo: (state, action) => {
       const { data } = action.payload;
-      state.logo = data;
+      state.logos = data;
     }
   }
 });
 
-export const { setStudents, setStudentSelected, setData, setLogo } = certificate.actions;
+export const { setStudents, setStudentSelected, setData, setLogo, setRemoveStudent } =
+  certificate.actions;
 
 export default certificate.reducer;
 
 export const getSendAllCertificate = idCertificates => async dispatch => {
   try {
     const certificateSended = await getRequest(`/api/v1/certificates/sendall/${idCertificates}`);
-    if (certificateSended) {
+    if (certificateSended.status === "success") {
       console.log("ENVIADOS: ", certificateSended);
+      return "Certificados enviados con exito!!!";
     }
   } catch (error) {
     console.log(error);

@@ -6,7 +6,6 @@ export const useInputExcel = () => {
 
   const handlerExcel = async e => {
     const file = e.target.files[0];
-
     const is_XLSX = file.name.includes("xlsx");
     const is_XLS = file.name.includes("xls");
     if (is_XLSX || is_XLS) {
@@ -17,6 +16,7 @@ export const useInputExcel = () => {
       const result = utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
 
       setDataExcel(result);
+      e.target.value = "";
     } else {
       e.target.value = "";
     }

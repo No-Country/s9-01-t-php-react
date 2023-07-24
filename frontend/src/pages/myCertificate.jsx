@@ -91,7 +91,7 @@ export const MyCertificate = () => {
           authorities: certificate.certificate_data.authorities,
           authority1: certificate.certificate_data.authorities[0]?.autorityName,
           authority2: certificate.certificate_data.authorities[1]?.autorityName,
-          imgLogo: certificate.logo.urlImg,
+          imgLogo: certificate.certificate_data.logos[0].urlImg,
           templateSelected: certificate.template,
           studentSelected: certificate?.student
         });

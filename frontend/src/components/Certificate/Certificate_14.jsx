@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const Certificate_14 = ({
   certificateTitle,
-  career_type,
+  emission_date,
   certificateContent,
   authorities,
   studentSelected,
@@ -20,7 +20,7 @@ const Certificate_14 = ({
         />
         <div className="flex flex-col justify-between absolute h-full w-full top-0 left-0 p-[7%] sm:p-[6.5%] md:p-[5%]">
           <div className=" flex justify-between w-full items-center mb-1 h-[15%] max-h-[70px]">
-            <div className="w-1/4 h-full ">
+            <div className="flex w-1/4 h-full justify-start">
               {imgLogo && (
                 <img
                   src={imgLogo}
@@ -29,7 +29,11 @@ const Certificate_14 = ({
                 />
               )}
             </div>
-            <div className="flex justify-center items-center rounded font-bold bg-[#0DFCA7] px-3 py-0.5 text-black">
+            <div
+              className={`${
+                certificateTitle ? "bg-[#0DFCA7]" : ""
+              } flex justify-center items-center rounded font-bold px-3 py-0.5 text-black`}
+            >
               {certificateTitle}
             </div>
           </div>
@@ -39,22 +43,32 @@ const Certificate_14 = ({
               {studentSelected?.name} {studentSelected?.lastname}
             </p>
             <p className="mb-[.4em]">{certificateContent}</p>
-            <span className=" font-medium">Buenos Aires, Febrero 2023</span>
+            <span className=" font-medium">{emission_date}</span>
           </div>
           <div className=" flex justify-between h-1/4">
             {authorities && authorities[0] && (
-              <div className=" flex flex-col max-w-[33%] md:max-w-[30%] ">
-                <img src={authorities[0].urlImg} className=" h-1/2  object-contain" alt="firm" />
-                <hr />
-                <p className=" text-[.9em]">{authorities[0].autorityName}</p>
+              <div className=" flex flex-col max-w-[33%] md:max-w-[30%] justify-end">
+                {authorities[0].urlImg && (
+                  <img
+                    src={authorities[0].urlImg}
+                    className=" h-1/2  object-contain border-b-2"
+                    alt="firm"
+                  />
+                )}
+                <p className=" text-[.9em]">{authorities[0].authorityName}</p>
                 <span className="text-[.6em] text-[#0CFCA7]">{authorities[0].position}</span>
               </div>
             )}
             {authorities && authorities[1] && (
-              <div className=" flex flex-col max-w-[33%] md:max-w-[30%] ">
-                <img src={authorities[1].urlImg} className=" h-1/2 object-contain" alt="firm" />
-                <hr />
-                <p className=" text-[.9em]">{authorities[1].autorityName}</p>
+              <div className=" flex flex-col max-w-[33%] md:max-w-[30%] justify-end">
+                {authorities[1].urlImg && (
+                  <img
+                    src={authorities[1].urlImg}
+                    className=" h-1/2 object-contain border-b-2"
+                    alt="firm"
+                  />
+                )}
+                <p className=" text-[.9em]">{authorities[1].authorityName}</p>
                 <span className="text-[.6em] text-[#0CFCA7]">{authorities[1].position}</span>
               </div>
             )}

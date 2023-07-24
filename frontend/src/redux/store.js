@@ -4,6 +4,7 @@ import langReducer from "../features/langSlice";
 import certificateReducer from "../features/certificateSlice";
 import templateReducer from "../features/templateSlice";
 import logoReducer from "../features/logosSlice";
+import authoritiesReducer from "../features/authoritiesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     lang: langReducer,
     certificate: certificateReducer,
     templates: templateReducer,
-    logos: logoReducer
+    logos: logoReducer,
+    authorities: authoritiesReducer
   }
 });

@@ -5,21 +5,29 @@ import { getAllTemplates } from "../features/templateSlice";
 import { getAllLogos } from "../features/logosSlice";
 import MenuCertificate from "../components/Certificate/MenuCertificate/MenuCertificate";
 import SelectorComponent from "../components/SelectorComponent/SelectorComponent";
+import { getAllAuthorities } from "../features/authoritiesSlice";
 
 const Dashboard = () => {
   const certificate = useSelector(state => state.certificate);
   const templateSelected = useSelector(state => state.templates.templateSelected);
   const logoSelected = useSelector(state => state.logos.logoSelected);
+  const authoritiesSelected = useSelector(state => state.authorities.authoritiesSelected);
 
   const dispatch = useDispatch();
   const [certifySalved, setCertifySalved] = useState(false);
+  const [certificateData, setCertificateData] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getAllTemplates());
     dispatch(getAllLogos());
+    dispatch(getAllAuthorities());
   }, []);
+
+  useEffect(() => {
+    setCertificateData({ ...certificate, authorities: authoritiesSelected });
+  }, [authoritiesSelected, certificate]);
 
   const openModal = () => {
     sendCertificate();
@@ -30,7 +38,7 @@ const Dashboard = () => {
   };
 
   const handleSendNow = () => {
-    dispatch(getSendAllCertificate(certifySalved.data._id));
+    dispatch(getSendAllCertificate(certifySalved._id));
     closeModal();
   };
 
@@ -43,18 +51,19 @@ const Dashboard = () => {
   const sendCertificate = async () => {
     setLoading(true);
     const saveCertificate = {
+      emission_date: certificate.emission_date,
       institution: certificate.institution,
       id_template: templateSelected._id,
       career_type: certificate.career_type,
       certificateContent: certificate.certificateContent,
-      authority1: certificate.authority1,
-      authority2: certificate.authority2,
-      id_logo: logoSelected._id,
+      certificateTitle: certificate.certificateTitle,
+      authorities: authoritiesSelected.map(auth => auth._id),
+      logos: [logoSelected._id],
       students: certificate.students
     };
     try {
       const certicateSalved = await dispatch(postCertificate(saveCertificate));
-      setCertifySalved(certicateSalved);
+      setCertifySalved(certicateSalved.data.certificateData);
       setShowModal(true);
     } catch (error) {
       console.log(error);
@@ -69,16 +78,15 @@ const Dashboard = () => {
         <MenuCertificate />
         <div className="flex flex-col ">
           <div className="flex shadow-xl">
-            {/* {componentSelected()} */}
             <SelectorComponent
-              certificate={certificate}
+              certificate={certificateData}
               templateSelected={templateSelected}
               imgLogo={imgLogo}
             />
           </div>
           <div className="flex justify-end ">
             <button
-              className="w-[20.5rem] mt-4 p-2 font-bold bg-blue-500 text-white rounded-lg hover:bg-blue-400 hover:text-black"
+              className="w-[20.5rem] mt-4 p-2 font-bold bg-secondary shadow-lg text-white rounded-lg hover:bg-blue-400 hover:text-black"
               onClick={openModal}
             >
               {loading ? (
