@@ -16,7 +16,7 @@ const ItemTemplates = () => {
       <div className="flex flex-wrap justify-center w-full h-full overflow-y-auto">
         {templatesList?.map(template => {
           return (
-            <div key={template._id} className="m-2 cursor-pointer">
+            <div key={template._id} className="m-2 cursor-pointer  max-w-[266px]">
               <img
                 src={template.thumbnail.urlImg}
                 alt={template.name}

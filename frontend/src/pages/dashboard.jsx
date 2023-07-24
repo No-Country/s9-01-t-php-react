@@ -84,11 +84,10 @@ const Dashboard = () => {
               imgLogo={imgLogo}
             />
           </div>
-          <div className="flex justify-end ">
+          <div className="flex justify-center lg:justify-end ">
             <button
               className="w-[20.5rem] mt-4 p-2 font-bold bg-secondary shadow-lg text-white rounded-lg hover:bg-blue-400 hover:text-black"
-              onClick={openModal}
-            >
+              onClick={openModal}>
               {loading ? (
                 <div className="flex items-center justify-center">
                   <div className="border-2 border-white border-t-ligthblue rounded-full w-5 h-5 animate-spin"></div>
@@ -108,14 +107,12 @@ const Dashboard = () => {
             <div className="flex justify-end">
               <button
                 onClick={handleSendNow}
-                className="w-[14.375rem] rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mr-2"
-              >
+                className="w-[14.375rem] rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mr-2">
                 Enviar ahora
               </button>
               <button
                 onClick={handleSendLater}
-                className="w-[14.375rem] rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4"
-              >
+                className="w-[14.375rem] rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4">
                 Enviar más tarde
               </button>
             </div>
