@@ -18,6 +18,7 @@ import LayoutLanding from "../components/Layout/LayoutLanding";
 import LayoutHome from "../components/Layout/LayoutHome";
 import { MyCertificate } from "../pages/myCertificate";
 import Plans from "../pages/plans";
+import Templates from "../pages/templates";
 
 function App() {
   return (
@@ -29,9 +30,10 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
             <Route path="about" element={<About />} />
             <Route path="plans" element={<Plans />} />
+            <Route path="templates" element={<Templates />} />
+            <Route path="faq" element={<Faq />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="faq" element={<Faq />} />
             <Route path="my-certificate/:id" element={<MyCertificate />} />
           </Route>
           <Route element={<UserRouteProtected />}>
