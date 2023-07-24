@@ -33,7 +33,7 @@ const MenuCertificate = () => {
     }
   };
   return (
-    <div className="w-[22.3125rem] max-h-[100vh] h-full max-w-[22.3125rem] border-[3px] rounded-3xl border-secondary bg-gray-100">
+    <div className=" w-[80%] p-2 max-h-[100vh] h-full lg:max-w-[22.3125rem] border-[3px] mx-auto lg:mx-0 rounded-3xl border-secondary bg-gray-100">
       <header className=" bg-white rounded-t-3xl">
         <ul className="flex w-full justify-between text-xs font-semibold">
           <li
@@ -42,8 +42,7 @@ const MenuCertificate = () => {
               isSelected.template
                 ? "border-[2px] border-b-0 rounded-t-3xl  border-secondary bg-gray-100"
                 : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
-          >
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
             <RiImageEditFill size={30} color="#797979" />
             <span className=" text-primary">Plantilla</span>
           </li>
@@ -53,8 +52,7 @@ const MenuCertificate = () => {
               isSelected.data
                 ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
                 : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
-          >
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
             <RiArticleLine size={30} color="#797979" />
             <span className=" text-primary">Datos</span>
           </li>
@@ -64,8 +62,7 @@ const MenuCertificate = () => {
               isSelected.students
                 ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
                 : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
-          >
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
             <PiStudentFill size={30} color="#797979" />
             <span className=" text-primary">Alumnos</span>
           </li>
