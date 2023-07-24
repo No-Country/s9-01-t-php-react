@@ -27,7 +27,7 @@ export const getAllLogos = () => async dispatch => {
   try {
     const allLogos = await getRequest(`/api/v1/logos`);
     if (allLogos.status === "success") {
-      dispatch(setListLogo(allLogos?.data.logos));
+      dispatch(setListLogo(allLogos?.data));
     }
   } catch (error) {
     console.log(error);

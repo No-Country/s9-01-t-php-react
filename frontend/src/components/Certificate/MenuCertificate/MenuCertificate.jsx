@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BsDatabaseAdd } from "react-icons/bs";
 import { RiArticleLine, RiImageEditFill } from "react-icons/ri";
+import { PiStudentFill } from "react-icons/pi";
 import ItemTemplates from "./Items/ItemTemplate/ItemTemplates";
 import ItemData from "./Items/ItemData/ItemData";
 import ItemStudents from "./Items/ItemStudents/ItemStudents";
@@ -33,35 +33,41 @@ const MenuCertificate = () => {
     }
   };
   return (
-    <div className="w-[22.3125rem] max-h-[100vh] h-full max-w-[22.3125rem] border rounded-3xl bg-orange-200">
-      <header className=" bg-orange-400 rounded-t-3xl">
+    <div className="w-[22.3125rem] max-h-[100vh] h-full max-w-[22.3125rem] border-[3px] rounded-3xl border-secondary bg-gray-100">
+      <header className=" bg-white rounded-t-3xl">
         <ul className="flex w-full justify-between text-xs font-semibold">
           <li
             onClick={() => handleSelectItem("template")}
             className={`${
-              isSelected.template ? "border border-b-0 rounded-t-3xl bg-orange-200" : null
+              isSelected.template
+                ? "border-[2px] border-b-0 rounded-t-3xl  border-secondary bg-gray-100"
+                : null
             } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
           >
-            <RiImageEditFill size={30} />
-            <span>Plantilla</span>
+            <RiImageEditFill size={30} color="#797979" />
+            <span className=" text-primary">Plantilla</span>
           </li>
           <li
             onClick={() => handleSelectItem("data")}
             className={`${
-              isSelected.data ? "border border-b-0 rounded-t-3xl bg-orange-200" : null
+              isSelected.data
+                ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
+                : null
             } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
           >
-            <RiArticleLine size={30} />
-            <span>Datos</span>
+            <RiArticleLine size={30} color="#797979" />
+            <span className=" text-primary">Datos</span>
           </li>
           <li
             onClick={() => handleSelectItem("students")}
             className={`${
-              isSelected.students ? "border border-b-0 rounded-t-3xl bg-orange-200" : null
+              isSelected.students
+                ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
+                : null
             } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
           >
-            <BsDatabaseAdd size={30} />
-            <span>Alumnos</span>
+            <PiStudentFill size={30} color="#797979" />
+            <span className=" text-primary">Alumnos</span>
           </li>
         </ul>
       </header>
