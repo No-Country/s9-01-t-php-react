@@ -3,12 +3,16 @@ import landingImg1 from "../../../public/img/landing/landing-img1.svg";
 const LandingSection2 = () => {
   return (
     <section className="w-full mt-[122px] mb-[175px] relative">
-      <img className="absolute top-[170px] z-0 left-0" src={landingImg1} alt="landingImg1" />
+      <img
+        className="absolute top-[170px] z-0 left-0 w-auto md:h-auto h-[400px]"
+        src={landingImg1}
+        alt="landingImg1"
+      />
       <h2 className="font-bold text-[64px] leading-[77px] text-primary text-start pl-[79px]">
         CertifyMe
       </h2>
       <div className="w-full flex justify-center mt-10">
-        <div className="w-[994px] h-[319px] flex z-10">
+        <div className="w-[994px] h-[319px] flex flex-col md:flex-row z-10">
           <div className="flex-1">
             <div className="text-grey w-[439px] h-full flex flex-col justify-between items-center">
               <div className="h-[247px] w-full flex flex-col justify-center items-center px-10">
@@ -28,7 +32,7 @@ const LandingSection2 = () => {
               </button>
             </div>
           </div>
-          <div className="w-[515px] bg-[#E6E6E6]"></div>
+          <div className="md:w-[515px] bg-[#E6E6E6]"></div>
         </div>
       </div>
     </section>

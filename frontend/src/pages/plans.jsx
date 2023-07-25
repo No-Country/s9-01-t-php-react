@@ -2,7 +2,7 @@ const Plans = () => {
   return (
     <main className="w-full">
       <section className="w-full my-[74px]">
-        <article className="flex justify-center gap-[38px]">
+        <article className="flex justify-center gap-[38px] flex-wrap">
           <div className="w-[320px] h-[462px] border-2 border-[#86E3CE] rounded-[10px] pt-6 pb-[33px] flex flex-col justify-between items-center shadow-buttonshadow">
             <h4 className="font-extrabold text-xl leading-6 text-[#86E3CE]">Plan de prueba</h4>
             <p className="font-extrabold text-base text-grey my-[21px]">Gratis</p>
@@ -54,7 +54,7 @@ const Plans = () => {
               <p className="font-normal text-xs leading-[15px]">Almacenaje en la nube</p>
             </div>
             <button className="w-full h-12 bg-[#95B8F6] shadow-buttonshadow font-bold text-[17px] leading-6 text-white">
-              Suscribirse
+              Comprar
             </button>
           </div>
           <div className="w-[320px] h-[462px] border-2 border-[#FA7865] rounded-[10px] pt-6 pb-[33px] flex flex-col justify-between items-center shadow-buttonshadow">
@@ -87,7 +87,7 @@ const Plans = () => {
               </p>
             </div>
             <button className="w-full h-12 bg-[#FA7865] shadow-buttonshadow font-bold text-[17px] leading-6 text-white">
-              Suscribirse
+              Comprar
             </button>
           </div>
         </article>
