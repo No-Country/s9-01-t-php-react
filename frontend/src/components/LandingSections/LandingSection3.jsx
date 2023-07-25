@@ -8,7 +8,7 @@ const LandingSection3 = () => {
   return (
     <section className="w-full pt-[152px] bg-[#FBD59B] pb-[155px]">
       <article className="w-full flex justify-between flex-col items-center lg:flex-row md:px-[112px]">
-        <div className="w-full md:w-[600px] md:h-[193px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow z-10">
+        <div className="w-full md:w-[600px] xl:h-[193px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow z-10">
           <p className="font-extrabold text-lg md:text-2xl leading-[29px]">
             ¿Tenes poco tiempo para entregar un reconocimiento?
           </p>
@@ -21,7 +21,7 @@ const LandingSection3 = () => {
       </article>
       <article className="w-full flex flex-col-reverse lg:flex-row md:justify-end items-center md:px-[112px] md:gap-[98px] mt-[146px]">
         <img src={landingSection3Img2} alt="landingSection3Img2" />
-        <div className="relative w-full md:w-[600px] md:h-[135px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow">
+        <div className="relative w-full md:w-[600px] xl:h-[135px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow">
           <img
             className="absolute right-0 md:-right-12 md:-top-[145px] -top-[90px] w-auto md:h-auto h-28"
             src={landingSection3Img4}
@@ -35,8 +35,8 @@ const LandingSection3 = () => {
           </p>
         </div>
       </article>
-      <article className="w-full flex flex-col md:flex-row justify-center md:justify-start items-center mt-[102px] md:px-[112px] md:gap-[83px]">
-        <div className="relative w-full md:w-[600px] md:h-[135px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow">
+      <article className="w-full flex flex-col lg:flex-row justify-center md:justify-start items-center mt-[102px] md:px-[112px] md:gap-[83px]">
+        <div className="relative w-full md:w-[600px] xl:h-[135px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow">
           <img
             className="absolute left-0 md:-left-[40px] -top-[80px] md:-top-[135px] w-auto md:h-auto h-20"
             src={landingSection3Img5}

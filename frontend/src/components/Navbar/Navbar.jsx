@@ -23,17 +23,17 @@ const Navbar = () => {
     <nav className="h-[80px] w-full flex justify-between items-center px-5 lg:px-[57px] text-primary shadow-buttonshadow relative">
       <button className="flex-col items-center justify-center flex lg:hidden" onClick={handleClick}>
         <span
-          className={`bg-black  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
+          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
             isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
           }`}
         ></span>
         <span
-          className={`bg-black  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm my-0.5 ${
+          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm my-0.5 ${
             isOpen ? "opacity-0" : "opacity-100"
           }`}
         ></span>
         <span
-          className={`bg-black  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
+          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
             isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
           }`}
         ></span>
@@ -75,31 +75,31 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <section className="absolute w-[75vw] py-5 bg-primary left-0 top-[85px] pl-5 z-30">
+        <section className="absolute w-[75vw] py-5 bg-primary left-0 top-[85px] pl-5 z-30 rounded-[10px]">
           <Link className="" to="/">
             <p onClick={handleClick} className="font-bold text-3xl leading-6 mb-8 text-white">
               CertifyMe
             </p>
           </Link>
           <div className="flex justify-start items-start ">
-            <ul className="flex flex-col gap-5 text-white">
+            <ul className="flex flex-col gap-2 text-white">
               <Link to="/about">
-                <li onClick={handleClick} className="font-semibold text-xl leading-8">
+                <li onClick={handleClick} className="font-medium text-sm leading-6">
                   Sobre nosotros
                 </li>
               </Link>
               <Link to="/plans">
-                <li onClick={handleClick} className="font-semibold text-xl leading-8">
+                <li onClick={handleClick} className="font-medium text-sm leading-6">
                   Planes
                 </li>
               </Link>
               <Link to="/templates">
-                <li onClick={handleClick} className="font-semibold text-xl leading-8">
+                <li onClick={handleClick} className="font-medium text-sm leading-6">
                   Plantillas
                 </li>
               </Link>
               <Link to="/faq">
-                <li onClick={handleClick} className="font-semibold text-xl leading-8">
+                <li onClick={handleClick} className="font-medium text-sm leading-6">
                   Preguntas Frecuentes
                 </li>
               </Link>

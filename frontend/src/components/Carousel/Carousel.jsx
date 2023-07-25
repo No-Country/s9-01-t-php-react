@@ -28,26 +28,43 @@ const Carousel = () => {
     prevArrow: <PrevButton />,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true
+        }
+      },
+      {
+        breakpoint: 620,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
     <div className="w-full relative">
       <Slider {...settings}>
         <div>
-          <img src={certificadodemo} alt="" />
+          <img className="px-2 w-full h-auto" src={certificadodemo} alt="" />
         </div>
         <div>
-          <img src={certificadodemo} alt="" />
+          <img className="px-2 w-full h-auto" src={certificadodemo} alt="" />
         </div>
         <div>
-          <img src={certificadodemo} alt="" />
+          <img className="px-2 w-full h-auto" src={certificadodemo} alt="" />
         </div>
         <div>
-          <img src={certificadodemo} alt="" />
+          <img className="px-2 w-full h-auto" src={certificadodemo} alt="" />
         </div>
         <div>
-          <img src={certificadodemo} alt="" />
+          <img className="px-2 w-full h-auto" src={certificadodemo} alt="" />
         </div>
       </Slider>
     </div>
