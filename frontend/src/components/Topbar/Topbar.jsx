@@ -57,18 +57,13 @@ const Topbar = () => {
           </Link>
           <div className="flex justify-start items-start ">
             <ul className="flex flex-col gap-5 text-white">
-              <Link to="/about">
-                <li className="font-semibold text-xl leading-8">Sobre nosotros</li>
+              <Link to="/home">
+                <li className="font-semibold text-xl leading-8">Inicio</li>
               </Link>
-              <Link to="/plans">
-                <li className="font-semibold text-xl leading-8">Planes</li>
-              </Link>
-              <Link to="/templates">
+              <Link to="/home">
                 <li className="font-semibold text-xl leading-8">Plantillas</li>
               </Link>
-              <Link to="/faq">
-                <li className="font-semibold text-xl leading-8">Preguntas Frecuentes</li>
-              </Link>
+              <li className="font-semibold text-xl leading-8">Historial</li>
             </ul>
           </div>
         </section>

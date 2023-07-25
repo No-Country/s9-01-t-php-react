@@ -2,37 +2,37 @@ import landingImg1 from "../../../public/img/landing/landing-img1.svg";
 
 const LandingSection2 = () => {
   return (
-    <section className="w-full mt-[122px] mb-[175px] relative">
+    <section className="w-full mt-5 md:mt-[122px] mb-5 md:mb-[175px] relative">
       <img
         className="absolute top-[170px] z-0 left-0 w-auto md:h-auto h-[400px]"
         src={landingImg1}
         alt="landingImg1"
       />
-      <h2 className="font-bold text-[64px] leading-[77px] text-primary text-start pl-[79px]">
+      <h2 className="font-bold text-4xl md:text-[64px] leading-[77px] text-primary text-center md:text-start md:pl-[79px]">
         CertifyMe
       </h2>
-      <div className="w-full flex justify-center mt-10">
-        <div className="w-[994px] h-[319px] flex flex-col md:flex-row z-10">
+      <div className="w-full flex justify-center mt-5 md:mt-10">
+        <div className="w-full lg:w-[994px] md:h-[319px] flex flex-col justify-center items-center md:flex-row z-10">
           <div className="flex-1">
-            <div className="text-grey w-[439px] h-full flex flex-col justify-between items-center">
-              <div className="h-[247px] w-full flex flex-col justify-center items-center px-10">
-                <p className="font-bold text-[17px] leading-6 text-center">
+            <div className="text-grey w-full md:w-[439px] h-full flex flex-col justify-between items-center">
+              <div className="md:h-[247px] w-full flex flex-col justify-center items-center md:px-10 px-2">
+                <p className="font-bold text-sm md:text-[17px] leading-6 text-center">
                   Diseña, comparte, celebra.
                 </p>
-                <p className="font-medium text-[17px] leading-6 text-center">
+                <p className="font-medium text-sm md:text-[17px] leading-6 text-center">
                   Transforma la manera en que otorgas reconocimientos con nuestra página de
                   generación de certificados en línea.
                 </p>
-                <p className="font-bold text-[17px] leading-6 text-center">
+                <p className="font-bold text-sm md:text-[17px] leading-6 text-center">
                   Ahorra tiempo y crea algo especial.
                 </p>
               </div>
-              <button className="shadow-buttonshadow w-[328px] h-[48px] bg-beige rounded-[10px] text-white font-bold text-[17px] leading-6">
+              <button className="shadow-buttonshadow w-full md:w-[328px] h-[48px] bg-beige rounded-[10px] text-white font-bold text-[17px] leading-6">
                 Inicia tu versión de prueba
               </button>
             </div>
           </div>
-          <div className="md:w-[515px] bg-[#E6E6E6]"></div>
+          <div className="w-full md:w-[515px] h-[319px] bg-[#E6E6E6]"></div>
         </div>
       </div>
     </section>
