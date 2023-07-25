@@ -42,7 +42,8 @@ const MenuCertificate = () => {
               isSelected.template
                 ? "border-[2px] border-b-0 rounded-t-3xl  border-secondary bg-gray-100"
                 : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
+          >
             <RiImageEditFill size={30} color="#797979" />
             <span className=" text-primary">Plantilla</span>
           </li>
@@ -52,7 +53,8 @@ const MenuCertificate = () => {
               isSelected.data
                 ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
                 : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
+          >
             <RiArticleLine size={30} color="#797979" />
             <span className=" text-primary">Datos</span>
           </li>
@@ -62,7 +64,8 @@ const MenuCertificate = () => {
               isSelected.students
                 ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
                 : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
+            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}
+          >
             <PiStudentFill size={30} color="#797979" />
             <span className=" text-primary">Alumnos</span>
           </li>
