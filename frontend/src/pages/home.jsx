@@ -6,7 +6,7 @@ const Home = () => {
     <main className="w-full">
       <div className="h-[127px] w-full flex justify-center md:justify-end items-center md:pr-[80px]">
         <Link to="/dashboard">
-          <button className="w-full w-[262px] h-[47px] bg-secondary text-white font-bold text-xl leading-6 rounded-[10px] shadow-buttonshadow">
+          <button className="w-[262px] h-[47px] bg-secondary text-white font-bold text-xl leading-6 rounded-[10px] shadow-buttonshadow">
             Crear un certificado
           </button>
         </Link>
