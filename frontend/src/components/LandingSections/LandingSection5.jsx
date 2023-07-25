@@ -4,11 +4,11 @@ import { BsChevronRight } from "react-icons/bs";
 const LandingSection5 = () => {
   return (
     <section className="w-full relative pb-[200px]">
-      <h2 className="text-left pl-[78px] font-bold text-4xl leading-6 text-grey mt-[94px]">
+      <h2 className="md:text-left text-center md:pl-[78px] font-bold text-4xl leading-6 text-grey mt-[94px]">
         Preguntas frecuentes
       </h2>
       <article className="w-full flex flex-col items-center">
-        <div className="flex gap-4 mt-[71px]">
+        <div className="flex flex-wrap gap-4 mt-[71px] justify-center">
           <button className="w-[200px] h-10 rounded-[10px] font-semibold text-sm leading-6 bg-primary shadow-buttonshadow text-white">
             Sobre CertifyMe
           </button>
@@ -22,12 +22,13 @@ const LandingSection5 = () => {
             Soporte
           </button>
         </div>
-        <div className="w-full mt-[53px] flex justify-center gap-8">
-          <div className="w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
-            <p className="font-normal text-xl leading-6 text-grey mb-[6px]">
+
+        <div className="w-full mt-8 flex items-center flex-col lg:flex-row justify-center gap-8">
+          <div className="w-full md:w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
+            <p className="font-normal text-base md:text-xl leading-6 text-grey mb-[6px]">
               ¿Qué es este servicio de generación de certificados online?
             </p>
-            <p className="font-normal text-sm left-6 text-grey mb-5">
+            <p className="font-normal text-xs md:text-sm left-6 text-grey mb-5">
               Conoce como se creo iCertify y al equipo detrás de la plataforma.
             </p>
             <div className="w-full flex justify-end">
@@ -37,11 +38,11 @@ const LandingSection5 = () => {
               </button>
             </div>
           </div>
-          <div className="w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
-            <p className="font-normal text-xl leading-6 text-grey mb-[6px]">
+          <div className="w-full md:w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
+            <p className="font-normal text-base md:text-xl leading-6 text-grey mb-[6px]">
               ¿Qué es este servicio de generación de certificados online?
             </p>
-            <p className="font-normal text-sm left-6 text-grey mb-5">
+            <p className="font-normal text-xs md:text-sm left-6 text-grey mb-5">
               Conoce como se creo iCertify y al equipo detrás de la plataforma.
             </p>
             <div className="w-full flex justify-end">
@@ -52,12 +53,12 @@ const LandingSection5 = () => {
             </div>
           </div>
         </div>
-        <div className="w-full mt-8 flex justify-center gap-8">
-          <div className="w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
-            <p className="font-normal text-xl leading-6 text-grey mb-[6px]">
+        <div className="w-full mt-8 flex items-center flex-col lg:flex-row justify-center gap-8">
+          <div className="w-full md:w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
+            <p className="font-normal text-base md:text-xl leading-6 text-grey mb-[6px]">
               ¿Qué es este servicio de generación de certificados online?
             </p>
-            <p className="font-normal text-sm left-6 text-grey mb-5">
+            <p className="font-normal text-xs md:text-sm left-6 text-grey mb-5">
               Conoce como se creo iCertify y al equipo detrás de la plataforma.
             </p>
             <div className="w-full flex justify-end">
@@ -67,11 +68,11 @@ const LandingSection5 = () => {
               </button>
             </div>
           </div>
-          <div className="w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
-            <p className="font-normal text-xl leading-6 text-grey mb-[6px]">
+          <div className="w-full md:w-[500px] h-[180px] rounded-[10px] border border-grey px-6 pt-5">
+            <p className="font-normal text-base md:text-xl leading-6 text-grey mb-[6px]">
               ¿Qué es este servicio de generación de certificados online?
             </p>
-            <p className="font-normal text-sm left-6 text-grey mb-5">
+            <p className="font-normal text-xs md:text-sm left-6 text-grey mb-5">
               Conoce como se creo iCertify y al equipo detrás de la plataforma.
             </p>
             <div className="w-full flex justify-end">
@@ -84,7 +85,7 @@ const LandingSection5 = () => {
         </div>
       </article>
       <img
-        className="absolute -bottom-[5px] right-[50px]"
+        className="absolute -bottom-[5px] right-0 md:right-[50px] w-auto md:h-24 lg:h-auto h-16"
         src={landingSection5Img1}
         alt="landingSection5Img1"
       />
