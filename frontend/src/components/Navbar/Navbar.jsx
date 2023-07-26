@@ -38,9 +38,6 @@ const Navbar = () => {
     login,
     register} = navbarLang;
 
-  console.log(navbarLang); 
-
-
   return (
     <nav className="h-[80px] w-full flex justify-between items-center px-5 lg:px-[57px] text-primary shadow-buttonshadow relative">
       <button className="flex-col items-center justify-center flex lg:hidden" onClick={handleClick}>
