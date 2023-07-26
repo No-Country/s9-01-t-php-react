@@ -36,7 +36,7 @@ const Templates = () => {
       <section className="w-full flex flex-col items-center my-[45px]">
         <article className="w-[1120px]">
           <h4 className="font-semibold text-2xl leading-[29px] text-primary">
-          {sections.section1}
+          {sections.education}
           </h4>
           <div className="w-full mt-6">
             <Carousel />
@@ -44,7 +44,7 @@ const Templates = () => {
         </article>
         <article className="w-[1120px] mt-[60px]">
           <h4 className="font-semibold text-2xl leading-[29px] text-primary">
-            {sections.section2}
+            {sections.professionalDevelopment}
           </h4>
           <div className="w-full mt-6">
             <Carousel />
@@ -52,14 +52,14 @@ const Templates = () => {
         </article>
         <article className="w-[1120px] mt-[60px]">
           <h4 className="font-semibold text-2xl leading-[29px] text-primary">
-          {sections.section3}
+          {sections.eventParticipation}
           </h4>
           <div className="w-full mt-6">
             <Carousel />
           </div>
         </article>
         <article className="w-[1120px] mt-[60px]">
-          <h4 className="font-semibold text-2xl leading-[29px] text-primary">{sections.section4}</h4>
+          <h4 className="font-semibold text-2xl leading-[29px] text-primary">{sections.otherActivities}</h4>
           <div className="w-full mt-6">
             <Carousel />
           </div>
