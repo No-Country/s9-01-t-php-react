@@ -31,12 +31,12 @@ const Navbar = () => {
 
   const { navbar: navbarLang } = useSelector((state) => state.lang);
   const {
-    menuItem1,
-    menuItem2,
-    menuItem3,
-    menuItem4,
-    menuItem5,
-    menuItem6} = navbarLang;
+    aboutUs,
+    plans,
+    templates,
+    faqs,
+    login,
+    register} = navbarLang;
 
   console.log(navbarLang); 
 
@@ -63,16 +63,16 @@ const Navbar = () => {
       <div className="h-full items-center hidden lg:flex">
         <ul className="flex gap-10 h-6">
           <Link to="/about">
-            <li className="font-semibold text-sm leading-6">{menuItem1}</li>
+            <li className="font-semibold text-sm leading-6">{aboutUs}</li>
           </Link>
           <Link to="/plans">
-            <li className="font-semibold text-sm leading-6">{menuItem2}</li>
+            <li className="font-semibold text-sm leading-6">{plans}</li>
           </Link>
           <Link to="/templates">
-            <li className="font-semibold text-sm leading-6">{menuItem3}</li>
+            <li className="font-semibold text-sm leading-6">{templates}</li>
           </Link>
           <Link to="/faq">
-            <li className="font-semibold text-sm leading-6">{menuItem4}</li>
+            <li className="font-semibold text-sm leading-6">{faqs}</li>
           </Link>
 
           {/* Selector para los idiomas */}
@@ -92,12 +92,12 @@ const Navbar = () => {
             onClick={handleLogin}
             className="w-[140px] md:px-0 h-8 border border-secondary rounded-[10px] font-bold text-sm leading-4 text-secondary"
           >
-            {menuItem5}
+            {login}
           </button>
           {!isAuth && (
             <Link to="/register">
               <button className="w-[140px] h-8 bg-secondary border border-secondary rounded-[10px] font-bold text-sm leading-4 shadow-buttonshadow text-white">
-                {menuItem6}
+                {register}
               </button>
             </Link>
           )}
