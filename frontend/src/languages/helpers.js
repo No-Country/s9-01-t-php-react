@@ -20,6 +20,16 @@ import {
   landingSection3_en,
   landingSection3_es
 } from "./LandingSection3_model";
+import {
+  landingSection5_br,
+  landingSection5_en,
+  landingSection5_es
+} from "./LandingSection5_model";
+import {
+  landingSection4_br,
+  landingSection4_en,
+  landingSection4_es
+} from "./LandingSection4_model";
 
 export const languageLogin = lang => {
   if (lang === "es") return login_es;
@@ -88,4 +98,18 @@ export const languagelandingSection3 = lang => {
   if (lang === "br") return landingSection3_br;
   if (lang === "en") return landingSection3_en;
   else return landingSection3_es;
+};
+
+export const languagelandingSection4 = lang => {
+  if (lang === "es") return landingSection4_es;
+  if (lang === "br") return landingSection4_br;
+  if (lang === "en") return landingSection4_en;
+  else return landingSection4_es;
+};
+
+export const languagelandingSection5 = lang => {
+  if (lang === "es") return landingSection5_es;
+  if (lang === "br") return landingSection5_br;
+  if (lang === "en") return landingSection5_en;
+  else return landingSection5_es;
 };
