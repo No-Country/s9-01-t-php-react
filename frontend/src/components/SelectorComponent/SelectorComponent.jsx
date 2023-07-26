@@ -4,6 +4,7 @@ import Certificate_02 from "../Certificate/Certificate_02";
 import Certificate_07 from "../Certificate/Certificate_07";
 import Certificate_13 from "../Certificate/Certificate_13";
 import Certificate_14 from "../Certificate/Certificate_14";
+import Certificate_15 from "../Certificate/Certificate_15";
 
 const models = [
   {
@@ -30,6 +31,11 @@ const models = [
     id: "64bc6dd63aa37605d20cc1c1",
     name: "template14",
     component: certificate => <Certificate_14 {...certificate} />
+  },
+  {
+    id: "64bc6df83aa37605d20cc1c3",
+    name: "template15",
+    component: certificate => <Certificate_15 {...certificate} />
   }
 ];
 
