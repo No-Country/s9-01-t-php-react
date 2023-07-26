@@ -4,17 +4,28 @@ import landingSection3Img3 from "../../../public/img/landing/landing-section3-im
 import landingSection3Img4 from "../../../public/img/landing/landing-section3-img4.svg";
 import landingSection3Img5 from "../../../public/img/landing/landing-section3-img5.svg";
 
+import { useSelector } from "react-redux";
+
 const LandingSection3 = () => {
+  const { landingSection3: landingSection3Lang } = useSelector((state) => state.lang);
+  const {
+    paragraph1,
+    paragraph2,
+    paragraph3,
+    paragraph4,
+    paragraph5,
+    paragraph6,
+  } = landingSection3Lang;
+
   return (
     <section className="w-full pt-[152px] bg-[#FBD59B] pb-[155px]">
       <article className="w-full flex justify-between flex-col items-center lg:flex-row md:px-[112px]">
         <div className="w-full md:w-[600px] xl:h-[193px] rounded-[10px] bg-beige text-white py-6 px-8 shadow-buttonshadow z-10">
           <p className="font-extrabold text-lg md:text-2xl leading-[29px]">
-            ¿Tenes poco tiempo para entregar un reconocimiento?
+            {paragraph1}
           </p>
           <p className="font-medium text-lg md:text-2xl leading-[29px]">
-            Nuestras plantillas de certificados ya están listas para usarlas - tan sólo tienes que
-            adaptarlas a tus propios textos.
+            {paragraph2}
           </p>
         </div>
         <img src={landingSection3Img1} alt="landingSection3Img1" />
@@ -28,10 +39,10 @@ const LandingSection3 = () => {
             alt="landingSection3Img4"
           />
           <p className="font-extrabold text-lg md:text-2xl leading-[29px] text-right">
-            Crea cientos de certificados en minutos.
+            {paragraph3}
           </p>
           <p className="font-medium text-lg md:text-2xl leading-[29px] text-right">
-            Podés subir tu archivo excel y el sistema cargar todos los datos de forma automática.
+            {paragraph4}
           </p>
         </div>
       </article>
@@ -43,10 +54,10 @@ const LandingSection3 = () => {
             alt="landingSection3Img5"
           />
           <p className="font-extrabold text-lg md:text-2xl leading-[29px] text-left">
-            Descarga tu certificado con calidad de impresión
+            {paragraph5}
           </p>
           <p className="font-medium text-lg md:text-2xl leading-[29px] text-left">
-            Exporta tu certificado como un archivo PNG, JPG o PDF de alta calidad.
+            {paragraph6}
           </p>
         </div>
         <img src={landingSection3Img3} alt="landingSection3Img3" />
