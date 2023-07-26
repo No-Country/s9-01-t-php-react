@@ -29,18 +29,15 @@ const Topbar = () => {
         <span
           className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
             isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-          }`}
-        ></span>
+          }`}></span>
         <span
           className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm my-0.5 ${
             isOpen ? "opacity-0" : "opacity-100"
-          }`}
-        ></span>
+          }`}></span>
         <span
           className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
             isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-          }`}
-        ></span>
+          }`}></span>
       </button>
       <Link className="hidden lg:block" to="/">
         <p className="font-normal text-4xl leading-6">CertifyMe</p>
@@ -57,46 +54,12 @@ const Topbar = () => {
         </ul>
       </div>
       <div className="flex items-center justify-center gap-4 text-secondary">
-        <div onClick={handleNotification} className="relative cursor-pointer">
+        <div onClick={handleNotification} className="cursor-pointer">
           <FiBell className="w-[30px] h-[34px]" />
-          {notification && (
-            <div className="w-[438px] h-[239px] bg-primary text-white absolute top-[62px] right-0 flex flex-col rounded-[10px] rounded-tr-none z-30">
-              <ul className="font-semibold text-xl leading-[35px] pl-[27px] mt-[15px] flex flex-col gap-4">
-                <li className="flex justify-start items-start">
-                  <img className="mt-[4px]" src={ProfileImg1} alt="ProfileImg1" />
-                  <div className="flex flex-col pl-[25px]">
-                    <p className="font-semibold text-sm leading-6">Marketing digital</p>
-                    <p className="font-medium text-base leading-6">
-                      Javier Gonzales solicito una corrección
-                    </p>
-                  </div>
-                </li>
-                <li className="flex justify-start items-start">
-                  <img className="mt-[4px]" src={ProfileImg2} alt="ProfileImg1" />
-                  <div className="flex flex-col pl-[25px]">
-                    <p className="font-semibold text-sm leading-6">Marketing digital</p>
-                    <p className="font-medium text-base leading-6">
-                      Javier Gonzales solicito una corrección
-                    </p>
-                  </div>
-                </li>
-                <li className="flex justify-start items-start">
-                  <img className="mt-[4px]" src={ProfileImg3} alt="ProfileImg1" />
-                  <div className="flex flex-col pl-[25px]">
-                    <p className="font-semibold text-sm leading-6">Marketing digital</p>
-                    <p className="font-medium text-base leading-6">
-                      Javier Gonzales solicito una corrección
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          )}
         </div>
         <div
           onClick={handleMenu}
-          className="w-[37px] h-[37px] rounded-full shadow-buttonshadow flex justify-center items-center cursor-pointer"
-        >
+          className="w-[37px] h-[37px] rounded-full shadow-buttonshadow flex justify-center items-center cursor-pointer">
           <BiSolidUser className="w-[30px] h-[34px]" />
         </div>
       </div>
@@ -141,6 +104,51 @@ const Topbar = () => {
           <p className="font-semibold text-[15px] leading-[35px] underline pl-[35px] mt-[52px]">
             Cerrar sesión
           </p>
+        </div>
+      )}
+      {notification && (
+        <div className="w-[340px] md:w-[438px] h-auto md:h-[239px] bg-primary text-white absolute top-[85px] right-0 md:right-[110px] flex flex-col rounded-[10px] rounded-tr-none z-30">
+          <ul className="font-semibold text-xl leading-[35px] pl-[27px] mt-[15px] flex flex-col gap-2">
+            <li className="flex flex-row justify-start items-start">
+              <img
+                className="mt-[8px] md:mt-[4px] w-10 h-10 md:w-auto md:h-auto"
+                src={ProfileImg1}
+                alt="ProfileImg1"
+              />
+              <div className="flex flex-col pl-2">
+                <p className="font-semibold text-xs md:text-sm leading-6">Marketing digital</p>
+                <p className="font-medium text-sm md:text-base leading-6">
+                  Javier Gonzales solicito una corrección
+                </p>
+              </div>
+            </li>
+            <li className="flex flex-row justify-start items-start">
+              <img
+                className="mt-[8px] md:mt-[4px] w-10 h-10 md:w-auto md:h-auto"
+                src={ProfileImg2}
+                alt="ProfileImg1"
+              />
+              <div className="flex flex-col pl-2">
+                <p className="font-semibold text-xs md:text-sm leading-6">Marketing digital</p>
+                <p className="font-medium text-sm md:text-base leading-6">
+                  Javier Gonzales solicito una corrección
+                </p>
+              </div>
+            </li>
+            <li className="flex flex-row justify-start items-start">
+              <img
+                className="mt-[8px] md:mt-[4px] w-10 h-10 md:w-auto md:h-auto"
+                src={ProfileImg3}
+                alt="ProfileImg1"
+              />
+              <div className="flex flex-col pl-2">
+                <p className="font-semibold text-xs md:text-sm leading-6">Marketing digital</p>
+                <p className="font-medium text-sm md:text-base leading-6">
+                  Javier Gonzales solicito una corrección
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       )}
     </nav>
