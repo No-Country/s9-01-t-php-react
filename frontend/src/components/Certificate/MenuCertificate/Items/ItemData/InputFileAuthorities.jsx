@@ -40,11 +40,11 @@ export const InputFileAuthorities = ({ name }) => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center py-3">
       {!isOpen ? (
         <AiOutlinePlusCircle size={30} onClick={() => setIsOpen(!isOpen)} />
       ) : (
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full p-4">
           <label className="flex cursor-pointer items-center">
             <BiImageAdd size={30} /> agrega una firma
             <input className=" hidden " type="file" name={name} onChange={handleChangeFile} />
@@ -61,17 +61,23 @@ export const InputFileAuthorities = ({ name }) => {
                 />
               </div>
             )}
-            <div className="flex flex-col gap-y-2 mt-4">
+            <div className="flex flex-col gap-y-2 mt-4 w-full">
               <InputText
                 handleChange={handleChange}
                 name={"authorityName"}
                 value={authority.authorityName}
+                placeholder={"Nombre de la autoridad"}
               >
                 Nombre
               </InputText>
             </div>
-            <div className="flex flex-col gap-y-2 mt-4">
-              <InputText handleChange={handleChange} name={"position"} value={authority.position}>
+            <div className="flex flex-col gap-y-2 mt-4 w-full">
+              <InputText
+                handleChange={handleChange}
+                name={"position"}
+                value={authority.position}
+                placeholder={"Nombre del puesto o posición"}
+              >
                 Posición
               </InputText>
             </div>

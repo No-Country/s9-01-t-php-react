@@ -4,10 +4,22 @@ import { about_br, about_en, about_es } from "./about_model";
 import { plans_br, plans_en, plans_es } from "./plans_model";
 import { template_br, template_en, template_es } from "./template_model";
 import { footer_br, footer_en, footer_es } from "./footer_model";
-import { landingSection1_br, landingSection1_en, landingSection1_es } from "./LandingSection1_model";
+import {
+  landingSection1_br,
+  landingSection1_en,
+  landingSection1_es
+} from "./LandingSection1_model";
 import { navbar_br, navbar_en, navbar_es } from "./navbar_model";
-import { landingSection2_br, landingSection2_en, landingSection2_es } from "./LandingSection2_model";
-import { landingSection3_br, landingSection3_en, landingSection3_es } from "./LandingSection3_model";
+import {
+  landingSection2_br,
+  landingSection2_en,
+  landingSection2_es
+} from "./LandingSection2_model";
+import {
+  landingSection3_br,
+  landingSection3_en,
+  landingSection3_es
+} from "./LandingSection3_model";
 
 export const languageLogin = lang => {
   if (lang === "es") return login_es;
@@ -25,28 +37,28 @@ export const languageRegister = lang => {
 export const languageAbout = lang => {
   if (lang === "es") return about_es;
   if (lang === "br") return about_br;
-  if (lang === "en") return  about_en;
+  if (lang === "en") return about_en;
   else return about_es;
 };
 
 export const languagePlans = lang => {
   if (lang === "es") return plans_es;
   if (lang === "br") return plans_br;
-  if (lang === "en") return  plans_en;
+  if (lang === "en") return plans_en;
   else return plans_es;
 };
 
 export const languageTemplate = lang => {
   if (lang === "es") return template_es;
   if (lang === "br") return template_br;
-  if (lang === "en") return  template_en;
+  if (lang === "en") return template_en;
   else return template_es;
 };
 
 export const languageFooter = lang => {
   if (lang === "es") return footer_es;
   if (lang === "br") return footer_br;
-  if (lang === "en") return  footer_en;
+  if (lang === "en") return footer_en;
   else return footer_es;
 };
 
@@ -77,8 +89,3 @@ export const languagelandingSection3 = lang => {
   if (lang === "en") return landingSection3_en;
   else return landingSection3_es;
 };
-
-
-
-
-

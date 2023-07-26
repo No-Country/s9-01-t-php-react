@@ -10,17 +10,15 @@ const Templates = () => {
     navigate("/dashboard");
   };
 
-  const { template: templateLang } = useSelector((state) => state.lang);
+  const { template: templateLang } = useSelector(state => state.lang);
   const { heading, buttonText, sections } = templateLang;
-
 
   return (
     <main>
       <div className="w-[1120px] h-[356px] bg-secondary rounded-[20px] flex text-white mt-[43px]">
         <div className="w-[494px] h-full flex justify-center items-center">
           <div className="w-[346px]">
-            <h1 className="font-medium text-4xl leading-[44px]">{heading}
-            </h1>
+            <h1 className="font-medium text-4xl leading-[44px]">{heading}</h1>
           </div>
         </div>
         <div className="flex-1 flex flex-col justify-between items-end py-[26px] pr-[80px]">
@@ -36,7 +34,7 @@ const Templates = () => {
       <section className="w-full flex flex-col items-center my-[45px]">
         <article className="w-[1120px]">
           <h4 className="font-semibold text-2xl leading-[29px] text-primary">
-          {sections.education}
+            {sections.education}
           </h4>
           <div className="w-full mt-6">
             <Carousel />
@@ -52,14 +50,16 @@ const Templates = () => {
         </article>
         <article className="w-[1120px] mt-[60px]">
           <h4 className="font-semibold text-2xl leading-[29px] text-primary">
-          {sections.eventParticipation}
+            {sections.eventParticipation}
           </h4>
           <div className="w-full mt-6">
             <Carousel />
           </div>
         </article>
         <article className="w-[1120px] mt-[60px]">
-          <h4 className="font-semibold text-2xl leading-[29px] text-primary">{sections.otherActivities}</h4>
+          <h4 className="font-semibold text-2xl leading-[29px] text-primary">
+            {sections.otherActivities}
+          </h4>
           <div className="w-full mt-6">
             <Carousel />
           </div>

@@ -3,12 +3,8 @@ import landingImg1 from "../../../public/img/landing/landing-img1.svg";
 import { useSelector } from "react-redux";
 
 const LandingSection2 = () => {
-  const { landingSection2: landingSection2Lang } = useSelector((state) => state.lang);
-  const { title,
-    paragraph1,
-    paragraph2,
-    paragraph3,
-    buttonText } = landingSection2Lang;
+  const { landingSection2: landingSection2Lang } = useSelector(state => state.lang);
+  const { title, paragraph1, paragraph2, paragraph3, buttonText } = landingSection2Lang;
 
   return (
     <section className="w-full mt-5 md:mt-[122px] mb-5 md:mb-[175px] relative">

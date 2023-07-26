@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 const Plans = () => {
-  const { plans: plansLang } = useSelector((state) => state.lang);
+  const { plans: plansLang } = useSelector(state => state.lang);
   const { plan1, plan2, plan3 } = plansLang;
 
   return (

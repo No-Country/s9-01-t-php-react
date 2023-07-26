@@ -7,9 +7,9 @@ import linkedin from "../../assets/icons/linkedin.svg";
 import { useSelector } from "react-redux";
 
 const Footer = () => {
-  const { footer: footerLang } = useSelector((state) => state.lang);
+  const { footer: footerLang } = useSelector(state => state.lang);
   const { templates, plans, support, news, copyright } = footerLang;
-  
+
   return (
     <footer className="lg:h-[196px] w-full">
       <div className="h-full w-full flex flex-col md:flex-row px-1 md:px-[20px] lg:px-[78px] text-white bg-primary pb-[30px]">
@@ -33,9 +33,7 @@ const Footer = () => {
           </article>
         </div>
         <div className="md:w-1/2 w-full h-full flex flex-col md:justify-start pt-[30px] md:items-end gap-6 justify-center items-center">
-          <p className="text-base md:font-normal md:text-xl md:leading-6">
-            {news}
-          </p>
+          <p className="text-base md:font-normal md:text-xl md:leading-6">{news}</p>
           <div className="flex gap-5 justify-between items-center">
             <img className="w-auto h-6 md:h-8 lg:auto" src={instagram} alt="instagram" />
             <img className="w-auto h-6 md:h-8 lg:auto" src={facebook} alt="facebook" />

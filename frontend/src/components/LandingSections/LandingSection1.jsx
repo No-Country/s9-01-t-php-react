@@ -5,11 +5,10 @@ import landingImg2 from "../../../public/img/landing/landing-img2.svg";
 import { useSelector } from "react-redux";
 
 const LandingSection1 = () => {
- 
-  const { landingSection1: landingSection1Lang } = useSelector((state) => state.lang);
+  const { landingSection1: landingSection1Lang } = useSelector(state => state.lang);
   const { title, buttonText } = landingSection1Lang;
 
- return (
+  return (
     <section className="w-full mt-5 md:mt-[45px] relative">
       <img
         className="absolute top-[250px] md:top-[160px] -z-10 right-0 w-auto md:h-auto h-[250px]"

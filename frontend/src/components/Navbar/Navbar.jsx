@@ -12,10 +12,9 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
-  const handleChangeLang = (event) => {
+  const handleChangeLang = event => {
     dispatch(changeLang(event.target.value));
   };
-
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -29,29 +28,26 @@ const Navbar = () => {
     }
   };
 
-  const { navbar: navbarLang } = useSelector((state) => state.lang);
-  const {
-    aboutUs,
-    plans,
-    templates,
-    faqs,
-    login,
-    register} = navbarLang;
+  const { navbar: navbarLang } = useSelector(state => state.lang);
+  const { aboutUs, plans, templates, faqs, login, register } = navbarLang;
 
   return (
     <nav className="h-[80px] w-full flex justify-between items-center px-5 lg:px-[57px] text-primary shadow-buttonshadow relative">
       <button className="flex-col items-center justify-center flex lg:hidden" onClick={handleClick}>
         <span
-          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-            }`}
+          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
+            isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+          }`}
         ></span>
         <span
-          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? "opacity-0" : "opacity-100"
-            }`}
+          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm my-0.5 ${
+            isOpen ? "opacity-0" : "opacity-100"
+          }`}
         ></span>
         <span
-          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-            }`}
+          className={`bg-primary  transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm  ${
+            isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+          }`}
         ></span>
       </button>
       <Link className="hidden lg:block" to="/">
@@ -73,10 +69,7 @@ const Navbar = () => {
           </Link>
 
           {/* Selector para los idiomas */}
-          <select
-            onChange={handleChangeLang}
-            className="hover:bg-slate-50 p-0"
-          >
+          <select onChange={handleChangeLang} className="hover:bg-slate-50 p-0">
             <option value="es">ES</option>
             <option value="en">EN</option>
             <option value="br">BR</option>
