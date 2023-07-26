@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 const Certificate_13 = ({
+  institution,
   certificateTitle,
   emission_date,
   certificateContent,
@@ -27,13 +28,17 @@ const Certificate_13 = ({
             >
               <p className=" px-[1em] py-[.1em]"> {certificateTitle}</p>
             </div>
-            <div className="flex w-1/4 h-1/2 justify-center">
-              {imgLogo && (
+            <div className="flex w-1/4 h-[80%]  justify-center">
+              {imgLogo ? (
                 <img
                   src={imgLogo}
-                  className=" object-contain rounded-lg max-w-[140px] h-full"
+                  className=" object-contain rounded-lg max-w-[12em] h-full"
                   alt="logo"
                 />
+              ) : (
+                <span className="text-white font-bold text-[2em] whitespace-nowrap">
+                  {institution}
+                </span>
               )}
             </div>
           </div>
