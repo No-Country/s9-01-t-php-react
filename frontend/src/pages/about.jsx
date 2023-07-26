@@ -6,7 +6,6 @@ export const About = () => {
   const { about: aboutLang } = useSelector(state => state.lang);
   const { aboutUsTitle, aboutUsContent, teamTitle } = aboutLang;
 
-  console.log(aboutLang);
   return (
     <section className="flex flex-col max-w-[1280px] justify-center mx-auto px-3 mt-12 pb-6 gap-y-16 min-w-[340px]">
       <section className="w-[90%] mx-auto">
