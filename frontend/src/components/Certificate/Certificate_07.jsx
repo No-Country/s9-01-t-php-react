@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-const color = "#FFF626";
-
 const Certificate_07 = ({
+  institution,
   certificateTitle,
   emission_date,
   certificateContent,
@@ -23,12 +22,16 @@ const Certificate_07 = ({
         <div className="flex flex-col justify-between absolute h-full w-full top-0 left-0 p-[7%] sm:p-[6.5%] md:p-[5%]">
           <div className=" flex justify-between w-full items-center mb-1 h-[15%] max-h-[70px]">
             <div className="flex w-1/4 h-full justify-start">
-              {imgLogo && (
+              {imgLogo ? (
                 <img
                   src={imgLogo}
-                  className=" object-contain rounded-lg max-w-[160px]  h-full"
+                  className=" object-contain rounded-lg max-w-[12em]  h-full"
                   alt="logo"
                 />
+              ) : (
+                <span className="text-white font-bold text-[2em] whitespace-nowrap">
+                  {institution}
+                </span>
               )}
             </div>
             <div
@@ -47,7 +50,7 @@ const Certificate_07 = ({
             <p className="mb-[.4em]">{certificateContent}</p>
             <span className=" font-medium">{emission_date}</span>
           </div>
-          <div className=" flex justify-between h-1/4">
+          <div className=" flex justify-between h-1/4 px-[2.5em]">
             {authorities && authorities[0] && (
               <div className=" flex flex-col max-w-[33%] md:max-w-[30%] justify-end">
                 {authorities[0].urlImg && (
