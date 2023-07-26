@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import Certificate_01 from "../Certificate/Certificate_01";
 import Certificate_02 from "../Certificate/Certificate_02";
+import Certificate_06 from "../Certificate/Certificate_06";
 import Certificate_07 from "../Certificate/Certificate_07";
 import Certificate_13 from "../Certificate/Certificate_13";
 import Certificate_14 from "../Certificate/Certificate_14";
@@ -17,10 +18,16 @@ const models = [
     component: certificate => <Certificate_02 {...certificate} />
   },
   {
+    id: "64bc6cef3aa37605d20cc1b1",
+    name: "template06",
+    component: certificate => <Certificate_06 {...certificate} />
+  },
+  {
     id: "64bc6d0c3aa37605d20cc1b3",
     name: "template07",
     component: certificate => <Certificate_07 {...certificate} />
   },
+
   {
     id: "64bc6db53aa37605d20cc1bf",
     name: "template13",
