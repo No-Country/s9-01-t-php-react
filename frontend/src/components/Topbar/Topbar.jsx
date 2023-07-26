@@ -2,13 +2,27 @@ import { useState } from "react";
 import { BiSolidUser } from "react-icons/bi";
 import { FiBell } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import ProfileImg1 from "../../../public/img/profile/profile-img1.svg";
+import ProfileImg2 from "../../../public/img/profile/profile-img2.svg";
+import ProfileImg3 from "../../../public/img/profile/profile-img3.svg";
 
 const Topbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [notification, setNotification] = useState(false);
+
+  const handleNotification = () => {
+    setNotification(!notification);
+  };
+
+  const handleMenu = () => {
+    setMenu(!menu);
+  };
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <nav className="h-[80px] w-full flex justify-between items-center lg:px-[57px] text-primary shadow-buttonshadow relative pl-5 pr-10">
       <button className="flex-col items-center justify-center flex lg:hidden" onClick={handleClick}>
@@ -43,12 +57,48 @@ const Topbar = () => {
         </ul>
       </div>
       <div className="flex items-center justify-center gap-4 text-secondary">
-        <FiBell className="w-[30px] h-[34px]" />
-        <Link to="/account">
-          <div className="w-[37px] h-[37px] rounded-full shadow-buttonshadow flex justify-center items-center">
-            <BiSolidUser className="w-[30px] h-[34px]" />
-          </div>
-        </Link>
+        <div onClick={handleNotification} className="relative cursor-pointer">
+          <FiBell className="w-[30px] h-[34px]" />
+          {notification && (
+            <div className="w-[438px] h-[239px] bg-primary text-white absolute top-[62px] right-0 flex flex-col rounded-[10px] rounded-tr-none z-30">
+              <ul className="font-semibold text-xl leading-[35px] pl-[27px] mt-[15px] flex flex-col gap-4">
+                <li className="flex justify-start items-start">
+                  <img className="mt-[4px]" src={ProfileImg1} alt="ProfileImg1" />
+                  <div className="flex flex-col pl-[25px]">
+                    <p className="font-semibold text-sm leading-6">Marketing digital</p>
+                    <p className="font-medium text-base leading-6">
+                      Javier Gonzales solicito una corrección
+                    </p>
+                  </div>
+                </li>
+                <li className="flex justify-start items-start">
+                  <img className="mt-[4px]" src={ProfileImg2} alt="ProfileImg1" />
+                  <div className="flex flex-col pl-[25px]">
+                    <p className="font-semibold text-sm leading-6">Marketing digital</p>
+                    <p className="font-medium text-base leading-6">
+                      Javier Gonzales solicito una corrección
+                    </p>
+                  </div>
+                </li>
+                <li className="flex justify-start items-start">
+                  <img className="mt-[4px]" src={ProfileImg3} alt="ProfileImg1" />
+                  <div className="flex flex-col pl-[25px]">
+                    <p className="font-semibold text-sm leading-6">Marketing digital</p>
+                    <p className="font-medium text-base leading-6">
+                      Javier Gonzales solicito una corrección
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+        <div
+          onClick={handleMenu}
+          className="w-[37px] h-[37px] rounded-full shadow-buttonshadow flex justify-center items-center cursor-pointer"
+        >
+          <BiSolidUser className="w-[30px] h-[34px]" />
+        </div>
       </div>
       {isOpen && (
         <section className="absolute w-[75vw] py-5 bg-primary left-0 top-[85px] pl-5 z-20 rounded-[10px]">
@@ -78,6 +128,20 @@ const Topbar = () => {
             </ul>
           </div>
         </section>
+      )}
+      {menu && (
+        <div className="w-[298px] h-[239px] bg-primary text-white absolute top-[85px] right-0 flex flex-col rounded-[10px] rounded-tr-none z-30">
+          <ul className="font-semibold text-xl leading-[35px] pl-[35px] mt-[15px] gap-4">
+            <Link to="/account">
+              <li onClick={handleMenu}>Ir a mi cuenta</li>
+            </Link>
+            <li onClick={handleMenu}>Soporte</li>
+            <li onClick={handleMenu}>Plan actual</li>
+          </ul>
+          <p className="font-semibold text-[15px] leading-[35px] underline pl-[35px] mt-[52px]">
+            Cerrar sesión
+          </p>
+        </div>
       )}
     </nav>
   );
