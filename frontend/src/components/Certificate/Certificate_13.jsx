@@ -11,8 +11,7 @@ const Certificate_13 = ({
 }) => {
   return (
     <section
-      className={` w-full h-full flex justify-center max-w-[1280px] mx-auto  text-[12px] sm:text-[16px] md:text-[18px]`}
-    >
+      className={` w-full h-full flex justify-center max-w-[1280px] mx-auto  text-[12px] sm:text-[16px] md:text-[18px]`}>
       <div className="max-w-[46.1875rem] relative text-[.9em] text-center text-white">
         <img
           src={templateSelected?.urlImg}
@@ -20,15 +19,14 @@ const Certificate_13 = ({
           className=" object-contain w-full"
         />
         <div className="flex flex-col justify-between absolute h-full w-full top-0 left-0 p-[5%] sm:p-[6.5%] md:p-[5%]">
-          <div className=" flex flex-col w-full items-center mt-[.6em] md:mt-[1em]  gap-[1em]  md:gap-[1.5em] mb-1 md:mb-0 h-[25%] max-h-[90px] ">
+          <div className=" flex flex-col w-full items-center mt-[.6em]   gap-[1em]   mb-1 md:mb-0 h-[25%] max-h-[90px] ">
             <div
               className={`${
                 certificateTitle ? "bg-[#0DFCA7]" : ""
-              } rounded font-bold  text-black mt-1`}
-            >
+              } rounded font-bold  text-black mt-1`}>
               <p className=" px-[1em] py-[.1em]"> {certificateTitle}</p>
             </div>
-            <div className="flex w-1/4 h-[80%]  justify-center">
+            <div className="flex w-1/4 h-[70%]  justify-center">
               {imgLogo ? (
                 <img
                   src={imgLogo}
