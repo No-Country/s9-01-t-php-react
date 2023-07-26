@@ -1,5 +1,29 @@
 export const team = [
   {
+    name: "Elizabeth León",
+    profile_linkedin: "https://www.linkedin.com/in/elizabethleonperez/",
+    profile_github: "...",
+    position: "UI/UX Designer",
+    country: "Argentina",
+    img: "https://ca.slack-edge.com/T032Y55Q6VC-U054DFJSR2T-3ea5ea0b27f6-512"
+  },
+  {
+    name: "Lucia Pinna",
+    profile_linkedin: "https://www.linkedin.com/in/lucia-pinna/",
+    profile_github: "...",
+    position: "UI/UX Designer",
+    country: "Argentina",
+    img: "https://ca.slack-edge.com/T032Y55Q6VC-U05C29Q39HB-0d27fa529f29-512"
+  },
+  {
+    name: "Yenifer Ramírez",
+    profile_linkedin: "https://www.linkedin.com/in/yeniferrosana/",
+    profile_github: "https://github.com/yeniferrosana",
+    position: "Project Manager",
+    country: "Venezuela",
+    img: "https://ca.slack-edge.com/T032Y55Q6VC-U040WM4U2DC-b96518bf221e-512"
+  },
+  {
     name: "Alejandro Wogelman",
     profile_linkedin: "https://www.linkedin.com/in/alejandrowogel/",
     profile_github: "https://github.com/AlejandroWogelman",
@@ -54,38 +78,5 @@ export const team = [
     position: "Backend Dev",
     country: "Perú",
     img: "https://avatars.githubusercontent.com/u/120438097?s=400&u=9c838630ee47f4db3bfeb728d062ad4bfb2586a9&v=4"
-  },
-
-  {
-    name: "Elizabeth León",
-    profile_linkedin: "https://www.linkedin.com/in/elizabethleonperez/",
-    profile_github: "...",
-    position: "UI/UX Designer",
-    country: "Argentina",
-    img: "https://ca.slack-edge.com/T032Y55Q6VC-U054DFJSR2T-3ea5ea0b27f6-512"
-  },
-  {
-    name: "Lucia Pinna",
-    profile_linkedin: "https://www.linkedin.com/in/lucia-pinna/",
-    profile_github: "...",
-    position: "UI/UX Designer",
-    country: "Argentina",
-    img: "https://ca.slack-edge.com/T032Y55Q6VC-U05C29Q39HB-0d27fa529f29-512"
-  },
-  {
-    name: "Melina Ibarra",
-    profile_linkedin: "https://www.linkedin.com/in/melina-ibarra-a487a2b4/",
-    profile_github: "...",
-    position: "UI/UX Designer",
-    country: "Argentina",
-    img: "https://ca.slack-edge.com/T032Y55Q6VC-U055HNFUZFA-05a3f85b9724-512"
-  },
-  {
-    name: "Yenifer Ramírez",
-    profile_linkedin: "https://www.linkedin.com/in/yeniferrosana/",
-    profile_github: "https://github.com/yeniferrosana",
-    position: "Project Manager",
-    country: "Venezuela",
-    img: "https://ca.slack-edge.com/T032Y55Q6VC-U040WM4U2DC-b96518bf221e-512"
   }
 ];

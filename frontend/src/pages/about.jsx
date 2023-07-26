@@ -1,5 +1,5 @@
 import { Card } from "../components/About/Card";
-import { team } from "../components/About/constants";
+import { team } from "../components/About/team";
 import { useSelector } from "react-redux";
 
 export const About = () => {
