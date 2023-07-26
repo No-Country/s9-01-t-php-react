@@ -11,7 +11,8 @@ const Certificate_13 = ({
 }) => {
   return (
     <section
-      className={` w-full h-full flex justify-center max-w-[1280px] mx-auto  text-[12px] sm:text-[16px] md:text-[18px]`}>
+      className={` w-full h-full flex justify-center max-w-[1280px] mx-auto  text-[12px] sm:text-[16px] md:text-[18px]`}
+    >
       <div className="max-w-[46.1875rem] relative text-[.9em] text-center text-white">
         <img
           src={templateSelected?.urlImg}
@@ -23,7 +24,8 @@ const Certificate_13 = ({
             <div
               className={`${
                 certificateTitle ? "bg-[#0DFCA7]" : ""
-              } rounded font-bold  text-black mt-1`}>
+              } rounded font-bold  text-black mt-1`}
+            >
               <p className=" px-[1em] py-[.1em]"> {certificateTitle}</p>
             </div>
             <div className="flex w-1/4 h-[70%]  justify-center">

@@ -11,7 +11,8 @@ const Certificate_15 = ({
 }) => {
   return (
     <section
-      className={` w-full h-full flex justify-center max-w-[1280px] mx-auto  text-[12px] sm:text-[16px] md:text-[18px] text-black`}>
+      className={` w-full h-full flex justify-center max-w-[1280px] mx-auto  text-[12px] sm:text-[16px] md:text-[18px] text-black`}
+    >
       <div className="max-w-[46.1875rem] relative text-[.9em] text-center ">
         <img
           src={templateSelected?.urlImg}
@@ -34,7 +35,8 @@ const Certificate_15 = ({
             <div
               className={`${
                 certificateTitle ? "" : ""
-              } flex justify-center items-center rounded font-bold px-3 py-0.5 text-black`}>
+              } flex justify-center items-center rounded font-bold px-3 py-0.5 text-black`}
+            >
               {certificateTitle}
             </div>
           </div>
