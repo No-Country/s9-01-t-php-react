@@ -6,7 +6,7 @@ import {
   setStudentSelected,
   setStudents
 } from "../../../../../features/certificateSlice";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { MdDeleteForever } from "react-icons/md";
 
 const ItemStudents = () => {
   const students = useSelector(state => state.certificate.students);
@@ -37,7 +37,7 @@ const ItemStudents = () => {
     <div className="h-full">
       <section className="flex flex-col w-full overflow-y-auto pr-6 h-full">
         <header>
-          <h2 className=" font-bold text-xl text-secondary">Datos de los alumnos</h2>
+          <h2 className=" font-bold text-xl text-primary">Datos de los alumnos</h2>
           <p>Total de estudiantes cargados: {students.length}</p>
         </header>
         <div className="mt-2 border-2 rounded-lg border-slate-700">
@@ -52,7 +52,7 @@ const ItemStudents = () => {
                   <span className="text-primary">♦</span> {student?.name} {student?.lastname}{" "}
                 </p>
                 <span>({student?.email})</span>
-                <AiOutlineCloseCircle
+                <MdDeleteForever
                   color="red"
                   size={20}
                   className=" absolute top-2 right-2 z-10"
@@ -66,13 +66,13 @@ const ItemStudents = () => {
           <input type="file" name="fileExcel" ref={fileInputRef} onChange={handlerExcel} />
         </div>
         <button
-          className="w-full mt-4 p-2 font-bold bg-secondary text-white rounded-lg hover:bg-blue-400 hover:text-black"
+          className="w-full mt-4 p-2 font-bold bg-primary shadow-buttonshadow text-white rounded-lg hover:bg-blue-400 hover:text-black"
           onClick={handleButtonClick}
         >
           Cargar archivo
         </button>
         <a href="/data.xlsx" download>
-          <button className="w-full mt-2 p-2 font-bold bg-white text-secondary border-secondary rounded-lg hover:bg-blue-300 hover:text-black">
+          <button className="w-full mt-2 p-2 font-bold bg-white text-primary border border-primary rounded-lg hover:bg-blue-300 hover:text-black">
             Descargar plantilla excel
           </button>
         </a>

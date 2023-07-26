@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RiArticleLine, RiImageEditFill } from "react-icons/ri";
-import { PiStudentFill } from "react-icons/pi";
+import { BsCloudArrowUp } from "react-icons/bs";
+import { LiaCertificateSolid } from "react-icons/lia";
 import ItemTemplates from "./Items/ItemTemplate/ItemTemplates";
 import ItemData from "./Items/ItemData/ItemData";
 import ItemStudents from "./Items/ItemStudents/ItemStudents";
@@ -33,42 +34,45 @@ const MenuCertificate = () => {
     }
   };
   return (
-    <div className=" w-[80%] p-2 max-h-[100vh] h-full lg:max-w-[22.3125rem] border-[3px] mx-auto lg:mx-0 rounded-3xl border-secondary bg-gray-100">
-      <header className=" bg-white rounded-t-3xl">
-        <ul className="flex w-full justify-between text-xs font-semibold">
+    <div className=" w-[80%] min-w-[22.3125rem] p-2 max-h-[100vh] h-full lg:max-w-[22.3125rem] border-[3px] mx-auto lg:mx-0 rounded-3xl border-secondary bg-[#F7F7F7]">
+      <header>
+        <ul className="flex w-full justify-between text-xs font-semibold gap-2">
           <li
             onClick={() => handleSelectItem("template")}
             className={`${
               isSelected.template
-                ? "border-[2px] border-b-0 rounded-t-3xl  border-secondary bg-gray-100"
-                : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
-            <RiImageEditFill size={30} color="#797979" />
-            <span className=" text-primary">Plantilla</span>
+                ? " border-secondary bg-secondary text-white"
+                : "bg-[#F0F0F0] text-[#797979]"
+            } flex flex-col items-center justify-center rounded-3xl cursor-pointer p-2 w-[6.25rem] h-[5rem] shadow-md`}
+          >
+            <RiImageEditFill size={40} />
+            <span>Plantilla</span>
           </li>
           <li
             onClick={() => handleSelectItem("data")}
             className={`${
               isSelected.data
-                ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
-                : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
-            <RiArticleLine size={30} color="#797979" />
-            <span className=" text-primary">Datos</span>
+                ? "border-secondary bg-secondary text-white"
+                : "bg-[#F0F0F0] text-[#797979]"
+            } flex flex-col items-center justify-center rounded-3xl cursor-pointer p-2 w-[6.25rem] h-[5rem] shadow-md`}
+          >
+            <LiaCertificateSolid size={40} />
+            <span>Certificá</span>
           </li>
           <li
             onClick={() => handleSelectItem("students")}
             className={`${
               isSelected.students
-                ? "border-[2px] border-b-0 rounded-t-3xl border-secondary bg-gray-100"
-                : null
-            } flex flex-col items-center cursor-pointer p-2 w-[7.375rem]`}>
-            <PiStudentFill size={30} color="#797979" />
-            <span className=" text-primary">Alumnos</span>
+                ? "border-secondary bg-secondary text-white"
+                : "bg-[#F0F0F0] text-[#797979]"
+            } flex flex-col items-center justify-center rounded-3xl cursor-pointer p-2 w-[6.25rem] h-[5rem] shadow-md`}
+          >
+            <BsCloudArrowUp size={40} />
+            <span>Destinatarios</span>
           </li>
         </ul>
       </header>
-      <div className="py-6 px-5 h-[80vh]">
+      <div className="py-6 px-1 h-[80vh]">
         {isSelected.template && <ItemTemplates />}
         {isSelected.data && <ItemData />}
         {isSelected.students && <ItemStudents />}

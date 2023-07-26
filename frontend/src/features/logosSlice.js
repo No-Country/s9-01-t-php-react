@@ -14,12 +14,17 @@ const logos = createSlice({
       state.list = action.payload;
     },
     setSelectedLogo: (state, action) => {
+      if (state.logoSelected._id === action.payload._id) action.payload = {};
+      state.logoSelected = action.payload;
+    },
+    setEmptySelectedLogo: (state, action) => {
+      action.payload = {};
       state.logoSelected = action.payload;
     }
   }
 });
 
-export const { setListLogo, setSelectedLogo } = logos.actions;
+export const { setListLogo, setSelectedLogo, setEmptySelectedLogo } = logos.actions;
 
 export default logos.reducer;
 

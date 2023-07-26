@@ -38,21 +38,29 @@ const certificate = createSlice({
     setLogo: (state, action) => {
       const { data } = action.payload;
       state.logos = data;
+    },
+    setEmptyCertificate: () => {
+      return initialState;
     }
   }
 });
 
-export const { setStudents, setStudentSelected, setData, setLogo, setRemoveStudent } =
-  certificate.actions;
+export const {
+  setStudents,
+  setStudentSelected,
+  setData,
+  setLogo,
+  setRemoveStudent,
+  setEmptyCertificate
+} = certificate.actions;
 
 export default certificate.reducer;
 
-export const getSendAllCertificate = idCertificates => async dispatch => {
+export const getSendAllCertificate = idCertificates => async () => {
   try {
     const certificateSended = await getRequest(`/api/v1/certificates/sendall/${idCertificates}`);
     if (certificateSended.status === "success") {
-      console.log("ENVIADOS: ", certificateSended);
-      return "Certificados enviados con exito!!!";
+      return true;
     }
   } catch (error) {
     console.log(error);
@@ -70,7 +78,7 @@ export const postLogos = image => async dispatch => {
   }
 };
 
-export const postCertificate = certificate => async dispatch => {
+export const postCertificate = certificate => async () => {
   try {
     const certificateSaved = await postRequest(certificate, "/api/v1/certificates");
     if (certificateSaved) {

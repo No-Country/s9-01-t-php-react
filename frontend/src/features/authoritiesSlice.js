@@ -28,12 +28,19 @@ const authorities = createSlice({
       } else {
         state.authoritiesSelected = [...state.authoritiesSelected, action.payload];
       }
+    },
+    setEmptySelectedAuthorities: (state, action) => {
+      state.authoritiesSelected = [];
     }
   }
 });
 
-export const { setListAuthorities, setSelectedAuthorities, setAddAuthorities } =
-  authorities.actions;
+export const {
+  setListAuthorities,
+  setSelectedAuthorities,
+  setAddAuthorities,
+  setEmptySelectedAuthorities
+} = authorities.actions;
 
 export default authorities.reducer;
 

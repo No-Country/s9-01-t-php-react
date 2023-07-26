@@ -33,7 +33,7 @@ export const InputFileLogo = ({ name }) => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center py-3 w-full">
       {!imgLogo ? (
         <label className="cursor-pointer">
           <AiOutlinePlusCircle size={30} />
