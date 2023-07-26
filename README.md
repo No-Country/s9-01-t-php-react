@@ -159,10 +159,10 @@ Antes de comenzar, asegúrate de tener instalado Node.js en tu sistema operativo
 ![Figma](https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white) 
 ### 🤝Equipo
 
-|  <img src="https://ca.slack-edge.com/T032Y55Q6VC-U054DFJSR2T-3ea5ea0b27f6-512" width="130" height="120">  | <img src="https://ca.slack-edge.com/T032Y55Q6VC-U05C29Q39HB-0d27fa529f29-512" width="130" height="120">  | <img src="https://ca.slack-edge.com/T032Y55Q6VC-U055HNFUZFA-05a3f85b9724-512" width="130" height="120">  | 
-|:-:|:-:|:-:|
-| **Elizabeth León** <img src="https://i.ibb.co/Ln0vhg4/AR.png"> | **Lucia Pinna** <img src="https://i.ibb.co/Ln0vhg4/AR.png">| **Melina Ibarra**  <img src="https://i.ibb.co/Ln0vhg4/AR.png"> | 
- [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/elizabethleonperez/) |  [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucia-pinna/) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/melina-ibarra-a487a2b4/) 
+|  <img src="https://ca.slack-edge.com/T032Y55Q6VC-U054DFJSR2T-3ea5ea0b27f6-512" width="130" height="120">  | <img src="https://ca.slack-edge.com/T032Y55Q6VC-U05C29Q39HB-0d27fa529f29-512" width="130" height="120">  | 
+|:-:|:-:|
+| **Elizabeth León** <img src="https://i.ibb.co/Ln0vhg4/AR.png"> | **Lucia Pinna** <img src="https://i.ibb.co/Ln0vhg4/AR.png">| 
+ [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/elizabethleonperez/) |  [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucia-pinna/) | 
 <hr>
 
 ### 👉🏻 Project Manager
