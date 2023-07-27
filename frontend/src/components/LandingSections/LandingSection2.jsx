@@ -1,5 +1,6 @@
 import landingImg1 from "../../../public/img/landing/landing-img1.svg";
-
+import imgCapVideo from "../../../public/img/imgCapVideo.png";
+import { FaPlay } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 const LandingSection2 = () => {
@@ -36,7 +37,14 @@ const LandingSection2 = () => {
               </button>
             </div>
           </div>
-          <div className="w-full md:w-[515px] h-[319px] bg-[#E6E6E6]"></div>
+          <div className="flex w-full md:w-[515px] h-[319px] relative  items-center justify-center rounded-lg mt-4 p-2">
+            <img
+              src={imgCapVideo}
+              alt="video"
+              className="rounded-lg object-cover shadow-buttonshadow"
+            />
+            <FaPlay size={65} className="absolute text-secondary " />
+          </div>
         </div>
       </div>
     </section>
