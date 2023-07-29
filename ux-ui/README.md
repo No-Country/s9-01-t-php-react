@@ -2,7 +2,11 @@
 <h1>
 <a href="https://certifyme0901.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #86E3CE">CertifyMe</a>
 </h1>
-<img src="https://github.com/No-Country/s9-01-t-php-react/blob/dev/ux-ui/mockup/1.jpeg">
+<img src="https://github.com/No-Country/s9-01-t-php-react/blob/dev/ux-ui/mockup/1.jpeg" style="height: 400px">
+
+<img src="https://github.com/No-Country/s9-01-t-php-react/blob/dev/ux-ui/mockup/3.jpeg" style="height: 400px">
+
+<img src="https://github.com/No-Country/s9-01-t-php-react/blob/dev/ux-ui/mockup/4.jpeg" style="height: 400px">
 <p>
 <p>Nuestro diseño</p>
 <a href="https://www.figma.com/file/XyfpWhKqWftYwl4Fe5T3md/NoCountry-S9?type=design&node-id=1220%3A8455&mode=design&t=fFmw6tN0AjMei0Ag-1" target="_blank" rel="noopener noreferrer">
